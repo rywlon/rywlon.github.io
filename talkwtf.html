@@ -8,8 +8,8 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon.ico" sizes="32x32">
 <link rel="canonical" href="https://rywlon.github.io/talkwtf.html">
-<link rel="stylesheet" href="style.css?v=6">
-<script src="site.js?v=6" defer></script>
+<link rel="stylesheet" href="style.css?v=8">
+<script src="site.js?v=7" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">跳到正文</a>
@@ -44,35 +44,17 @@
       <figcaption aria-live="polite">将独立热键绑定到已配对的会话。</figcaption>
     </figure>
   </div>
-  <section class="demo-band" aria-label="热键演示">
+  <section class="band" aria-labelledby="talk-flow-title">
     <div class="shell">
       <div class="band-head">
-        <h2>走一遍热键</h2>
-        <p>演示用 R 代替真机快捷键。没有连接真实 Agent，也不会把字送出去。</p>
+        <h2 id="talk-flow-title">快捷键对应哪一个会话</h2>
+        <p>图里的路径是产品本身：先配对，再把快捷键绑到那个会话。</p>
       </div>
-      <div class="instrument" data-talk tabindex="0" aria-label="TalkWTF 热键演示">
-        <div class="instrument-bar"><span class="pill">演示</span><span>没有连接真实 Agent</span></div>
-        <div class="talk-grid">
-          <div>
-            <p class="pane-label"><i class="dot" aria-hidden="true"></i>当前窗口</p>
-            <p class="doc">邮件草稿<br>明天下午见。</p>
-          </div>
-          <div>
-            <p class="pane-label">会话</p>
-            <div class="route" data-route="codex" data-state="idle"><span class="key">R</span><span><b>Codex</b><small>已配对</small></span><span data-codex-state>等待</span></div>
-            <div class="route" data-state="off"><span class="key">—</span><span><b>Claude Code</b><small>未配对</small></span><span>不接收</span></div>
-          </div>
-        </div>
-        <div class="meter" data-meter hidden><span></span></div>
-        <p class="transcript" data-transcript>转写：还没有</p>
-        <p class="status" data-status aria-live="polite">等热键。焦点在这个演示里时，按 R。</p>
-        <div class="actions">
-          <button type="button" class="btn btn-hot" data-talk-send>按热键送出</button>
-          <button type="button" class="btn" data-talk-fail aria-pressed="false">下次模拟失败</button>
-          <button type="button" class="btn" data-talk-retry hidden>手动再送一次</button>
-        </div>
-        <p class="hint">未配对的 Claude Code 不接收。真机上 Codex 那条快捷键是 fn+option_right+right。失败后不会自动重发。</p>
-      </div>
+      <ol class="flow">
+        <li><b>01</b><span>选择 Codex、Claude Code、OpenCode、Cursor，或其他能读本机文件、跑命令的本地 Agent。复制配对提示词，贴进要连的会话。只在网页里聊天的客户端配不上。</span></li>
+        <li><b>02</b><span>每个会话一条快捷键。截图里已配对的 Codex 用的是 fn+option_right+right。开始说的时候目的地就定了，中途换窗口也不会改送到哪。</span></li>
+        <li><b>03</b><span>文字在后台送出，不贴进当前窗口。投递失败或结果不确定时，转写留下，不自动重发。</span></li>
+      </ol>
     </div>
   </section>
   <div class="shell case-copy">

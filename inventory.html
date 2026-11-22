@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="多仓库存与履约工作台：用真实订单和接口核对 Cin7 Omni 与 Shopify 的全仓可售、分仓分配和在途库存。">
+<meta name="description" content="全仓可以看，不等于可以从任意有货的仓自动发。用规则对照、脱敏工作台截图和接口读写记录说明 Cin7 Omni 与 Shopify 的库存排查。">
 <title>多仓库存与履约工作台 · 龙致君</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon.ico" sizes="32x32">
 <link rel="canonical" href="https://rywlon.github.io/inventory.html">
-<link rel="stylesheet" href="style.css?v=6">
-<script src="site.js?v=6" defer></script>
+<link rel="stylesheet" href="style.css?v=8">
+<script src="site.js?v=7" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">跳到正文</a>
@@ -21,15 +21,34 @@
 <article>
   <header class="case-hero shell">
     <a class="back" href="./#work">全部作品</a>
-    <p class="eyebrow">Cin7 Omni × Shopify · 家具 · 内部工具</p>
+    <p class="eyebrow">Cin7 Omni × Shopify · 库存、映射、分仓</p>
     <h1>多仓库存与履约工作台</h1>
-    <p class="lede">全仓合计用来决定能不能卖。货从哪发，还是看订单所属的那个分支。</p>
+    <p class="lede">全仓可以看，不等于可以从任意有货的仓自动发。</p>
     <dl class="facts">
-      <div><dt>我做的</dt><dd>需求、真实订单排查、接口核对</dd></div>
-      <div><dt>场景</dt><dd>多仓库存，组合家具履约</dd></div>
-      <div><dt>形态</dt><dd>内部的库存和仓库作业工具</dd></div>
+      <div><dt>我做的</dt><dd>拆开卖货口径，对照真实订单，验证接口读写</dd></div>
+      <div><dt>对象</dt><dd>库存、商品映射、订单分仓</dd></div>
+      <div><dt>工具</dt><dd>当时已能打开的内部作业台</dd></div>
     </dl>
   </header>
+  <section class="band" aria-labelledby="inventory-shift-title">
+    <div class="shell">
+      <div class="band-head">
+        <p class="dated">2026-11 回顾整理</p>
+        <h2 id="inventory-shift-title">全仓可看，不等于跨仓可自动发</h2>
+        <p>同事希望按总库存卖货。虚拟库存，和「有货的仓都能发」，当时混在一起。</p>
+      </div>
+      <div class="pair">
+        <article>
+          <h3>旧诉求</h3>
+          <p>用所有仓加起来的数字决定能不能卖，并默认货可以从任意有库存的仓发出。</p>
+        </article>
+        <article>
+          <h3>系统规则</h3>
+          <p>Cin7 可以按全部分支汇总展示库存。订单仍只能从所属分支分配。跨仓自动履约没有做成系统能力。</p>
+        </article>
+      </div>
+    </div>
+  </section>
   <div class="shell">
     <figure class="gallery gallery-inventory" data-gallery="inventory">
       <div class="gallery-bar">
@@ -45,68 +64,30 @@
       <figcaption aria-live="polite">按跨仓合计库存筛查订单，再按订单阶段缩小范围。截图隐藏了订单明细。</figcaption>
     </figure>
   </div>
-  <section class="demo-band" aria-label="库存演示">
-    <div class="shell">
-      <div class="band-head">
-        <h2>走一遍库存数字</h2>
-        <p>仓名、SKU 和订单号是演示数据。holdingQty 那三步是当时核对结果的重放，没有连接 Cin7。</p>
-      </div>
-      <div class="instrument" data-inventory aria-label="库存分配演示">
-        <div class="instrument-bar"><span class="pill">演示数据</span><span>重放当时的核对，没有连接 Cin7</span></div>
-        <label class="search">搜索 SKU、商品名、订单号或箱标
-          <input data-q type="search" autocomplete="off" placeholder="例如 SO-1042 或 茶几">
-        </label>
-        <div class="actions" role="group" aria-label="库存筛选">
-          <button type="button" class="btn" data-filter="sum" aria-pressed="true">全仓合计可售</button>
-          <button type="button" class="btn" data-filter="branch" aria-pressed="false">只看本分支可发</button>
-        </div>
-        <p class="status" data-filter-note aria-live="polite"></p>
-        <div class="sku-list">
-          <article class="sku" data-sku="SF-3S" data-branch="east" data-east="2" data-west="3" data-transit="0" data-search="sf-3s 三人位布艺沙发 so-1041 ctn-18"><p class="sku-name"><b>SF-3S</b> 三人位布艺沙发<small>订单 SO-1041 · 箱标 CTN-18 · 分支东仓</small></p><p>东仓可用 <strong data-field="east">2</strong></p><p>西仓可用 <strong data-field="west">3</strong></p><p>在途 <strong data-field="transit">0</strong></p><p>合计可用 <strong data-field="sum">5</strong></p></article>
-          <article class="sku" data-sku="TB-12" data-branch="east" data-east="0" data-west="4" data-transit="0" data-search="tb-12 橡木茶几 so-1042 ctn-19"><p class="sku-name"><b>TB-12</b> 橡木茶几<small>订单 SO-1042 · 箱标 CTN-19 · 分支东仓</small></p><p>东仓可用 <strong data-field="east">0</strong></p><p>西仓可用 <strong data-field="west">4</strong></p><p>在途 <strong data-field="transit">0</strong></p><p>合计可用 <strong data-field="sum">4</strong></p></article>
-          <article class="sku" data-sku="SF-OTT" data-branch="west" data-east="1" data-west="0" data-transit="0" data-search="sf-ott 脚凳 so-1041 ctn-20"><p class="sku-name"><b>SF-OTT</b> 脚凳<small>订单 SO-1041 · 箱标 CTN-20 · 分支西仓</small></p><p>东仓可用 <strong data-field="east">1</strong></p><p>西仓可用 <strong data-field="west">0</strong></p><p>在途 <strong data-field="transit">0</strong></p><p>合计可用 <strong data-field="sum">1</strong></p></article>
-        </div>
-        <div class="replay">
-          <p class="lane-title">holdingQty 核对重放</p>
-          <ol class="steps">
-            <li data-step="1"><span>写入</span><b>holdingQty = 1</b></li>
-            <li data-step="2"><span>响应</span><b>创建成功</b></li>
-            <li data-step="3"><span>读回</span><b>holdingQty = 0</b></li>
-          </ol>
-          <div class="actions">
-            <button type="button" class="btn btn-hot" data-replay>重放这一次</button>
-            <button type="button" class="btn" data-transfer>按调货单从东仓拨 1 件</button>
-            <button type="button" class="btn" data-stock-reset>恢复演示数字</button>
-          </div>
-          <p class="status" data-replay-note aria-live="polite">还没有重放。</p>
-        </div>
-      </div>
-    </div>
-  </section>
   <div class="shell case-copy">
     <section class="case-section">
-      <h2>卖货看合计，发货看仓库</h2>
+      <h2>规则是怎么对上的</h2>
       <div>
-        <p>运营希望按所有仓的库存卖。家具按套卖，一张订单常常要多个组件。仓库拿到单，要核对组件齐不齐、有没有被别的单占住、货放在哪个库位。</p>
-        <p>我用实际商品和订单向 Cin7 核对可售库存和订单分配。Cin7 确认：全仓视图可以汇总库存，订单仍按所属分支分配。接着核对了分仓库存、库区和库位的接口范围，文档交给了 IT。</p>
+        <p>我用实际商品和订单，向 Cin7 核对可售库存和订单分配。官方说明和上面的对照一致：全仓视图是汇总展示，订单不能改成从任意有货的仓自动分配。内部最终方案和操作说明有没有改，当时没有看到。</p>
+        <p>工作台当时已经能打开。它可以按 SKU、商品名、订单号或箱标查询，用跨仓合计筛可满足的订单，按仓库和库位盘点，也可以进入创建 Cin7 调货单。库龄、扫码批次、人工核对、装车和自提也有入口。上面的截图是脱敏后的真实界面。这个界面不是我开发的，这次查看也没有跑写入、做完盘点或把调货发出去。</p>
       </div>
     </section>
     <section class="case-section">
-      <h2>在途要走调货单</h2>
+      <h2>在途库存：提交，再读回</h2>
       <div>
-        <p>我想确认库存调整能不能直接把货标成在途。请求里写入 holdingQty = 1，接口返回创建成功。再查同一条记录，读回是 0。</p>
+        <p>当时假设库存调整接口也许能直接把货标成在途。我先确认仓间调货和库存调整都能写入，再对同一条记录提交、读回、比较。</p>
         <dl class="slip">
           <div><dt>写入</dt><dd><code>holdingQty = 1</code></dd></div>
           <div><dt>响应</dt><dd>创建成功</dd></div>
           <div><dt>读回</dt><dd><code>holdingQty = 0</code></dd></div>
         </dl>
-        <p>把写入和读回交给 Cin7。客服确认：库存调整接口改不了这个字段。发出仓间调货单之后，货才会从发出仓的可用量变成在途。上面是脱敏后的记录。</p>
+        <p>Cin7 确认：这个字段不能靠库存调整接口改写。发出仓间调货单，才会把发出仓的可用量转入在途。用调整接口做在途的路径就排除了。这条建议有没有做成工具的默认流程、发出仓和收货仓有没有验收完，记录里没有核到。</p>
       </div>
     </section>
     <section class="case-section">
-      <h2>工作台上的操作</h2>
+      <h2>旁边的映射</h2>
       <div>
-        <p>可以按 SKU、商品名、订单号或箱标查货，按跨仓合计库存筛订单，按库位盘点，也可以从工具进入创建 Cin7 调货单。页面上的截图藏起了订单明细和真实库位。</p>
+        <p>全量同步之后，Shopify 上仍显示无货。官方指出仓库映射有遗漏。我调整映射并重新同步，当时回报可用。两家独立站上同一商品变体的映射也不对，我整理了复现并推动升级，官方回报映射已经完成。相同 SKU 或条码的自动匹配还会盖掉手工映射：官方改码，内部还要把旧商品归档再重映射。这几件都没有改前改后的库存数字。</p>
       </div>
     </section>
     <nav class="case-pagination" aria-label="案例导航">

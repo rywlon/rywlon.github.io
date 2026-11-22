@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="龙致君的 AI 产品与业务流程作品集。">
 <title>TalkWTF · 龙致君</title>
-<link rel="stylesheet" href="style.css">
-<script src="site.js" defer></script>
+<link rel="stylesheet" href="style.css?v=2">
+<script src="site.js?v=2" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">跳到正文</a>
@@ -16,7 +16,12 @@
 </div></header>
 <main id="main" class="shell"><article class="case"><a class="line-link back" href="./#work">全部作品</a>
 <header class="case-head"><p class="meta">macOS · 开源应用</p><h1>TalkWTF</h1><p>把语音输入接到 Agent 会话，让指令从当前窗口发出去。</p></header>
-<dl class="facts"><div><dt>我的角色</dt><dd>产品定义、交互与验收</dd></div><div><dt>实现</dt><dd>基于 Handy，AI 辅助开发</dd></div><div><dt>状态</dt><dd>源码已公开</dd></div></dl><figure class="project-art"><img src="assets/talkwtf.png" width="2880" height="1040" alt="TalkWTF 从语音输入投递至已配对 Agent 会话的流程示意"><figcaption>项目公开资料中的 Voice to Agent 流程示意。</figcaption></figure><div class="case-copy"><section><h2>问题</h2><div><p>语音转写解决了输入，但把内容交给 Agent 往往还要切窗口、找会话、再粘贴。多会话并行时，每次输入都得重新确认目的地。</p></div></section><section><h2>两个产品取舍</h2><div><p><strong>把接入留给 Agent。</strong> 用户选择 Agent，复制配对提示词，Agent 完成连接并返回回执。用户只需知道自己连的是哪个会话。</p><p><strong>用独立热键表达目的地。</strong> 热键绑定会话，指令可在后台投递。失败时保留内容，避免自动重发导致重复指令。</p></div></section><section><h2>交付与验证</h2><div><p>我定义需求、交互和验收方式，借助 AI 推进 SwiftUI 与 Rust 集成。验证覆盖本机配对和适配器投递，核心及 FFI 测试共 350 项。</p><p><a class="line-link" href="https://github.com/rywlon/TalkWTF">查看 GitHub 源码与说明</a></p></div></section></div>
+<dl class="facts"><div><dt>我的角色</dt><dd>产品定义、交互与验收</dd></div><div><dt>实现</dt><dd>基于 Handy，AI 辅助开发</dd></div><div><dt>状态</dt><dd>源码已公开</dd></div></dl><figure class="gallery gallery-talk" data-gallery="talk">
+<div class="gallery-bar"><div class="gallery-controls" role="group" aria-label="切换软件截图"><button type="button" aria-pressed="true" aria-controls="talk-still" data-slide="0">Voice to Agent</button><button type="button" aria-pressed="false" aria-controls="talk-still" data-slide="1">连接 Agent</button></div><span>浅色模式 · 本机构建</span></div>
+<div class="gallery-view" id="talk-still">
+<a class="gallery-full" href="assets/talk-voice.jpg" aria-label="打开Voice to Agent原图"><img src="assets/talk-voice.jpg" width="2000" height="1400" alt="新版 TalkWTF 显示已配对的 Codex 和独立快捷键"></a>
+</div><figcaption aria-live="polite">将独立热键绑定到已配对的会话。</figcaption>
+</figure><div class="case-copy"><section><h2>问题</h2><div><p>语音转写解决了输入，但把内容交给 Agent 往往还要切窗口、找会话、再粘贴。多会话并行时，每次输入都得重新确认目的地。</p></div></section><section><h2>两个产品取舍</h2><div><p><strong>把接入留给 Agent。</strong> 用户选择 Agent，复制配对提示词，Agent 完成连接并返回回执。用户只需知道自己连的是哪个会话。</p><p><strong>用独立热键表达目的地。</strong> 热键绑定会话，指令可在后台投递。失败时保留内容，避免自动重发导致重复指令。</p></div></section><section><h2>交付与验证</h2><div><p>我定义需求、交互和验收方式，借助 AI 推进 SwiftUI 与 Rust 集成。完成了 350 项核心及 FFI 测试，并验证本机配对和适配器投递。各客户端的麦克风到会话完整联调仍在进行。</p><p><a class="line-link" href="https://github.com/rywlon/TalkWTF">查看 GitHub 源码与说明</a></p></div></section></div>
 <p class="case-next"><a class="line-link" href="creator-ops.html">下一篇 · Creator OPS</a></p></article></main>
 <footer class="shell foot"><span>龙致君 · AI 应用与业务流程</span><a href="https://github.com/rywlon">GitHub 主页</a></footer>
 </body></html>

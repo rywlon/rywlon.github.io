@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="龙致君的 AI 产品与业务流程作品集。">
 <title>作品集 · 龙致君</title>
-<link rel="stylesheet" href="style.css">
-<script src="site.js" defer></script>
+<link rel="stylesheet" href="style.css?v=2">
+<script src="site.js?v=2" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">跳到正文</a>
@@ -16,27 +16,40 @@
 </div></header>
 <main id="main" class="shell">
 <section class="intro">
-<div><h1>从业务问题，<br>到可用的 AI 工具<span>。</span></h1></div>
-<div class="intro-side"><p>我是龙致君。我做 AI 应用与业务流程设计，关心用户在哪一步卡住，以及怎样验证改动真的解决了问题。</p><a class="line-link" href="#work">浏览项目</a></div>
+  <h1>龙致君<span>。</span></h1>
+  <div class="intro-side">
+    <p class="role">AI 产品 / 业务流程</p>
+    <p>从语音交互、创作者合作到库存问题，把业务判断变成可验证的交付。</p>
+  </div>
 </section>
 <section id="work" aria-labelledby="work-title">
-<div class="section-head"><h2 id="work-title">精选作品</h2><span>产品原型与业务实践</span></div>
-<article class="featured">
-<div class="featured-copy"><p class="meta">macOS · 开源项目</p><h3><a href="talkwtf.html">TalkWTF</a></h3>
-<p>按热键说话，把下一条指令发到指定的 Agent 会话。手上的窗口可以继续留在原处。</p><div class="links"><a class="line-link" href="talkwtf.html">阅读案例</a><a href="https://github.com/rywlon/TalkWTF">查看源码</a></div></div>
-<div class="voice-board" data-demo>
-<div class="board-head"><strong>TalkWTF</strong><span>交互示意</span></div>
-<div class="voice-body">
-<div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-<div class="dispatch"><span>目标会话 · 产品设计</span><p data-output aria-live="polite">“把设置页的连接流程简化一下。”</p></div>
-</div>
-<div class="board-controls"><button type="button" data-step="voice" aria-pressed="true">语音输入</button><button type="button" data-step="route" aria-pressed="false">会话投递</button></div>
-</div>
-</article>
-<div class="work-list">
-<article><div class="work-name"><p class="meta">Agent 工作流 · 原型</p><h3><a href="creator-ops.html">Creator OPS</a></h3></div><p>让 agent 接手常规合作私信，把退款、档期等需要人决定的事项留进待办。</p><a class="line-link" href="creator-ops.html">阅读 Creator OPS 案例</a></article>
-<article><div class="work-name"><p class="meta">需求分析 · 业务实践</p><h3><a href="inventory.html">Cin7 × Shopify</a></h3></div><p>从一句“按总库存销售”出发，拆清库存显示、订单分配和实际履约。</p><a class="line-link" href="inventory.html">阅读库存案例</a></article>
-</div></section>
+  <div class="section-head"><h2 id="work-title">精选项目</h2><span>产品与业务案例</span></div>
+  <article class="featured">
+    <div class="featured-copy"><p class="meta">macOS · 开源项目</p><h3><a href="talkwtf.html">TalkWTF</a></h3>
+    <p>按热键说话，将指令送到已配对的 Agent 会话。</p>
+    <div class="links"><a class="line-link" href="talkwtf.html">阅读案例</a><a href="https://github.com/rywlon/TalkWTF">GitHub 源码</a></div></div>
+    <figure class="gallery gallery-talk" data-gallery="talk">
+<div class="gallery-bar"><div class="gallery-controls" role="group" aria-label="切换软件截图"><button type="button" aria-pressed="true" aria-controls="talk-still" data-slide="0">Voice to Agent</button><button type="button" aria-pressed="false" aria-controls="talk-still" data-slide="1">连接 Agent</button></div><span>浅色模式 · 本机构建</span></div>
+<div class="gallery-view" id="talk-still">
+<a class="gallery-full" href="assets/talk-voice.jpg" aria-label="打开Voice to Agent原图"><img src="assets/talk-voice.jpg" width="2000" height="1400" alt="新版 TalkWTF 显示已配对的 Codex 和独立快捷键"></a>
+</div><figcaption aria-live="polite">将独立热键绑定到已配对的会话。</figcaption>
+</figure>
+  </article>
+  <article class="work-feature">
+    <div class="feature-heading"><div><p class="meta">Agent 工作流 · 原型</p><h3><a href="creator-ops.html">Creator OPS</a></h3></div>
+    <div><p>把常规合作私信交给 agent，将退款和档期等事项交给真人。</p><a class="line-link" href="creator-ops.html">阅读 Creator OPS 案例</a></div></div>
+    <figure class="gallery gallery-creator" data-gallery="creator">
+<div class="gallery-bar"><div class="gallery-controls" role="group" aria-label="切换软件截图"><button type="button" aria-pressed="true" aria-controls="creator-still" data-slide="0">值班总览</button><button type="button" aria-pressed="false" aria-controls="creator-still" data-slide="1">人工待办</button></div><span>浅色模式 · 合成数据</span></div>
+<div class="gallery-view" id="creator-still">
+<a class="gallery-full" href="assets/creator-overview.jpg" aria-label="打开值班总览原图"><img src="assets/creator-overview.jpg" width="1272" height="856" alt="Creator OPS 值班总览，显示运行状态、私信统计及人工待办"></a>
+</div><figcaption aria-live="polite">先看运行状态，再查看需要人工处理的事项。</figcaption>
+</figure>
+
+  </article>
+  <div class="work-list">
+    <article><div class="work-name"><p class="meta">需求分析 · 业务实践</p><h3><a href="inventory.html">Cin7 × Shopify</a></h3></div><p>把“按总库存销售”拆成库存口径、订单分配和实际履约三个问题。</p><a class="line-link" href="inventory.html">阅读库存案例</a></article>
+  </div>
+</section>
 <section id="about" class="about"><h2>关于我</h2><div><p>我从创作者合作、电商运营和跨系统协作中发现问题，把口头诉求拆成业务规则、产品判断和能验证的交付。</p><p>目前关注 AI 应用、业务需求和流程改造方向。</p><a class="line-link" href="https://github.com/rywlon">在 GitHub 上找到我</a></div></section></main>
 <footer class="shell foot"><span>龙致君 · AI 应用与业务流程</span><a href="https://github.com/rywlon">GitHub 主页</a></footer>
 </body></html>

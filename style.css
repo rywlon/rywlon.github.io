@@ -214,3 +214,20 @@ nav { gap: clamp(15px, 3vw, 36px); font-size: 14px; }
   .mast nav { gap: 12px; }
   .project-row { gap: 4px 8px; }
 }
+
+.gallery-inventory .gallery-view img { aspect-ratio: auto; }
+.inventory-test {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-block: 16px 10px;
+  border-block: 1px solid var(--line);
+}
+.inventory-test div { padding: 10px 12px; }
+.inventory-test div + div { border-left: 1px solid var(--line); }
+.inventory-test dt { color: var(--muted); font-size: 13px; }
+.inventory-test dd { margin: 3px 0 0; font-weight: 650; }
+@media (max-width: 520px) {
+  .case-inventory .facts { grid-template-columns: 1fr; gap: 6px; }
+  .inventory-test { grid-template-columns: 1fr; }
+  .inventory-test div + div { border-left: 0; border-top: 1px solid var(--line); }
+}

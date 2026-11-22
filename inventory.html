@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="龙致君的 AI 产品与业务流程作品集。">
-<title>Cin7 × Shopify · 龙致君</title>
-<link rel="stylesheet" href="style.css?v=4">
-<script src="site.js?v=2" defer></script>
+<meta name="description" content="多仓库存与履约工作台。用真实商品、订单和接口测试核对 Cin7 与 Shopify 的库存和分仓规则。">
+<title>多仓库存与履约工作台 · 龙致君</title>
+<link rel="stylesheet" href="style.css?v=5">
+<script src="site.js?v=3" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">跳到正文</a>
@@ -14,9 +14,67 @@
 <a class="identity" href="./">龙致君 <span>RYW</span></a>
 <nav aria-label="主导航"><a href="./#work">作品</a><a href="./#experience">经历</a><a href="./#about">关于我</a><a href="https://github.com/rywlon">GitHub</a></nav>
 </div></header>
-<main id="main" class="shell"><article class="case"><a class="line-link back" href="./#work">全部作品</a>
-<header class="case-head"><p class="meta">业务需求分析 · 工作案例</p><h1>Cin7 × Shopify</h1><p>把“按总库存销售”拆成可以向系统方逐项确认的问题。</p></header>
-<dl class="facts"><div><dt>我的角色</dt><dd>需求澄清、复现与供应商沟通</dd></div><div><dt>业务场景</dt><dd>跨店铺与跨仓库存</dd></div><div><dt>案例结果</dt><dd>获得系统边界说明</dd></div></dl><div class="case-copy"><section><h2>原始诉求</h2><div><p>运营希望前台能“按总库存销售”。这句话同时可能指店铺显示数量、售出后由哪个仓库履约，以及单仓缺货时是否允许跨仓发货。</p></div></section><section><h2>我怎么拆解</h2><div><p>我用实际库存和订单场景，把数量汇总、分支仓可用库存、订单分配分开描述，再用具体样例和预期结果向 Cin7 追问。这让业务和供应商能对同一个场景讨论可行性。</p></div></section><section><h2>得到什么结果</h2><div><p>供应商明确了系统边界，团队有了讨论选项的依据。这段案例记录的是需求澄清和问题推进，内部最终采用方案未获得确认。</p></div></section></div>
-<nav class="case-pagination" aria-label="案例导航"><a href="creator-ops.html"><span>上一篇</span>Creator OPS</a><a href="./#experience"><span>继续阅读</span>工作经历</a></nav></article></main>
+<main id="main" class="shell">
+<article class="case case-inventory">
+  <a class="line-link back" href="./#work">全部作品</a>
+  <header class="case-head">
+    <p class="meta">Cin7 Omni × Shopify · 家具电商内部工具</p>
+    <h1>多仓库存与履约工作台</h1>
+    <p>团队想按全仓库存卖货。接到一张单，还得判断从哪里发。</p>
+  </header>
+  <dl class="facts">
+    <div><dt>我的角色</dt><dd>需求澄清、实单排查、接口验证</dd></div>
+    <div><dt>使用场景</dt><dd>多仓库存与组合家具履约</dd></div>
+    <div><dt>项目形态</dt><dd>内部库存与仓库作业工具</dd></div>
+  </dl>
+  <figure class="gallery gallery-inventory" data-gallery="inventory">
+    <div class="gallery-bar">
+      <div class="gallery-controls" role="group" aria-label="切换工作台截图">
+        <button type="button" aria-pressed="true" aria-controls="inventory-still" data-slide="0">可满足订单</button>
+        <button type="button" aria-pressed="false" aria-controls="inventory-still" data-slide="1">库存盘点</button>
+      </div>
+      <span>实站截图 · 已脱敏</span>
+    </div>
+    <div class="gallery-view" id="inventory-still">
+      <a class="gallery-full" href="assets/inventory-orders.png" aria-label="打开可满足订单原图">
+        <img src="assets/inventory-orders.png" width="1120" height="302" alt="可满足订单界面，显示跨仓库存筛查和订单阶段筛选，订单明细已隐藏">
+      </a>
+    </div>
+    <figcaption aria-live="polite">按跨仓合计库存筛查订单，再按订单阶段缩小范围。截图隐藏了订单明细。</figcaption>
+  </figure>
+  <div class="case-copy">
+    <section>
+      <h2>为什么做</h2>
+      <div>
+        <p>运营希望按所有仓的库存卖货。家具按套销售时，一张订单往往需要多个组件。仓库收到订单后，要核对组件是否齐全、有没有被其他订单占用，以及货放在哪。</p>
+        <p>我用实际商品和订单向 Cin7 核对可售库存和订单分配。Cin7 确认全仓视图可以汇总库存，订单仍按照所属分支分配。我接着核对了分仓库存、库区和库位的接口范围，并把相关文档转给 IT。</p>
+      </div>
+    </section>
+    <section>
+      <h2>我怎么验证调货</h2>
+      <div>
+        <p>我想确认库存调整能否直接把货标为在途。我在请求中给 <code>holdingQty</code> 写入 <code>1</code>，操作返回成功，随后重新查询记录。</p>
+        <dl class="inventory-test">
+          <div><dt>提交值</dt><dd><code>holdingQty = 1</code></dd></div>
+          <div><dt>接口响应</dt><dd>创建成功</dd></div>
+          <div><dt>读回值</dt><dd><code>holdingQty = 0</code></dd></div>
+        </dl>
+        <p>我把写入和读回结果交给 Cin7。客服确认库存调整接口无法直接修改该字段，发运仓间调货单才会将货从发出仓的可用量转为在途。以上为脱敏后的测试记录摘要。</p>
+      </div>
+    </section>
+    <section>
+      <h2>工作台能做什么</h2>
+      <div>
+        <p>团队的工作台可以按 SKU、商品名、订单号或箱标查货，也可以按跨仓合计库存筛查订单。仓库可以按库位盘点，并从工具进入创建 Cin7 调货单的流程。</p>
+      </div>
+    </section>
+  </div>
+  <nav class="case-pagination" aria-label="案例导航">
+    <a href="creator-ops.html"><span>上一篇</span>Creator OPS</a>
+    <a href="./#experience"><span>继续阅读</span>工作经历</a>
+  </nav>
+</article>
+</main>
 <footer class="shell foot"><span>龙致君 · AI 应用与业务流程</span><a href="https://github.com/rywlon">GitHub 主页</a></footer>
-</body></html>
+</body>
+</html>

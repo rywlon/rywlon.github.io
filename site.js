@@ -17,6 +17,24 @@ const frames = {
       "caption": "选择客户端后，TalkWTF 会生成一段配对提示词。"
     }
   ],
+  "inventory": [
+    {
+      "image": "assets/inventory-orders.png",
+      "width": 1120,
+      "height": 302,
+      "alt": "可满足订单界面，显示跨仓库存筛查和订单阶段筛选，订单明细已隐藏",
+      "title": "可满足订单",
+      "caption": "按跨仓合计库存筛查订单，再按订单阶段缩小范围。截图隐藏了订单明细。"
+    },
+    {
+      "image": "assets/inventory-stocktake.png",
+      "width": 1120,
+      "height": 320,
+      "alt": "库存盘点界面，可以按仓库、库位和货架缩小盘点范围",
+      "title": "库存盘点",
+      "caption": "按仓库、库位和货架划定盘点范围。截图隐藏了实际仓库和库位。"
+    }
+  ],
   "creator": [
     {
       "image": "assets/creator-overview.jpg",

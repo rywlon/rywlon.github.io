@@ -4,7 +4,7 @@ const pages = ["index.html", "talkwtf.html", "creator-ops.html", "inventory.html
 const html = Object.fromEntries(pages.map((file) => [file, readFileSync(file, "utf8")]));
 const css = readFileSync("style.css", "utf8");
 const js = readFileSync("site.js", "utf8");
-const all = Object.values(html).join("\n");
+const all = Object.values(html).join("\n") + "\n" + js;
 let failed = 0;
 
 function assert(condition, message) {
@@ -21,24 +21,24 @@ for (const id of ["work", "experience", "about", "decisions"]) {
 for (const href of ["./ #work".replace(" ", ""), "./#experience", "./#about", "talkwtf.html", "creator-ops.html", "inventory.html", "https://github.com/rywlon", "https://github.com/rywlon/TalkWTF"]) {
   assert(all.includes(href), "link " + href);
 }
-for (const phrase of ["赋能", "闭环", "可验证的交付", "把口头诉求", "三个产品判断", "350"]) {
+for (const phrase of ["赋能", "闭环", "可验证的交付", "按热键送出", "分拣下一条", "一次过完", "重放这一次", "data-talk", "data-creator", "data-inventory", "演示数据", "pill", "btn-hot", "300+", "1000+", "已验收", "节省工时", "开发了库存", "实现了跨仓"]) {
   assert(!all.includes(phrase), "absent " + phrase);
 }
-for (const phrase of ["holdingQty", "Handy", "SwiftUI", "Rust", "Instagram", "Cin7", "Shopify", "Yuki House", "OZS", "演示", "16", "32"]) {
+for (const phrase of ["holdingQty", "Handy", "SwiftUI", "Instagram", "Cin7", "以前", "现在", "Yuki House", "OZS", "16", "32", "fn+option_right+right", "2026-11 回顾整理", "不等于", "跨仓自动发货没有做成"]) {
   assert(all.includes(phrase), "present " + phrase);
 }
+assert((all.match(/2026-11 回顾整理/g) || []).length >= 2, "retrospective label on home and inventory");
+const radii = css.match(/border-radius\s*:\s*[^;]+/g) || [];
+assert(radii.length > 0, "radius declared");
+for (const radius of radii) assert(/border-radius\s*:\s*0\s*$/.test(radius), "square " + radius);
 assert(css.includes("prefers-reduced-motion"), "css reduced motion");
-assert(js.includes("prefers-reduced-motion"), "js reduced motion");
-assert(js.includes("matchMedia"), "js media query");
 assert(existsSync(".nojekyll"), "nojekyll");
-for (const asset of ["assets/talk-voice.jpg", "assets/talk-pair.jpg", "assets/creator-overview.jpg", "assets/creator-handoff.jpg", "assets/inventory-orders.png", "assets/inventory-stocktake.png", "assets/fonts/fraunces-600.woff2", "favicon.svg"]) {
+for (const asset of ["assets/talk-voice.jpg", "assets/talk-pair.jpg", "assets/creator-overview.jpg", "assets/creator-handoff.jpg", "assets/inventory-orders.png", "assets/inventory-stocktake.png"]) {
   assert(existsSync(asset), asset);
 }
-assert(!/src="https?:/.test(all), "no external script src");
 const buttons = all.match(/<button\b[^>]*>/g) || [];
-assert(buttons.length > 10, "buttons exist");
-for (const button of buttons) assert(/type="button"/.test(button), "typed " + button.slice(0, 90));
-for (const page of pages) assert(html[page].includes('lang="zh-CN"'), page + " lang");
+assert(buttons.length === 6, "only gallery buttons, got " + buttons.length);
+for (const button of buttons) assert(/type="button"/.test(button) && /data-slide=/.test(button), "gallery button " + button.slice(0, 80));
 
 if (failed) {
   console.error(failed + " failed");

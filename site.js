@@ -37,20 +37,52 @@ const frames = {
   ],
   creator: [
     {
-      image: "assets/creator-overview.jpg",
-      width: 1272,
-      height: 856,
-      alt: "Creator OPS 值班总览，显示运行状态、私信统计及人工待办",
-      title: "值班总览",
-      caption: "上面看运行状态，下面只列需要人处理的事项。图中账号和对话是原型数据。"
+      "image": "assets/creator-desk.png",
+      "width": 1920,
+      "height": 1230,
+      "alt": "Creator OPS 值班总览，显示值班状态、四项统计和人工待办",
+      "title": "值班总览",
+      "caption": "值班状态和今日私信统计集中显示，下方列出需要真人决定的事项。"
     },
     {
-      image: "assets/creator-handoff.jpg",
-      width: 1272,
-      height: 716,
-      alt: "Creator OPS 退款申请详情，显示转交原因和两条合成私信",
-      title: "人工待办",
-      caption: "退款待办带上转交原因和相关对话。图中对话是原型数据。"
+      "image": "assets/creator-handoff.png",
+      "width": 960,
+      "height": 570,
+      "alt": "退款待办详情，展示转交原因、相关对话和处理按钮",
+      "title": "人工待办",
+      "caption": "打开退款待办，可以同时看到转交原因和创作者的原话。"
+    },
+    {
+      "image": "assets/creator-library.png",
+      "width": 960,
+      "height": 441,
+      "alt": "知识库目录，包含回复规则与合作说明",
+      "title": "知识库",
+      "caption": "从同一个入口查阅回复规则和合作说明。"
+    },
+    {
+      "image": "assets/creator-rules.png",
+      "width": 960,
+      "height": 327,
+      "alt": "转交规则正文，列出退款、身份疑问与合作资格例外",
+      "title": "转交规则",
+      "caption": "运营人员可以查阅哪些咨询由助手回复，哪些情况需要移交真人。"
+    },
+    {
+      "image": "assets/creator-records.png",
+      "width": 960,
+      "height": 1068,
+      "alt": "运行记录，按创作者列出处理状态和时间",
+      "title": "运行记录",
+      "caption": "按会话查看处理状态，区分已处理、等待对方和需人工跟进的事项。"
+    },
+    {
+      "image": "assets/creator-discovery.png",
+      "width": 1920,
+      "height": 1230,
+      "alt": "发现红人页面，按行展示演示创作者、平台、粉丝数和匹配分数",
+      "title": "发现红人",
+      "caption": "在演示创作者库中按平台或联系方式筛选，查看匹配分数，挑选短名单。"
     }
   ]
 };

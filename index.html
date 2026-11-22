@@ -2,89 +2,190 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="龙致君的 AI 产品与业务流程作品集。">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="龙致君的作品集：TalkWTF 语音热键、Creator OPS 创作者值班台、Cin7 与 Shopify 多仓库存工作台。">
 <title>作品集 · 龙致君</title>
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="canonical" href="https://rywlon.github.io/">
+<link rel="stylesheet" href="style.css?v=6">
+<script src="site.js?v=6" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">跳到正文</a>
 <header class="site-head"><div class="shell mast">
-<a class="identity" href="./">龙致君 <span>RYW</span></a>
+<a class="identity" href="./">龙致君 <span>Ryan Lonn</span></a>
 <nav aria-label="主导航"><a href="./#work">作品</a><a href="./#experience">经历</a><a href="./#about">关于我</a><a href="https://github.com/rywlon">GitHub</a></nav>
 </div></header>
-<main id="main" class="shell home">
-<section class="intro">
-  <h1>龙致君<span>。</span></h1>
-  <div class="intro-side">
-    <p class="role">AI 产品 / 业务流程</p>
-    <p>从语音交互、创作者合作到库存问题，把业务判断变成可验证的交付。</p>
+<main id="main">
+<header class="hero shell">
+  <p class="eyebrow">AI 产品 / 业务流程</p>
+  <h1>龙致君</h1>
+  <p class="hero-en">Ryan Lonn</p>
+  <p class="lede">做 AI 产品，也改业务流程。下面三件都已经做出来了：语音热键、创作者值班台、多仓库存工作台。</p>
+</header>
+<section id="work" aria-labelledby="work-title">
+  <div class="shell work-head">
+    <h2 id="work-title">作品</h2>
+    <ol class="toc">
+      <li><a href="#work-talk"><span class="num">01</span><span><strong>TalkWTF</strong><small>热键把话送到已配对的会话</small></span><i aria-hidden="true"></i></a></li>
+      <li><a href="#work-creator"><span class="num">02</span><span><strong>Creator OPS</strong><small>咨询和预约走规则，退款和档期给人</small></span><i aria-hidden="true"></i></a></li>
+      <li><a href="#work-inventory"><span class="num">03</span><span><strong>多仓库存与履约工作台</strong><small>全仓能卖，发货看所属的仓</small></span><i aria-hidden="true"></i></a></li>
+    </ol>
+  </div>
+  <article class="bench" id="work-talk">
+    <div class="shell bench-grid">
+      <div class="bench-copy">
+        <p class="idx">01</p>
+        <h3 class="latin">TalkWTF</h3>
+        <p class="kicker">macOS · 开源 · 基于 Handy</p>
+        <p>按热键说话，指令送到已经配对的 Agent 会话。失败就留下转写，不自动重发。</p>
+        <a class="more" href="talkwtf.html">看这个案例</a>
+      </div>
+      <div class="stage">
+        <a class="shot" href="talkwtf.html"><img src="assets/talk-voice.jpg" width="2000" height="1400" alt="新版 TalkWTF 显示已配对的 Codex 和独立快捷键"></a>
+        <p class="shot-cap">Codex 已配对，快捷键单独绑在这个会话上。</p>
+        <div class="instrument" data-talk tabindex="0" aria-label="TalkWTF 热键演示">
+          <div class="instrument-bar"><span class="pill">演示</span><span>没有连接真实 Agent</span></div>
+          <div class="talk-grid">
+            <div>
+              <p class="pane-label"><i class="dot" aria-hidden="true"></i>当前窗口</p>
+              <p class="doc">邮件草稿<br>明天下午见。</p>
+            </div>
+            <div>
+              <p class="pane-label">会话</p>
+              <div class="route" data-route="codex" data-state="idle"><span class="key">R</span><span><b>Codex</b><small>已配对</small></span><span data-codex-state>等待</span></div>
+              <div class="route" data-state="off"><span class="key">—</span><span><b>Claude Code</b><small>未配对</small></span><span>不接收</span></div>
+            </div>
+          </div>
+          <div class="meter" data-meter hidden><span></span></div>
+          <p class="transcript" data-transcript>转写：还没有</p>
+          <p class="status" data-status aria-live="polite">等热键。焦点在这个演示里时，按 R。</p>
+          <div class="actions">
+            <button type="button" class="btn btn-hot" data-talk-send>按热键送出</button>
+            <button type="button" class="btn" data-talk-fail aria-pressed="false">下次模拟失败</button>
+            <button type="button" class="btn" data-talk-retry hidden>手动再送一次</button>
+          </div>
+          <p class="hint">真机快捷键由用户自己设。截图里 Codex 的那条是 fn+option_right+right。失败后按 R，或点「手动再送一次」，才会再送。</p>
+        </div>
+      </div>
+    </div>
+  </article>
+  <article class="bench" id="work-creator">
+    <div class="shell bench-grid">
+      <div class="bench-copy">
+        <p class="idx">02</p>
+        <h3 class="latin">Creator OPS</h3>
+        <p class="kicker">创作者合作 · 本地演示</p>
+        <p>护理咨询和预约按规则回。退款和档期进人工待办，并带上原来的话。</p>
+        <a class="more" href="creator-ops.html">看这个案例</a>
+      </div>
+      <div class="stage">
+        <a class="shot" href="creator-ops.html"><img src="assets/creator-overview.jpg" width="1272" height="856" alt="Creator OPS 值班总览，显示运行状态、私信统计及人工待办"></a>
+        <p class="shot-cap">值班总览。图里的账号、数字和对话都是演示数据。</p>
+        <div class="instrument" data-creator aria-label="Creator OPS 分拣演示">
+          <div class="instrument-bar"><span class="pill">演示数据</span><span>没有连接 Instagram 发送</span></div>
+          <div class="rule-row"><span>咨询、预约 → 按规则回复</span><span>退款、档期 → 人工待办，附上原话</span></div>
+          <div class="triage">
+            <section><p class="lane-title">进来的私信</p><div class="lane" data-inbox>
+              <article class="msg" data-kind="consult" data-from="@sample.creator3" data-lines="护理大概多久？敏感肌能不能做？"><button type="button" aria-pressed="false"><span class="tag">咨询</span><b>@sample.creator3</b><span>护理大概多久？敏感肌能不能做？</span></button></article>
+              <article class="msg" data-kind="book" data-from="@sample.creator8" data-lines="周六下午两点还能预约吗？"><button type="button" aria-pressed="false"><span class="tag">预约</span><b>@sample.creator8</b><span>周六下午两点还能预约吗？</span></button></article>
+              <article class="msg" data-kind="refund" data-from="@sample.creator5" data-lines="三周前付了 30 美元定金，预约一直没有回音。|我想退定金。"><button type="button" aria-pressed="false"><span class="tag">退款</span><b>@sample.creator5</b><span>定金想退，三周了还没收到回复。</span></button></article>
+              <article class="msg" data-kind="schedule" data-from="@sample.creator7" data-lines="这周档期冲突，能不能改到下下周？"><button type="button" aria-pressed="false"><span class="tag">档期</span><b>@sample.creator7</b><span>这周档期冲突，能不能改到下下周？</span></button></article>
+            </div></section>
+            <section><p class="lane-title">已按规则回复</p><div class="lane lane-auto" data-auto></div></section>
+            <section><p class="lane-title">人工待办</p><div class="lane lane-human" data-human></div></section>
+          </div>
+          <div class="actions">
+            <button type="button" class="btn btn-hot" data-sort-one>分拣下一条</button>
+            <button type="button" class="btn" data-sort-all>一次过完</button>
+            <button type="button" class="btn" data-reset>重置</button>
+          </div>
+          <div class="detail" data-detail></div>
+          <p class="status" data-status aria-live="polite">还没开始分拣。这些对话是假的。</p>
+        </div>
+      </div>
+    </div>
+  </article>
+  <article class="bench" id="work-inventory">
+    <div class="shell bench-grid">
+      <div class="bench-copy">
+        <p class="idx">03</p>
+        <h3>多仓库存与履约工作台</h3>
+        <p class="kicker">Cin7 Omni × Shopify · 内部工具</p>
+        <p>全仓合计用来卖货。订单仍按所属分支分配，在途要走调货单。</p>
+        <a class="more" href="inventory.html">看这个案例</a>
+      </div>
+      <div class="stage">
+        <a class="shot" href="inventory.html"><img src="assets/inventory-orders.png" width="1120" height="302" alt="可满足订单界面，显示跨仓库存筛查和订单阶段筛选，订单明细已隐藏"></a>
+        <p class="shot-cap">按跨仓合计库存筛订单。订单明细已隐藏。</p>
+        <div class="instrument" data-inventory aria-label="库存分配演示">
+          <div class="instrument-bar"><span class="pill">演示数据</span><span>重放当时的核对，没有连接 Cin7</span></div>
+          <label class="search">搜索 SKU、商品名、订单号或箱标
+            <input data-q type="search" autocomplete="off" placeholder="例如 SO-1042 或 茶几">
+          </label>
+          <div class="actions" role="group" aria-label="库存筛选">
+            <button type="button" class="btn" data-filter="sum" aria-pressed="true">全仓合计可售</button>
+            <button type="button" class="btn" data-filter="branch" aria-pressed="false">只看本分支可发</button>
+          </div>
+          <p class="status" data-filter-note aria-live="polite"></p>
+          <div class="sku-list">
+            <article class="sku" data-sku="SF-3S" data-branch="east" data-east="2" data-west="3" data-transit="0" data-search="sf-3s 三人位布艺沙发 so-1041 ctn-18"><p class="sku-name"><b>SF-3S</b> 三人位布艺沙发<small>订单 SO-1041 · 箱标 CTN-18 · 分支东仓</small></p><p>东仓可用 <strong data-field="east">2</strong></p><p>西仓可用 <strong data-field="west">3</strong></p><p>在途 <strong data-field="transit">0</strong></p><p>合计可用 <strong data-field="sum">5</strong></p></article>
+            <article class="sku" data-sku="TB-12" data-branch="east" data-east="0" data-west="4" data-transit="0" data-search="tb-12 橡木茶几 so-1042 ctn-19"><p class="sku-name"><b>TB-12</b> 橡木茶几<small>订单 SO-1042 · 箱标 CTN-19 · 分支东仓</small></p><p>东仓可用 <strong data-field="east">0</strong></p><p>西仓可用 <strong data-field="west">4</strong></p><p>在途 <strong data-field="transit">0</strong></p><p>合计可用 <strong data-field="sum">4</strong></p></article>
+            <article class="sku" data-sku="SF-OTT" data-branch="west" data-east="1" data-west="0" data-transit="0" data-search="sf-ott 脚凳 so-1041 ctn-20"><p class="sku-name"><b>SF-OTT</b> 脚凳<small>订单 SO-1041 · 箱标 CTN-20 · 分支西仓</small></p><p>东仓可用 <strong data-field="east">1</strong></p><p>西仓可用 <strong data-field="west">0</strong></p><p>在途 <strong data-field="transit">0</strong></p><p>合计可用 <strong data-field="sum">1</strong></p></article>
+          </div>
+          <div class="replay">
+            <p class="lane-title">holdingQty 核对重放</p>
+            <ol class="steps">
+              <li data-step="1"><span>写入</span><b>holdingQty = 1</b></li>
+              <li data-step="2"><span>响应</span><b>创建成功</b></li>
+              <li data-step="3"><span>读回</span><b>holdingQty = 0</b></li>
+            </ol>
+            <div class="actions">
+              <button type="button" class="btn btn-hot" data-replay>重放这一次</button>
+              <button type="button" class="btn" data-transfer>按调货单从东仓拨 1 件</button>
+              <button type="button" class="btn" data-stock-reset>恢复演示数字</button>
+            </div>
+            <p class="status" data-replay-note aria-live="polite">还没有重放。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+<section id="decisions" class="paper-block shell" aria-labelledby="decision-title">
+  <h2 id="decision-title" class="section-title">三件事分别做成了什么</h2>
+  <ol class="result-list">
+    <li><a href="talkwtf.html"><strong>TalkWTF</strong>热键把指令送到已配对的会话。失败保留转写，不自动重发。</a></li>
+    <li><a href="creator-ops.html"><strong>Creator OPS</strong>咨询和预约按规则回复。退款和档期带着原话转给真人。</a></li>
+    <li><a href="inventory.html"><strong>多仓库存</strong>全仓可以汇总着卖，发货按分支。holdingQty 写入 1，读回 0。</a></li>
+  </ol>
+</section>
+<section id="experience" class="paper-block shell" aria-labelledby="experience-title">
+  <h2 id="experience-title" class="section-title">工作经历</h2>
+  <article class="chapter">
+    <p class="eyebrow">OZS / OAK</p>
+    <h3>两个品牌的内容，按规则发出去</h3>
+    <div class="stats" aria-label="发布记录"><div><b>16</b><span>组内容，两品牌合计</span></div><div><b>32</b><span>个平台位置，11 月 5 日–17 日</span></div></div>
+    <p>评价来源、去重、选品和发布前检查，我整理成运营规则，放进 Agent 定时任务。需求和验收是我做的。上面是 11 月 5 日到 17 日的发布数量，不是销售额，也不是增长。</p>
+  </article>
+  <article class="chapter">
+    <p class="eyebrow">Yuki House</p>
+    <h3>一轮合作走到哪，分开记</h3>
+    <p>合作前写清原片范围、素材用途和退款条件，并跟进已经公开的内容。预约、到店、发布、原片、退款分开记录，看得出这一轮还缺哪一步。</p>
+  </article>
+</section>
+<section id="about" class="paper-block shell" aria-labelledby="about-title">
+  <div class="about-grid">
+    <h2 id="about-title">关于我</h2>
+    <div>
+      <p>我做过创作者合作和跨境电商运营。同一类问题反复出现时，我把规则写下来，做成页面或 Agent 定时任务，再用真实记录验收。</p>
+      <p>目前关注 AI 应用和业务流程改造。</p>
+      <p><a href="https://github.com/rywlon">GitHub · rywlon</a></p>
+    </div>
   </div>
 </section>
-<section id="work" aria-labelledby="work-title">
-  <div class="section-head"><h2 id="work-title">精选项目</h2><a class="section-jump" href="#decisions">继续读案例摘要</a></div>
-  <ul class="project-list">
-    <li>
-      <a class="project-row" href="talkwtf.html">
-        <div class="project-name"><h3>TalkWTF</h3><span>macOS · 开源项目</span></div>
-        <p>按热键说话，将指令送到已配对的 Agent 会话。</p>
-        <span class="project-image" aria-hidden="true">
-          <img src="assets/talk-voice.jpg" width="2000" height="1400" alt="">
-          <img class="project-preview" src="assets/talk-voice.jpg" width="2000" height="1400" alt="">
-        </span>
-        <span class="project-entry" aria-hidden="true">查看案例 <i></i></span>
-      </a>
-    </li>
-    <li>
-      <a class="project-row" href="creator-ops.html">
-        <div class="project-name"><h3>Creator OPS</h3><span>Agent 工作流 · 原型</span></div>
-        <p>自动回复常规合作私信，把退款和档期交给真人处理。</p>
-        <span class="project-image" aria-hidden="true">
-          <img src="assets/creator-overview.jpg" width="1272" height="856" alt="">
-          <img class="project-preview" src="assets/creator-overview.jpg" width="1272" height="856" alt="">
-        </span>
-        <span class="project-entry" aria-hidden="true">查看案例 <i></i></span>
-      </a>
-    </li>
-    <li>
-      <a class="project-row" href="inventory.html">
-        <div class="project-name"><h3>多仓库存与履约工作台</h3><span>Cin7 Omni × Shopify · 内部工具</span></div>
-        <p>团队按全仓库存卖货，接单后还要判断哪里有货、哪些订单可以发。</p>
-        <span class="project-image" aria-hidden="true">
-          <img src="assets/inventory-orders.png" width="1120" height="302" alt="">
-          <img class="project-preview" src="assets/inventory-orders.png" width="1120" height="302" alt="">
-        </span>
-        <span class="project-entry" aria-hidden="true">查看案例 <i></i></span>
-      </a>
-    </li>
-  </ul>
-</section>
-<section id="decisions" class="home-chapter" aria-labelledby="decision-title">
-  <header class="section-head"><h2 id="decision-title">三个产品判断</h2><span>案例摘要</span></header>
-  <article class="chapter-row">
-    <div><p class="meta">TalkWTF</p><h3>把目的地绑定到热键</h3></div>
-    <div><p>语音转写已经省掉打字，但交给 Agent 前还是要切窗口、找会话。把快捷键绑定到已配对的会话，用户在原窗口就能交代下一步。投递失败时保留转写内容，避免自动重发造成重复指令。</p><a class="line-link" href="talkwtf.html">读 TalkWTF 案例</a></div>
-  </article>
-  <article class="chapter-row">
-    <div><p class="meta">Creator OPS</p><h3>把人的注意力留给例外</h3></div>
-    <div><p>在创作者合作里，咨询护理时长和决定退款需要不同的判断。我把原型从逐条打开私信改成值班总览，普通问题走规则，退款和档期等事项转入人工待办并附上对话。</p><a class="line-link" href="creator-ops.html">读 Creator OPS 案例</a></div>
-  </article>
-  <article class="chapter-row">
-    <div><p class="meta">Cin7 × Shopify</p><h3>先问清库存数字用来做什么</h3></div>
-    <div><p>团队想按全仓库存卖货。我用实际商品和订单核对 Shopify 的库存展示与 Cin7 的分仓规则，并通过写入后读回，验证了在途库存的处理边界。</p><a class="line-link" href="inventory.html">读库存案例</a></div>
-  </article>
-</section>
-<section id="experience" class="home-chapter" aria-labelledby="experience-title">
-  <header class="section-head"><h2 id="experience-title">工作经历</h2><span>跨境业务与流程改造</span></header>
-  <article class="chapter-row">
-    <div><p class="meta">OZS / OAK</p><h3>双品牌内容交付</h3></div>
-    <div><p>我把评价来源、去重、选品和发布核查整理成运营规则与 Agent 定时任务，负责调整需求和验收成品。11 月 5 至 17 日的可核验记录里，两品牌合计发布了 16 组内容，覆盖 32 个平台发布位置。</p></div>
-  </article>
-  <article class="chapter-row">
-    <div><p class="meta">Yuki House</p><h3>创作者合作与交付核验</h3></div>
-    <div><p>澄清原片范围、素材用途和退款条件，跟进公开合作内容。把预约、到店、发布、原片和退款分别记录，便于看清每轮合作还有什么没完成。</p></div>
-  </article>
-</section>
-<section id="about" class="about"><h2>关于我</h2><div><p>我从创作者合作、电商运营和跨系统协作中发现问题，把口头诉求拆成业务规则、产品判断和能验证的交付。</p><p>目前关注 AI 应用、业务需求和流程改造方向。</p><a class="line-link" href="https://github.com/rywlon">在 GitHub 上找到我</a></div></section></main>
-<footer class="shell foot"><span>龙致君 · AI 应用与业务流程</span><a href="https://github.com/rywlon">GitHub 主页</a></footer>
-</body></html>
+</main>
+<footer class="shell foot"><span>龙致君 · Ryan Lonn</span><a href="https://github.com/rywlon">GitHub · rywlon</a></footer>
+</body>
+</html>

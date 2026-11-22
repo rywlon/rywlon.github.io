@@ -2,26 +2,116 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="龙致君的 AI 产品与业务流程作品集。">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="TalkWTF：macOS 上按热键把语音指令送到已配对的 Agent 会话。失败保留转写，不自动重发。">
 <title>TalkWTF · 龙致君</title>
-<link rel="stylesheet" href="style.css?v=4">
-<script src="site.js?v=2" defer></script>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="canonical" href="https://rywlon.github.io/talkwtf.html">
+<link rel="stylesheet" href="style.css?v=6">
+<script src="site.js?v=6" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">跳到正文</a>
 <header class="site-head"><div class="shell mast">
-<a class="identity" href="./">龙致君 <span>RYW</span></a>
+<a class="identity" href="./">龙致君 <span>Ryan Lonn</span></a>
 <nav aria-label="主导航"><a href="./#work">作品</a><a href="./#experience">经历</a><a href="./#about">关于我</a><a href="https://github.com/rywlon">GitHub</a></nav>
 </div></header>
-<main id="main" class="shell"><article class="case"><a class="line-link back" href="./#work">全部作品</a>
-<header class="case-head"><p class="meta">macOS · 开源应用</p><h1>TalkWTF</h1><p>把语音输入接到 Agent 会话，让指令从当前窗口发出去。</p></header>
-<dl class="facts"><div><dt>我的角色</dt><dd>产品定义、交互与验收</dd></div><div><dt>实现</dt><dd>基于 Handy，AI 辅助开发</dd></div><div><dt>状态</dt><dd>源码已公开</dd></div></dl><figure class="gallery gallery-talk" data-gallery="talk">
-<div class="gallery-bar"><div class="gallery-controls" role="group" aria-label="切换软件截图"><button type="button" aria-pressed="true" aria-controls="talk-still" data-slide="0">Voice to Agent</button><button type="button" aria-pressed="false" aria-controls="talk-still" data-slide="1">连接 Agent</button></div></div>
-<div class="gallery-view" id="talk-still">
-<a class="gallery-full" href="assets/talk-voice.jpg" aria-label="打开Voice to Agent原图"><img src="assets/talk-voice.jpg" width="2000" height="1400" alt="新版 TalkWTF 显示已配对的 Codex 和独立快捷键"></a>
-</div><figcaption aria-live="polite">将独立热键绑定到已配对的会话。</figcaption>
-</figure><div class="case-copy"><section><h2>问题</h2><div><p>语音转写解决了输入，但把内容交给 Agent 往往还要切窗口、找会话、再粘贴。多会话并行时，每次输入都得重新确认目的地。</p></div></section><section><h2>两个产品取舍</h2><div><p><strong>把接入留给 Agent。</strong> 用户选择 Agent，复制配对提示词，Agent 完成连接并返回回执。用户只需知道自己连的是哪个会话。</p><p><strong>用独立热键表达目的地。</strong> 热键绑定会话，指令可在后台投递。失败时保留内容，避免自动重发导致重复指令。</p></div></section><section><h2>交付与验证</h2><div><p>我定义需求、交互和验收方式，借助 AI 推进 SwiftUI 与 Rust 集成。完成了 350 项核心及 FFI 测试，并验证本机配对和适配器投递。各客户端的麦克风到会话完整联调仍在进行。</p><p><a class="line-link" href="https://github.com/rywlon/TalkWTF">查看 GitHub 源码与说明</a></p></div></section></div>
-<nav class="case-pagination" aria-label="案例导航"><a href="./#work"><span>作品目录</span>全部作品</a><a href="creator-ops.html"><span>下一篇</span>Creator OPS</a></nav></article></main>
-<footer class="shell foot"><span>龙致君 · AI 应用与业务流程</span><a href="https://github.com/rywlon">GitHub 主页</a></footer>
-</body></html>
+<main id="main">
+<article>
+  <header class="case-hero shell">
+    <a class="back" href="./#work">全部作品</a>
+    <p class="eyebrow">macOS 14+ · Apple Silicon · 开源 · 基于 Handy</p>
+    <h1 class="latin">TalkWTF</h1>
+    <p class="lede">按热键说话，这句话送到已经配对的 Agent 会话。送失败了，转写留着，不会自动再发。</p>
+    <dl class="facts">
+      <div><dt>我做的</dt><dd>产品定义、交互、验收</dd></div>
+      <div><dt>实现</dt><dd>SwiftUI 外壳，Rust 核心，AI 辅助</dd></div>
+      <div><dt>进度</dt><dd>源码已公开，实验阶段</dd></div>
+    </dl>
+  </header>
+  <div class="shell">
+    <figure class="gallery" data-gallery="talk">
+      <div class="gallery-bar">
+        <div class="gallery-controls" role="group" aria-label="切换软件截图">
+          <button type="button" aria-pressed="true" aria-controls="talk-still" data-slide="0">Voice to Agent</button>
+          <button type="button" aria-pressed="false" aria-controls="talk-still" data-slide="1">连接 Agent</button>
+        </div>
+      </div>
+      <div class="gallery-view" id="talk-still">
+        <a class="gallery-full" href="assets/talk-voice.jpg" aria-label="打开Voice to Agent原图"><img src="assets/talk-voice.jpg" width="2000" height="1400" alt="新版 TalkWTF 显示已配对的 Codex 和独立快捷键"></a>
+      </div>
+      <figcaption aria-live="polite">将独立热键绑定到已配对的会话。</figcaption>
+    </figure>
+  </div>
+  <section class="demo-band" aria-label="热键演示">
+    <div class="shell">
+      <div class="band-head">
+        <h2>走一遍热键</h2>
+        <p>演示用 R 代替真机快捷键。没有连接真实 Agent，也不会把字送出去。</p>
+      </div>
+      <div class="instrument" data-talk tabindex="0" aria-label="TalkWTF 热键演示">
+        <div class="instrument-bar"><span class="pill">演示</span><span>没有连接真实 Agent</span></div>
+        <div class="talk-grid">
+          <div>
+            <p class="pane-label"><i class="dot" aria-hidden="true"></i>当前窗口</p>
+            <p class="doc">邮件草稿<br>明天下午见。</p>
+          </div>
+          <div>
+            <p class="pane-label">会话</p>
+            <div class="route" data-route="codex" data-state="idle"><span class="key">R</span><span><b>Codex</b><small>已配对</small></span><span data-codex-state>等待</span></div>
+            <div class="route" data-state="off"><span class="key">—</span><span><b>Claude Code</b><small>未配对</small></span><span>不接收</span></div>
+          </div>
+        </div>
+        <div class="meter" data-meter hidden><span></span></div>
+        <p class="transcript" data-transcript>转写：还没有</p>
+        <p class="status" data-status aria-live="polite">等热键。焦点在这个演示里时，按 R。</p>
+        <div class="actions">
+          <button type="button" class="btn btn-hot" data-talk-send>按热键送出</button>
+          <button type="button" class="btn" data-talk-fail aria-pressed="false">下次模拟失败</button>
+          <button type="button" class="btn" data-talk-retry hidden>手动再送一次</button>
+        </div>
+        <p class="hint">未配对的 Claude Code 不接收。真机上 Codex 那条快捷键是 fn+option_right+right。失败后不会自动重发。</p>
+      </div>
+    </div>
+  </section>
+  <div class="shell case-copy">
+    <section class="case-section">
+      <h2>当时卡在哪</h2>
+      <div>
+        <p>本地转写已经能把话说成字。要交给 Agent，还得离开正在看的窗口，找到那个会话，再粘贴进去。好几个会话同时开着，每次都要重新确认送到哪一个。</p>
+        <p>应用同时能在 Mac 上做本地转写。这个案例只谈把指令送到 Agent。</p>
+      </div>
+    </section>
+    <section class="case-section">
+      <h2>热键绑在会话上</h2>
+      <div>
+        <p>人选 Codex、Claude Code、OpenCode、Cursor，或其他能读本机文件、跑命令的本地 Agent，复制一段配对提示词，贴进要连的那个会话。连接由 Agent 那边完成，TalkWTF 确认配对已经保存。只在网页里聊天、不能在本机接消息的客户端，目前配不上。</p>
+        <p>每个会话单独一个快捷键。开始说的时候目的地就定了，中途切窗口也不会改送到哪。文字在后台送出，不贴进当前窗口，也不抢走焦点。</p>
+      </div>
+    </section>
+    <section class="case-section">
+      <h2>失败就停在转写</h2>
+      <div>
+        <p>投递失败，或者结果不确定，转写留在原地。人可以看清要送到哪，再自己决定下一步。TalkWTF 不会自动重发，避免同一句指令出去两遍。</p>
+      </div>
+    </section>
+    <section class="case-section">
+      <h2>核对到哪一步</h2>
+      <div>
+        <p>产品定义、交互和验收是我做的。SwiftUI 和 Rust 的实现在 Handy 上，用 AI 辅助完成。润色和词库里有一部分交互参考了 OpenTypeless。</p>
+        <p>配对、回执、会话绑定和本地适配器投递，已经用本地测试数据核对过，其中包含失败响应。这些核对不代表 Agent 真的把任务做完了。</p>
+        <p>麦克风到各个客户端的完整联调还没做完。接受配对只说明连接信息保存了。应用还在实验阶段：临时签名，没有做 Apple 公证。构建需要 Apple Silicon、macOS 14、Xcode 和 Rust。</p>
+        <p><a class="line-link" href="https://github.com/rywlon/TalkWTF">GitHub 源码和说明</a></p>
+      </div>
+    </section>
+    <nav class="case-pagination" aria-label="案例导航">
+      <a href="./#work"><span>作品目录</span>全部作品</a>
+      <a href="creator-ops.html"><span>下一篇</span>Creator OPS</a>
+    </nav>
+  </div>
+</article>
+</main>
+<footer class="shell foot"><span>龙致君 · Ryan Lonn</span><a href="https://github.com/rywlon">GitHub · rywlon</a></footer>
+</body>
+</html>

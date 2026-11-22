@@ -2,27 +2,105 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="龙致君的 AI 产品与业务流程作品集。">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Creator OPS：创作者合作里，咨询和预约按规则处理，退款和档期交给人，并附上对话。">
 <title>Creator OPS · 龙致君</title>
-<link rel="stylesheet" href="style.css?v=4">
-<script src="site.js?v=2" defer></script>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="canonical" href="https://rywlon.github.io/creator-ops.html">
+<link rel="stylesheet" href="style.css?v=6">
+<script src="site.js?v=6" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">跳到正文</a>
 <header class="site-head"><div class="shell mast">
-<a class="identity" href="./">龙致君 <span>RYW</span></a>
+<a class="identity" href="./">龙致君 <span>Ryan Lonn</span></a>
 <nav aria-label="主导航"><a href="./#work">作品</a><a href="./#experience">经历</a><a href="./#about">关于我</a><a href="https://github.com/rywlon">GitHub</a></nav>
 </div></header>
-<main id="main" class="shell"><article class="case"><a class="line-link back" href="./#work">全部作品</a>
-<header class="case-head"><p class="meta">Agent 工作流 · 可演示原型</p><h1>Creator OPS</h1><p>从创作者合作私信出发，探索由 agent 值班、真人处理例外的工作方式。</p></header>
-<dl class="facts"><div><dt>我的角色</dt><dd>业务规则、产品方向与验收</dd></div><div><dt>实现</dt><dd>AI 辅助构建本地工作台</dd></div><div><dt>状态</dt><dd>演示闭环可运行</dd></div></dl><figure class="gallery gallery-creator" data-gallery="creator">
-<div class="gallery-bar"><div class="gallery-controls" role="group" aria-label="切换软件截图"><button type="button" aria-pressed="true" aria-controls="creator-still" data-slide="0">值班总览</button><button type="button" aria-pressed="false" aria-controls="creator-still" data-slide="1">人工待办</button></div><span>演示数据</span></div>
-<div class="gallery-view" id="creator-still">
-<a class="gallery-full" href="assets/creator-overview.jpg" aria-label="打开值班总览原图"><img src="assets/creator-overview.jpg" width="1272" height="856" alt="Creator OPS 值班总览，显示运行状态、私信统计及人工待办"></a>
-</div><figcaption aria-live="polite">先看运行状态，再查看需要人工处理的事项。</figcaption>
-</figure>
-<div class="case-copy"><section><h2>来自真实工作的问题</h2><div><p>同一轮合作里，护理咨询、预约、内容发布和退款可能并行。逐条打开私信会把已经有明确规则的常规问题，和需要判断的异常混在一起。</p></div></section><section><h2>把人放在真正需要决策的地方</h2><div><p>我把控制台从三栏收件箱改成值班总览。先显示 agent 状态与处理统计，下面只列人工待办。常规咨询按知识库规则处理，退款或档期确认转给真人并保留上下文。</p></div></section><section><h2>演示边界</h2><div><p>本地演示可以自动处理合成咨询、转交异常并记录状态。真实 Instagram 通道已接入读取和起草，真实自动发送尚未接入控制台。</p></div></section></div>
-<nav class="case-pagination" aria-label="案例导航"><a href="talkwtf.html"><span>上一篇</span>TalkWTF</a><a href="inventory.html"><span>下一篇</span>多仓库存与履约工作台</a></nav></article></main>
-<footer class="shell foot"><span>龙致君 · AI 应用与业务流程</span><a href="https://github.com/rywlon">GitHub 主页</a></footer>
-</body></html>
+<main id="main">
+<article>
+  <header class="case-hero shell">
+    <a class="back" href="./#work">全部作品</a>
+    <p class="eyebrow">创作者合作 · 本地可运行的演示</p>
+    <h1 class="latin">Creator OPS</h1>
+    <p class="lede">护理咨询和预约按知识库规则处理。退款和档期进人工待办，旁边带着原来的对话。</p>
+    <dl class="facts">
+      <div><dt>我做的</dt><dd>业务规则、产品方向、验收</dd></div>
+      <div><dt>实现</dt><dd>AI 辅助做的本地工作台</dd></div>
+      <div><dt>现在</dt><dd>本地演示能跑</dd></div>
+    </dl>
+  </header>
+  <div class="shell">
+    <figure class="gallery" data-gallery="creator">
+      <div class="gallery-bar">
+        <div class="gallery-controls" role="group" aria-label="切换软件截图">
+          <button type="button" aria-pressed="true" aria-controls="creator-still" data-slide="0">值班总览</button>
+          <button type="button" aria-pressed="false" aria-controls="creator-still" data-slide="1">人工待办</button>
+        </div>
+        <span>演示数据</span>
+      </div>
+      <div class="gallery-view" id="creator-still">
+        <a class="gallery-full" href="assets/creator-overview.jpg" aria-label="打开值班总览原图"><img src="assets/creator-overview.jpg" width="1272" height="856" alt="Creator OPS 值班总览，显示运行状态、私信统计及人工待办"></a>
+      </div>
+      <figcaption aria-live="polite">先看运行状态，再查看需要人工处理的事项。</figcaption>
+    </figure>
+  </div>
+  <section class="demo-band" aria-label="分拣演示">
+    <div class="shell">
+      <div class="band-head">
+        <h2>走一遍分拣</h2>
+        <p>规则写在面板上。对话是假的，也不会发到 Instagram。</p>
+      </div>
+      <div class="instrument" data-creator aria-label="Creator OPS 分拣演示">
+        <div class="instrument-bar"><span class="pill">演示数据</span><span>没有连接 Instagram 发送</span></div>
+        <div class="rule-row"><span>咨询、预约 → 按规则回复</span><span>退款、档期 → 人工待办，附上原话</span></div>
+        <div class="triage">
+          <section><p class="lane-title">进来的私信</p><div class="lane" data-inbox>
+            <article class="msg" data-kind="consult" data-from="@sample.creator3" data-lines="护理大概多久？敏感肌能不能做？"><button type="button" aria-pressed="false"><span class="tag">咨询</span><b>@sample.creator3</b><span>护理大概多久？敏感肌能不能做？</span></button></article>
+            <article class="msg" data-kind="book" data-from="@sample.creator8" data-lines="周六下午两点还能预约吗？"><button type="button" aria-pressed="false"><span class="tag">预约</span><b>@sample.creator8</b><span>周六下午两点还能预约吗？</span></button></article>
+            <article class="msg" data-kind="refund" data-from="@sample.creator5" data-lines="三周前付了 30 美元定金，预约一直没有回音。|我想退定金。"><button type="button" aria-pressed="false"><span class="tag">退款</span><b>@sample.creator5</b><span>定金想退，三周了还没收到回复。</span></button></article>
+            <article class="msg" data-kind="schedule" data-from="@sample.creator7" data-lines="这周档期冲突，能不能改到下下周？"><button type="button" aria-pressed="false"><span class="tag">档期</span><b>@sample.creator7</b><span>这周档期冲突，能不能改到下下周？</span></button></article>
+          </div></section>
+          <section><p class="lane-title">已按规则回复</p><div class="lane lane-auto" data-auto></div></section>
+          <section><p class="lane-title">人工待办</p><div class="lane lane-human" data-human></div></section>
+        </div>
+        <div class="actions">
+          <button type="button" class="btn btn-hot" data-sort-one>分拣下一条</button>
+          <button type="button" class="btn" data-sort-all>一次过完</button>
+          <button type="button" class="btn" data-reset>重置</button>
+        </div>
+        <div class="detail" data-detail></div>
+        <p class="status" data-status aria-live="polite">还没开始分拣。这些对话是假的。</p>
+      </div>
+    </div>
+  </section>
+  <div class="shell case-copy">
+    <section class="case-section">
+      <h2>私信里混着两种事</h2>
+      <div>
+        <p>一轮合作里，护理咨询、预约、内容发布和退款会叠在一起。一封封点开，规则已经写明的问题，和必须人来拍板的事，都堆在同一个收件箱。</p>
+      </div>
+    </section>
+    <section class="case-section">
+      <h2>收件箱改成值班总览</h2>
+      <div>
+        <p>控制台不再是三栏收件箱。上面先看 agent 在不在值班、处理了多少；下面只留需要人处理的事项。常规咨询按知识库规则回。退款、档期确认转给真人，写明原因，并附上相关对话。</p>
+        <p>总览里也能看到身份疑问、合作资格这类待办。截图上的账号、数字和对话都是演示数据。</p>
+      </div>
+    </section>
+    <section class="case-section">
+      <h2>接到哪，没接到哪</h2>
+      <div>
+        <p>本地演示能跑：假的咨询会按规则处理，异常会转给真人，状态会记下。Instagram 已经能读消息、能起草。自动把消息发出去，还没有接到这个控制台。</p>
+      </div>
+    </section>
+    <nav class="case-pagination" aria-label="案例导航">
+      <a href="talkwtf.html"><span>上一篇</span>TalkWTF</a>
+      <a href="inventory.html"><span>下一篇</span>多仓库存与履约工作台</a>
+    </nav>
+  </div>
+</article>
+</main>
+<footer class="shell foot"><span>龙致君 · Ryan Lonn</span><a href="https://github.com/rywlon">GitHub · rywlon</a></footer>
+</body>
+</html>

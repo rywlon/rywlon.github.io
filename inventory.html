@@ -1,102 +1,116 @@
 <!doctype html>
 <html lang="zh-CN">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="全仓可以看，不等于可以从任意有货的仓自动发。用规则对照、脱敏工作台截图和接口读写记录说明 Cin7 Omni 与 Shopify 的库存排查。">
-<title>多仓库存与履约工作台 · 龙致君</title>
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="icon" href="favicon.ico" sizes="32x32">
-<link rel="canonical" href="https://rywlon.github.io/inventory.html">
-<link rel="stylesheet" href="style.css?v=8">
-<script src="site.js?v=7" defer></script>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="库存汇总与订单分配的区别，以及 holdingQty 提交与读回结果核对。"><title>多仓库存与履约工作台 · 龙致君</title><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="icon" href="favicon.ico" sizes="32x32"><link rel="canonical" href="https://rywlon.github.io/inventory.html"><link rel="stylesheet" href="style.css?v=10"><script src="site.js?v=7" defer></script>
 </head>
-<body>
-<a class="skip" href="#main">跳到正文</a>
-<header class="site-head"><div class="shell mast">
-<a class="identity" href="./">龙致君 <span>Ryan Lonn</span></a>
-<nav aria-label="主导航"><a href="./#work">作品</a><a href="./#experience">经历</a><a href="./#about">关于我</a><a href="https://github.com/rywlon">GitHub</a></nav>
-</div></header>
+<body><a class="skip" href="#main">跳到正文</a>
+<header class="site-head">
+<div class="shell mast"><a class="identity" href="./">龙致君 <span>Ryan Lonn</span></a>
+<nav aria-label="主导航"><a href="./#work">作品</a><a href="./#experience">经历</a><a href="./#about">关于</a><a href="https://github.com/rywlon">GitHub ↗</a>
+</nav>
+</div>
+</header>
 <main id="main">
-<article>
-  <header class="case-hero shell">
-    <a class="back" href="./#work">全部作品</a>
-    <p class="eyebrow">Cin7 Omni × Shopify · 库存、映射、分仓</p>
-    <h1>多仓库存与履约工作台</h1>
-    <p class="lede">全仓可以看，不等于可以从任意有货的仓自动发。</p>
-    <dl class="facts">
-      <div><dt>我做的</dt><dd>拆开卖货口径，对照真实订单，验证接口读写</dd></div>
-      <div><dt>对象</dt><dd>库存、商品映射、订单分仓</dd></div>
-      <div><dt>工具</dt><dd>当时已能打开的内部作业台</dd></div>
-    </dl>
-  </header>
-  <section class="band" aria-labelledby="inventory-shift-title">
-    <div class="shell">
-      <div class="band-head">
-        <p class="dated">2026-11 回顾整理</p>
-        <h2 id="inventory-shift-title">全仓可看，不等于跨仓可自动发</h2>
-        <p>同事希望按总库存卖货。虚拟库存，和「有货的仓都能发」，当时混在一起。</p>
-      </div>
-      <div class="pair">
-        <article>
-          <h3>旧诉求</h3>
-          <p>用所有仓加起来的数字决定能不能卖，并默认货可以从任意有库存的仓发出。</p>
-        </article>
-        <article>
-          <h3>系统规则</h3>
-          <p>Cin7 可以按全部分支汇总展示库存。订单仍只能从所属分支分配。跨仓自动履约没有做成系统能力。</p>
-        </article>
-      </div>
-    </div>
-  </section>
-  <div class="shell">
-    <figure class="gallery gallery-inventory" data-gallery="inventory">
-      <div class="gallery-bar">
-        <div class="gallery-controls" role="group" aria-label="切换工作台截图">
+<header class="case-hero shell"><a class="back" href="./#work">← 全部作品</a><p class="eyebrow">03 / 业务排查 · Cin7 Omni × Shopify</p><h1>多仓库存与履约工作台</h1><p class="lede">全仓有货，不等于这张订单能从任意仓发出。</p>
+<dl class="facts">
+<div><dt>我的工作</dt><dd>需求澄清、订单对照、接口验证</dd>
+</div>
+<div><dt>对象</dt><dd>库存、商品映射与订单分仓</dd>
+</div>
+<div><dt>材料</dt><dd>脱敏实站截图与核对记录</dd>
+</div>
+</dl>
+</header>
+<div class="shell">
+<figure class="project-board inventory-board" aria-label="多仓库存规则核对展示板">
+
+<div class="board-heading"><span>Cin7 × Shopify / 规则核对</span><span>2026-11 回顾整理</span>
+</div>
+
+<div class="inventory-equation">
+<div><span class="note-index">看库存</span><h4>全仓汇总</h4><p>All Branches<br>把各仓库存加起来展示</p>
+</div><span class="not-equal" aria-label="不等于">≠</span>
+<div><span class="note-index">分订单</span><h4>所属分支</h4><p>Order Branch<br>仍在订单所属仓分配</p>
+</div>
+</div>
+
+<div class="inventory-proof">
+<div class="excerpt-label"><b>界面里的「跨仓合计」</b><a href="assets/inventory-orders.png">看实站原图 ↗</a>
+</div>
+<div class="image-frame"><a href="assets/inventory-orders.png"><img src="assets/details/inventory-scope.webp" width="1090" height="151" loading="lazy" alt="真实工作台局部，标题为可满足订单（跨仓合计库存）"></a>
+</div><p>这个筛查口径，不能证明订单可以从任意有货的仓自动发出。</p>
+</div>
+
+<figcaption>规则图为回顾整理；实站截图已脱敏。跨仓自动发货没有做成系统能力。
+</figcaption>
+
+</figure>
+</div>
+<div class="case-copy shell">
+<section class="case-section"><h2>先把两个口径拆开</h2>
+<div><p>同事希望按总库存卖货，把库存汇总展示与跨仓自动发货当成了同一件事。我用实际商品和订单向 Cin7 核对：All Branches 可以汇总展示库存，订单仍只能从所属分支分配。跨仓自动履约没有做成系统能力。</p><p>工作台已经存在，可按 SKU、商品、订单或箱标查询，用跨仓合计筛查可满足订单，并进入按仓盘点、创建调货单等流程。我参与的是需求澄清、规则排查与接口验证，不是开发整个工作台。</p>
+</div>
+</section>
+</div>
+<div class="shell">
+<figure class="readback-board" aria-label="holdingQty 接口验证回顾">
+
+<div class="board-heading"><span>接口验证 / 库存调整</span><span>2026-11 回顾整理</span>
+</div>
+  <h3>请求成功，不代表字段改了。</h3>
+
+<ol class="readback">
+<li><span>提交</span><code>holdingQty = <b>1</b></code>
+</li>
+<li><span>响应</span><strong>创建成功</strong>
+</li>
+<li><span>读回</span><code>holdingQty = <b>0</b></code>
+</li>
+</ol>
+
+<figcaption>按已核对记录整理，非当时接口截图。Cin7 确认该字段不能通过库存调整接口直接改写；在途库存应走仓间调货单。
+</figcaption>
+
+</figure>
+</div>
+<div class="case-copy shell">
+<section class="case-section"><h2>排除一条错误路径</h2>
+<div><p>原假设是库存调整接口也许能把货标成在途。我先确认 BranchTransfers 和 Adjustments 可写入，再对照提交与读回结果：请求 <code>holdingQty = 1</code>，返回创建成功，读回却仍为 <code>0</code>。</p><p>Cin7 确认该字段不能通过库存调整接口直接改写。发运仓间调货单才会把发出仓可用量转入在途。这个核对排除了错误路径；建议是否成为工具默认流程、发出仓与收货仓是否完整验收，现有记录尚不能证明。</p>
+</div>
+</section>
+<section class="case-section"><h2>映射问题，逐项核对</h2>
+<div><p>全量同步后 Shopify 仍显示无货，官方指出仓库映射遗漏。我调整映射并重同步，当时反馈可用。同商品变体的跨店映射异常也整理了复现并推动升级，官方回报映射完成。</p><p>另一类问题是相同 SKU 或条码的自动匹配覆盖手工映射，需要官方改码、内部归档旧商品再重映射。这些记录没有改前改后的最终库存数值，不能据此宣称解决了全部库存问题。</p>
+</div>
+</section>
+</div>
+<div class="originals shell"><h2>界面原图</h2><p class="originals-note">可切换截图；点击图片查看完整尺寸。</p>
+<figure class="gallery gallery-inventory" data-gallery="inventory">
+
+<div class="gallery-bar">
+
+<div class="gallery-controls" role="group" aria-label="切换工作台截图">
           <button type="button" aria-pressed="true" aria-controls="inventory-still" data-slide="0">可满足订单</button>
           <button type="button" aria-pressed="false" aria-controls="inventory-still" data-slide="1">库存盘点</button>
-        </div>
+
+</div>
         <span>实站截图 · 已脱敏</span>
-      </div>
-      <div class="gallery-view" id="inventory-still">
+
+</div>
+
+<div class="gallery-view" id="inventory-still">
         <a class="gallery-full" href="assets/inventory-orders.png" aria-label="打开可满足订单原图"><img src="assets/inventory-orders.png" width="1120" height="302" alt="可满足订单界面，显示跨仓库存筛查和订单阶段筛选，订单明细已隐藏"></a>
-      </div>
-      <figcaption aria-live="polite">按跨仓合计库存筛查订单，再按订单阶段缩小范围。截图隐藏了订单明细。</figcaption>
-    </figure>
-  </div>
-  <div class="shell case-copy">
-    <section class="case-section">
-      <h2>规则是怎么对上的</h2>
-      <div>
-        <p>我用实际商品和订单，向 Cin7 核对可售库存和订单分配。官方说明和上面的对照一致：全仓视图是汇总展示，订单不能改成从任意有货的仓自动分配。内部最终方案和操作说明有没有改，当时没有看到。</p>
-        <p>工作台当时已经能打开。它可以按 SKU、商品名、订单号或箱标查询，用跨仓合计筛可满足的订单，按仓库和库位盘点，也可以进入创建 Cin7 调货单。库龄、扫码批次、人工核对、装车和自提也有入口。上面的截图是脱敏后的真实界面。这个界面不是我开发的，这次查看也没有跑写入、做完盘点或把调货发出去。</p>
-      </div>
-    </section>
-    <section class="case-section">
-      <h2>在途库存：提交，再读回</h2>
-      <div>
-        <p>当时假设库存调整接口也许能直接把货标成在途。我先确认仓间调货和库存调整都能写入，再对同一条记录提交、读回、比较。</p>
-        <dl class="slip">
-          <div><dt>写入</dt><dd><code>holdingQty = 1</code></dd></div>
-          <div><dt>响应</dt><dd>创建成功</dd></div>
-          <div><dt>读回</dt><dd><code>holdingQty = 0</code></dd></div>
-        </dl>
-        <p>Cin7 确认：这个字段不能靠库存调整接口改写。发出仓间调货单，才会把发出仓的可用量转入在途。用调整接口做在途的路径就排除了。这条建议有没有做成工具的默认流程、发出仓和收货仓有没有验收完，记录里没有核到。</p>
-      </div>
-    </section>
-    <section class="case-section">
-      <h2>旁边的映射</h2>
-      <div>
-        <p>全量同步之后，Shopify 上仍显示无货。官方指出仓库映射有遗漏。我调整映射并重新同步，当时回报可用。两家独立站上同一商品变体的映射也不对，我整理了复现并推动升级，官方回报映射已经完成。相同 SKU 或条码的自动匹配还会盖掉手工映射：官方改码，内部还要把旧商品归档再重映射。这几件都没有改前改后的库存数字。</p>
-      </div>
-    </section>
-    <nav class="case-pagination" aria-label="案例导航">
-      <a href="creator-ops.html"><span>上一篇</span>Creator OPS</a>
-      <a href="./#experience"><span>继续阅读</span>工作经历</a>
-    </nav>
-  </div>
-</article>
+
+</div>
+
+<figcaption aria-live="polite">按跨仓合计库存筛查订单，再按订单阶段缩小范围。截图隐藏了订单明细。
+</figcaption>
+
+</figure>
+</div>
+<div class="shell">
+<nav class="case-pagination" aria-label="案例导航"><a href="creator-ops.html"><span>上一篇 / 目录</span>Creator OPS</a><a href="./#experience"><span>下一篇</span>工作片段 ↗</a>
+</nav>
+</div>
 </main>
-<footer class="shell foot"><span>龙致君 · Ryan Lonn</span><a href="https://github.com/rywlon">GitHub · rywlon</a></footer>
-</body>
-</html>
+<footer class="shell foot"><span>龙致君 · Ryan Lonn</span><a href="https://github.com/rywlon">GitHub ↗</a>
+</footer>
+</body></html>

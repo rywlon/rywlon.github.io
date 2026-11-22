@@ -1,131 +1,142 @@
 <!doctype html>
 <html lang="zh-CN">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="龙致君的作品集：TalkWTF 语音热键、Creator OPS 创作者值班台、Cin7 与 Shopify 的库存和分仓排查。">
-<title>作品集 · 龙致君</title>
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="icon" href="favicon.ico" sizes="32x32">
-<link rel="canonical" href="https://rywlon.github.io/">
-<link rel="stylesheet" href="style.css?v=8">
-<script src="site.js?v=7" defer></script>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="龙致君的作品：TalkWTF 语音热键、Creator OPS 创作者值班台，以及 Cin7 与 Shopify 库存排查。"><title>作品集 · 龙致君</title><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="icon" href="favicon.ico" sizes="32x32"><link rel="canonical" href="https://rywlon.github.io/"><link rel="stylesheet" href="style.css?v=10"><script src="site.js?v=7" defer></script>
 </head>
-<body>
-<a class="skip" href="#main">跳到正文</a>
-<header class="site-head"><div class="shell mast">
-<a class="identity" href="./">龙致君 <span>Ryan Lonn</span></a>
-<nav aria-label="主导航"><a href="./#work">作品</a><a href="./#experience">经历</a><a href="./#about">关于我</a><a href="https://github.com/rywlon">GitHub</a></nav>
-</div></header>
-<main id="main">
-<header class="hero shell">
-  <p class="eyebrow">AI 产品 / 业务流程</p>
-  <h1>龙致君</h1>
-  <p class="hero-en">Ryan Lonn</p>
-  <p class="lede">做 AI 产品，也改业务流程。下面三件：语音热键、创作者值班台，以及 Cin7 和 Shopify 的库存排查。</p>
+<body><a class="skip" href="#main">跳到正文</a>
+<header class="site-head">
+<div class="shell mast"><a class="identity" href="./">龙致君 <span>Ryan Lonn</span></a>
+<nav aria-label="主导航"><a href="./#work">作品</a><a href="./#experience">经历</a><a href="./#about">关于</a><a href="https://github.com/rywlon">GitHub ↗</a>
+</nav>
+</div>
 </header>
-<section id="work" aria-labelledby="work-title">
-  <div class="shell work-head">
-    <h2 id="work-title">作品</h2>
-    <ol class="toc">
-      <li><a href="#work-talk"><span class="num">01</span><span><strong>TalkWTF</strong><small>热键把话送到已配对的会话</small></span><i aria-hidden="true"></i></a></li>
-      <li><a href="#work-creator"><span class="num">02</span><span><strong>Creator OPS</strong><small>咨询和预约走规则，退款和档期给人</small></span><i aria-hidden="true"></i></a></li>
-      <li><a href="#work-inventory"><span class="num">03</span><span><strong>多仓库存与履约工作台</strong><small>全仓可看，不等于跨仓可自动发</small></span><i aria-hidden="true"></i></a></li>
-    </ol>
-  </div>
-  <article class="bench" id="work-talk">
-    <div class="shell bench-grid">
-      <div class="bench-copy">
-        <p class="idx">01</p>
-        <h3 class="latin">TalkWTF</h3>
-        <p class="kicker">macOS · 开源 · 基于 Handy</p>
-        <p>按热键说话，指令送到已经配对的 Agent 会话。失败就留下转写，不自动重发。</p>
-        <a class="more" href="talkwtf.html">看这个案例</a>
-      </div>
-      <div class="stage">
-        <a class="shot" href="talkwtf.html"><img src="assets/talk-voice.jpg" width="2000" height="1400" alt="新版 TalkWTF 显示已配对的 Codex 和独立快捷键"></a>
-        <p class="shot-cap">Codex 已配对。这条快捷键是 fn+option_right+right。</p>
-        <ol class="flow">
-          <li><b>01</b><span>选本地 Agent，把配对提示词贴进要连的会话。图里连上的是 Codex。</span></li>
-          <li><b>02</b><span>每个会话单独一条快捷键。开始说的时候，目的地就定了。</span></li>
-          <li><b>03</b><span>人留在当前窗口。投递失败保留转写，不自动重发。</span></li>
-        </ol>
-      </div>
-    </div>
-  </article>
-  <article class="bench" id="work-creator">
-    <div class="shell bench-grid">
-      <div class="bench-copy">
-        <p class="idx">02</p>
-        <h3 class="latin">Creator OPS</h3>
-        <p class="kicker">创作者合作 · 值班台</p>
-        <p>护理咨询和预约按规则回。退款和档期进人工待办，并带上原来的话。</p>
-        <a class="more" href="creator-ops.html">看这个案例</a>
-      </div>
-      <div class="stage">
-        <a class="shot" href="creator-ops.html"><img src="assets/creator-overview.jpg" width="1272" height="856" alt="Creator OPS 值班总览，显示运行状态、私信统计及人工待办"></a>
-        <p class="shot-cap">值班总览。图中账号和对话是原型数据。</p>
-        <div class="pair">
-          <article><h3>以前</h3><p>三栏收件箱。咨询、预约、退款和档期逐条打开，混在一起。</p></article>
-          <article><h3>现在</h3><p>值班总览。咨询和预约按知识库。退款和档期进人工待办，并带上对话。</p></article>
-        </div>
-      </div>
-    </div>
-  </article>
-  <article class="bench" id="work-inventory">
-    <div class="shell bench-grid">
-      <div class="bench-copy">
-        <p class="idx">03</p>
-        <h3>多仓库存与履约工作台</h3>
-        <p class="kicker">Cin7 Omni × Shopify · 库存与分仓</p>
-        <p>全仓能看，不等于可以从任意有货的仓自动发。订单仍只能从所属分支分配。</p>
-        <a class="more" href="inventory.html">看这个案例</a>
-      </div>
-      <div class="stage">
-        <a class="shot" href="inventory.html"><img src="assets/inventory-orders.png" width="1120" height="302" alt="可满足订单界面，显示跨仓库存筛查和订单阶段筛选，订单明细已隐藏"></a>
-        <p class="shot-cap">可满足订单。按跨仓合计查看，订单明细已隐藏。</p>
-        <p class="dated">2026-11 回顾整理</p>
-        <div class="pair">
-          <article><h3>旧诉求</h3><p>按总库存卖货。总库存，和「有货的仓都能发」，被当成同一件事。</p></article>
-          <article><h3>系统规则</h3><p>Cin7 可以按全部分支汇总展示。订单仍只能从所属分支分配。跨仓自动发货没有做成。</p></article>
-        </div>
-      </div>
-    </div>
-  </article>
+<main id="main">
+<header class="hero shell"><p class="eyebrow">个人作品集</p><h1>我是龙致君。<br>做过运营，也在做 AI 产品。</h1><p>从创作者合作、跨境电商，到语音与 Agent。这里放三件具体的工作。</p>
+</header>
+
+<section id="work" class="shell" aria-labelledby="work-title">
+<div class="work-head"><h2 id="work-title">作品</h2><span>产品 / 流程 / 排查</span>
+</div>
+<ol class="toc">
+
+<li><a href="#work-talk"><span class="num">01</span><strong>TalkWTF</strong><small>语音与 Agent 会话</small><span aria-hidden="true">↓</span></a>
+</li>
+
+<li><a href="#work-creator"><span class="num">02</span><strong>Creator OPS</strong><small>创作者合作值班台</small><span aria-hidden="true">↓</span></a>
+</li>
+
+<li><a href="#work-inventory"><span class="num">03</span><strong>多仓库存与履约</strong><small>Cin7 × Shopify</small><span aria-hidden="true">↓</span></a>
+</li>
+</ol>
+<article class="work-entry" id="work-talk">
+<header class="project-heading"><p class="idx">01</p>
+<div><h3>TalkWTF</h3><p class="kicker">macOS 应用 · 开源实验</p>
+</div><a class="more" href="talkwtf.html">项目记录 <span aria-hidden="true">↗</span></a><p class="project-summary">按热键说话，把指令送到已经配对的 Agent 会话。重点不是转写，而是别送错地方。</p>
+</header>
+<figure class="project-board talk-board" aria-label="TalkWTF 交互展示板">
+
+<div class="board-heading"><span>TalkWTF / 交互细节</span><span>真实界面 · 局部</span>
+</div>
+
+<div class="talk-title"><h4>不用切窗口，<br>也知道这句话会送给谁。</h4><p>先配对会话，再绑定热键。<br>目的地不跟着当前窗口走。</p>
+</div>
+
+<div class="talk-screen image-frame"><a href="assets/talk-voice.jpg" aria-label="查看 TalkWTF 完整原图"><img src="assets/details/talk-session.webp" width="1560" height="760" loading="lazy" alt="真实界面局部：Codex 已配对，右侧为这个会话独立绑定的热键"></a>
+</div>
+
+<p class="talk-key-note"><span>图中已配对会话 · Codex</span><code>fn + option_right + right</code><small>该热键只对应这个会话；界面细节可点图看原图。</small></p>
+<div class="talk-detail">
+<div><span class="note-index">连接之前</span><a href="assets/talk-pair.jpg" aria-label="查看连接 Agent 完整原图"><img src="assets/details/talk-connect.webp" width="1000" height="265" loading="lazy" alt="连接界面局部：选择 Codex"></a>
+</div><p><span class="note-index">我的取舍</span>把热键绑在会话上，而不是把转写贴进当前窗口。投递失败时保留文字，不自动重发。</p>
+</div>
+
+<figcaption>产品截图重新编排；点击可看原图。<span class="mobile-hint">主图完整缩放显示，细节可点图查看。</span>
+</figcaption>
+
+</figure>
+</article>
+<article class="work-entry" id="work-creator">
+<header class="project-heading"><p class="idx">02</p>
+<div><h3>Creator OPS</h3><p class="kicker">创作者合作 · 本地原型</p>
+</div><a class="more" href="creator-ops.html">项目记录 <span aria-hidden="true">↗</span></a><p class="project-summary">从逐条翻私信，改成只看需要人拍板的事项。下面把处理结构和原型中的交接放在一起。</p>
+</header>
+<figure class="project-board creator-board" aria-label="Creator OPS 处理结构及真实原型界面">
+
+<div class="board-heading"><span>Creator OPS / 处理结构</span><span>2026-11 回顾整理</span>
+</div>
+
+<div class="routing">
+
+<div class="route-before"><span class="note-index">以前 · 收件箱</span><p>咨询、预约、退款、档期</p><span class="route-arrow" aria-hidden="true"><svg viewBox="0 0 14 24" focusable="false"><path d="M7 1v20M2 16l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span><strong>每条都打开，人来判断</strong>
+</div>
+
+<div class="route-after"><span class="note-index">现在 · 值班总览</span>
+<div class="route-row"><span>咨询 / 预约</span><span aria-hidden="true">→</span><strong>知识库规则</strong>
+</div>
+<div class="route-row human"><span>退款 / 档期</span><span aria-hidden="true">→</span><strong>人工待办 + 原对话</strong>
+</div><p>不是把所有事交给 AI，而是把需要人决定的事留下。</p>
+</div>
+
+</div>
+
+<div class="creator-excerpts">
+<div>
+<div class="excerpt-label"><b>需要你处理</b><span>从总览里提出来</span>
+</div><a href="assets/creator-overview.jpg" aria-label="查看值班总览原图"><img src="assets/details/creator-queue.webp" width="700" height="365" loading="lazy" alt="原型待办列表局部：身份疑问、退款申请与合作资格待判断"></a>
+</div>
+<div>
+<div class="excerpt-label"><b>为什么转交</b><span>不用重找私信</span>
+</div><a href="assets/creator-handoff.jpg" aria-label="查看人工待办原图"><img src="assets/details/creator-reason.webp" width="607" height="331" loading="lazy" alt="原型退款详情局部：转交原因与两条相关对话"></a>
+</div>
+</div>
+
+<figcaption>下方为本地原型截图局部，账号与对话是原型数据；上方为本次整理的结构图。
+</figcaption>
+
+</figure>
+</article>
+<article class="work-entry" id="work-inventory">
+<header class="project-heading"><p class="idx">03</p>
+<div><h3>多仓库存与履约工作台</h3><p class="kicker">业务排查 · Cin7 Omni × Shopify</p>
+</div><a class="more" href="inventory.html">项目记录 <span aria-hidden="true">↗</span></a><p class="project-summary">「全仓有货」和「这张订单能发」是两回事。我的工作是把诉求拆开，拿订单和接口结果核对规则。</p>
+</header>
+<figure class="project-board inventory-board" aria-label="多仓库存规则核对展示板">
+
+<div class="board-heading"><span>Cin7 × Shopify / 规则核对</span><span>2026-11 回顾整理</span>
+</div>
+
+<div class="inventory-equation">
+<div><span class="note-index">看库存</span><h4>全仓汇总</h4><p>All Branches<br>把各仓库存加起来展示</p>
+</div><span class="not-equal" aria-label="不等于">≠</span>
+<div><span class="note-index">分订单</span><h4>所属分支</h4><p>Order Branch<br>仍在订单所属仓分配</p>
+</div>
+</div>
+
+<div class="inventory-proof">
+<div class="excerpt-label"><b>界面里的「跨仓合计」</b><a href="assets/inventory-orders.png">看实站原图 ↗</a>
+</div>
+<div class="image-frame"><a href="assets/inventory-orders.png"><img src="assets/details/inventory-scope.webp" width="1090" height="151" loading="lazy" alt="真实工作台局部，标题为可满足订单（跨仓合计库存）"></a>
+</div><p>这个筛查口径，不能证明订单可以从任意有货的仓自动发出。</p>
+</div>
+
+<figcaption>规则图为回顾整理；实站截图已脱敏。跨仓自动发货没有做成系统能力。
+</figcaption>
+
+</figure>
+</article>
 </section>
-<section id="decisions" class="paper-block shell" aria-labelledby="decision-title">
-  <h2 id="decision-title" class="section-title">三件事分别解决了什么</h2>
-  <ol class="result-list">
-    <li><a href="talkwtf.html"><strong>TalkWTF</strong>热键把指令送到已配对的会话。失败保留转写，不自动重发。</a></li>
-    <li><a href="creator-ops.html"><strong>Creator OPS</strong>咨询和预约按规则回复。退款和档期带着原话转给真人。</a></li>
-    <li><a href="inventory.html"><strong>多仓库存</strong>把按总库存卖货拆成汇总展示和按所属仓分配。跨仓自动发货没有做成。</a></li>
-  </ol>
+
+<div class="bottom-notes shell">
+<section id="experience" aria-labelledby="experience-title"><h2 id="experience-title">工作片段</h2>
+<article class="chapter"><p class="eyebrow">OZS / OAK · 内容运营</p><h3>把重复的发布流程写成规则</h3><p>整理评价来源、去重、选品与发布前检查，放进 Agent 定时任务，由我提出需求和验收。11 月 5 日–17 日，两个品牌合计发布 16 组内容、覆盖 32 个平台位置。</p>
+</article>
+<article class="chapter"><p class="eyebrow">Yuki House · 创作者合作</p><h3>把一轮合作拆开跟进</h3><p>写清原片范围、素材用途和退款条件；把预约、到店、发布、原片与退款分开记录，看得出还缺哪一步。</p>
+</article>
 </section>
-<section id="experience" class="paper-block shell" aria-labelledby="experience-title">
-  <h2 id="experience-title" class="section-title">工作经历</h2>
-  <article class="chapter">
-    <p class="eyebrow">OZS / OAK</p>
-    <h3>两个品牌的内容，按规则发出去</h3>
-    <div class="stats" aria-label="发布记录"><div><b>16</b><span>组内容，两品牌合计</span></div><div><b>32</b><span>个平台位置，11 月 5 日–17 日</span></div></div>
-    <p>评价来源、去重、选品和发布前检查，我整理成运营规则，放进 Agent 定时任务。需求和验收是我做的。上面是 11 月 5 日到 17 日的发布数量，不是销售额，也不是增长。</p>
-  </article>
-  <article class="chapter">
-    <p class="eyebrow">Yuki House</p>
-    <h3>一轮合作走到哪，分开记</h3>
-    <p>合作前写清原片范围、素材用途和退款条件，并跟进已经公开的内容。预约、到店、发布、原片、退款分开记录，看得出这一轮还缺哪一步。</p>
-  </article>
+
+<section id="about" aria-labelledby="about-title"><h2 id="about-title">关于我</h2><p>创作者合作和跨境电商运营，是我接触这些问题的起点。同一件事反复卡住，我会把规则写下来，做成页面或 Agent 任务，再拿真实记录核对。</p><a href="https://github.com/rywlon">GitHub · rywlon ↗</a>
 </section>
-<section id="about" class="paper-block shell" aria-labelledby="about-title">
-  <div class="about-grid">
-    <h2 id="about-title">关于我</h2>
-    <div>
-      <p>我做过创作者合作和跨境电商运营。同一类问题反复出现时，我把规则写下来，做成页面或 Agent 定时任务，再用真实记录验收。</p>
-      <p>目前关注 AI 应用和业务流程改造。</p>
-      <p><a href="https://github.com/rywlon">GitHub · rywlon</a></p>
-    </div>
-  </div>
-</section>
+</div>
 </main>
-<footer class="shell foot"><span>龙致君 · Ryan Lonn</span><a href="https://github.com/rywlon">GitHub · rywlon</a></footer>
-</body>
-</html>
+<footer class="shell foot"><span>龙致君 · Ryan Lonn</span><a href="https://github.com/rywlon">GitHub ↗</a>
+</footer>
+</body></html>

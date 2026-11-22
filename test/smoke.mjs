@@ -15,7 +15,7 @@ function assert(condition, message) {
   }
 }
 
-for (const id of ["work", "experience", "about", "decisions"]) {
+for (const id of ["work", "experience", "about"]) {
   assert(html["index.html"].includes(`id="${id}"`), "anchor #" + id);
 }
 for (const href of ["./ #work".replace(" ", ""), "./#experience", "./#about", "talkwtf.html", "creator-ops.html", "inventory.html", "https://github.com/rywlon", "https://github.com/rywlon/TalkWTF"]) {
@@ -28,6 +28,20 @@ for (const phrase of ["holdingQty", "Handy", "SwiftUI", "Instagram", "Cin7", "�
   assert(all.includes(phrase), "present " + phrase);
 }
 assert((all.match(/2026-11 回顾整理/g) || []).length >= 2, "retrospective label on home and inventory");
+assert(!html["index.html"].includes('id="decisions"'), "repetitive summary removed");
+for (const board of ["talk-board", "creator-board", "inventory-board"]) {
+  assert(html["index.html"].includes(board), "distinct artwork " + board);
+}
+assert(!/font-size:\s*(?:96|[7-9]\d)px/.test(css), "no oversized identity typography");
+assert(html["inventory.html"].includes("不是开发整个工作台"), "inventory role stays accurate");
+assert(html["creator-ops.html"].includes("自动发送还没有接到"), "creator integration status stays accurate");
+assert(html["talkwtf.html"].includes("完整联调仍未完成"), "talk integration status stays accurate");
+for (const page of ["index.html", "creator-ops.html"]) {
+  assert(/class="route-arrow"[^>]*><svg/.test(html[page]), page + " uses font-independent SVG direction arrow");
+}
+assert(!/min-width:\s*(?:590|620)px/.test(css), "mobile artwork has no horizontal-scroll minimum");
+assert(html["index.html"].includes('class="talk-key-note"'), "mobile session and hotkey annotation present");
+assert(css.includes("object-fit: contain") && css.includes("max-height: 72vh"), "gallery contains complete images within viewport");
 const radii = css.match(/border-radius\s*:\s*[^;]+/g) || [];
 assert(radii.length > 0, "radius declared");
 for (const radius of radii) assert(/border-radius\s*:\s*0\s*$/.test(radius), "square " + radius);

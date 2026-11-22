@@ -19,7 +19,7 @@ const galleries = ['talk', 'creator', 'inventory'].map(name => {
   };
 });
 vm.runInNewContext(readFileSync('site.js','utf8'), {
-  document: {querySelectorAll() {return galleries;}}
+  window: {}, document: {querySelector() {return null;}, querySelectorAll() {return galleries;}}
 });
 for (const gallery of galleries) {
   gallery.buttons[1].click();

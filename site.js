@@ -163,6 +163,7 @@ if ('IntersectionObserver' in window) {
     hero.style.setProperty('--near-y', enabled ? `${clamp(y * -.07, -55, 0)}px` : '0px');
     hero.style.setProperty('--front-y', enabled ? `${clamp(y * -.13, -100, 0)}px` : '0px');
     const rect = stage.getBoundingClientRect();
+    stage.style.setProperty('--signal-progress', enabled ? String(clamp((innerHeight - rect.top) / (innerHeight * .8), .1, 1)) : '1');
     stage.style.setProperty('--spread', enabled ? String(clamp((innerHeight - rect.top) / (innerHeight + rect.height), 0, 1) * 2 - 1) : '0');
   };
   const schedule = () => { if (!scheduled) { scheduled = true; requestAnimationFrame(render); } };

@@ -8,61 +8,83 @@
     const ctx = canvas.getContext('2d');
     if (ctx) {
       field.append(canvas);
-      let w = 0, h = 0, frame = 0, last = 0, phase = 0, visible = true;
-      const pointer = { x: -1, y: -1, active: false };
+      let w = 0, h = 0, pageLeft = 0, pageTop = 0, rows = 0, cols = 0, cell = 10;
+      let frame = 0, last = 0, phase = 0, visible = true;
+      let sinY5 = new Float32Array(0), cosY5 = new Float32Array(0);
+      const pointer = { clientX: -1, clientY: -1, active: false };
+      const charsConverge = ' .:+*#%@';
+      const setLen = charsConverge.length;
+
       const draw = () => {
+        if (!w || !h) return;
+        const pm = window.portfolioMotion;
+        if (!pm) return;
+        const atlas = pm.getSetAtlas('#ffffff', charsConverge);
+        const expLut = pm.expLut;
+        const expScale = pm.EXP_SCALE;
+
         ctx.clearRect(0, 0, w, h);
-        const cell = w < 500 ? 9 : 10;
-        const rows = Math.ceil(h / 11);
-        const cols = Math.ceil(w / cell);
-        ctx.font = '700 10px SFMono-Regular, Consolas, monospace';
-        ctx.fillStyle = '#ffffff';
 
-        const charsConverge = ' .:+*#%@';
+        const aspect = (h / Math.max(w, 1)) * 1.8;
+        const ptrActive = pointer.active;
+        const ptrX = ptrActive ? (pointer.clientX - pageLeft) / Math.max(w, 1) : -1;
+        const ptrY = ptrActive ? (pointer.clientY - (pageTop - window.scrollY)) / Math.max(h, 1) : -1;
+        const ptrValid = ptrActive && ptrX >= -0.22 && ptrX <= 1.22 && ptrY >= -0.22 && ptrY <= 1.22;
 
-        for (let j = 0; j < rows; j++) {
-          for (let i = 0; i < cols; i++) {
-            const x = i / cols;
+        for (let i = 0; i < cols; i++) {
+          const x = i / cols;
+          const spread = Math.max(0.08, 1 - x * 0.82);
+          const sigma = 0.042 + (1 - spread) * 0.015;
+          const invSigmaSq = 1 / (sigma * sigma);
+          const cutoffSq = 2.35 * sigma * sigma;
+
+          const c0 = 0.5 - 0.36 * spread + 0.11 * spread * Math.sin(x * 7 - phase * 1.4);
+          const c1 = 0.5 - 0.12 * spread + 0.11 * spread * Math.sin(x * 7 + 1.7 - phase * 1.4);
+          const c2 = 0.5 + 0.12 * spread + 0.11 * spread * Math.sin(x * 7 + 3.4 - phase * 1.4);
+          const c3 = 0.5 + 0.36 * spread + 0.11 * spread * Math.sin(x * 7 + 5.1 - phase * 1.4);
+
+          const pulseBase = x * 13 - phase * 1.9;
+          const sinPB = Math.sin(pulseBase);
+          const cosPB = Math.cos(pulseBase);
+
+          const dx = ptrValid ? x - ptrX : 1;
+          const dxSq = dx * dx;
+          const ptrNearCol = ptrValid && dxSq < 0.0484;
+          const drawX = i * cell - 1;
+
+          for (let j = 0; j < rows; j++) {
             const y = j / rows;
-            let density = 0;
+            let minDistSq = 9;
+            let d = y - c0; if (d * d < minDistSq) minDistSq = d * d;
+            d = y - c1; if (d * d < minDistSq) minDistSq = d * d;
+            d = y - c2; if (d * d < minDistSq) minDistSq = d * d;
+            d = y - c3; if (d * d < minDistSq) minDistSq = d * d;
 
-              // 4 scattered input streams converging into 1 tight rule stream on the right
-              const spread = Math.max(0.08, 1 - x * 0.82);
-              for (let k = 0; k < 4; k++) {
-                const baseCenter = 0.5 + ((k - 1.5) * 0.24) * spread;
-                const wave = 0.11 * spread * Math.sin(x * 7 + k * 1.7 - phase * 1.4);
-                const center = baseCenter + wave;
-                density = Math.max(density, Math.exp(-Math.pow((y - center) / (0.042 + (1 - spread) * 0.015), 2)));
-              }
+            let density = minDistSq < cutoffSq ? expLut[(minDistSq * invSigmaSq * expScale) | 0] : 0;
 
-            // Cursor magnetic modulation (Ableton XY pad feel)
-            if (pointer.active) {
-              const dx = x - pointer.x;
-              const dy = (y - pointer.y) * (h / Math.max(w, 1)) * 1.8;
-              const dist = Math.sqrt(dx * dx + dy * dy);
-              if (dist < 0.22) {
-                const boost = Math.cos((dist / 0.22) * Math.PI * 0.5);
+            if (ptrNearCol) {
+              const dy = (y - ptrY) * aspect;
+              const distSq = dxSq + dy * dy;
+              if (distSq < 0.0484) {
+                const boost = 1 - (distSq / 0.0484);
                 density = Math.min(1, density + boost * 0.65);
               }
             }
 
-            const pulse = 0.8 + 0.2 * Math.sin(x * 13 - phase * 1.9 + y * 5);
-            const set = charsConverge;
-            const idx = Math.min(set.length - 1, Math.floor(density * pulse * set.length));
-            const char = set[idx];
+            if (density < 0.125) continue;
 
-            if (char && char !== ' ') {
-              ctx.globalAlpha = 0.35 + (idx / set.length) * 0.55;
-              window.portfolioMotion.glyph(ctx, char, i * cell, j * 11 + 10);
+            const pulse = 0.8 + 0.2 * (sinPB * cosY5[j] + cosPB * sinY5[j]);
+            const idx = Math.min(setLen - 1, (density * pulse * setLen) | 0);
+            if (idx > 0) {
+              ctx.drawImage(atlas, idx * 24, 0, 24, 28, drawX, j * 11 - 1, 12, 14);
             }
           }
         }
       };
 
       const tick = now => {
-        if (window.portfolioMotion?.scrolling) { last=0; frame=requestAnimationFrame(tick); return; }
         frame = 0;
-        if (last && now - last < 45) {
+        if (last && now - last < 48) {
           frame = requestAnimationFrame(tick);
           return;
         }
@@ -79,18 +101,31 @@
         if (!staticMode && visible && !document.hidden) frame = requestAnimationFrame(tick);
       };
       const resize = () => {
-        const r = field.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 1.5);
-        w = r.width; h = r.height; canvas.width = Math.round(w*dpr); canvas.height = Math.round(h*dpr);
-        ctx.setTransform(dpr,0,0,dpr,0,0); draw();
+        const r = field.getBoundingClientRect();
+        w = Math.round(r.width); h = Math.round(r.height);
+        pageLeft = r.left + window.scrollX;
+        pageTop = r.top + window.scrollY;
+        cell = w < 500 ? 9 : 10;
+        rows = Math.ceil(h / 11);
+        cols = Math.ceil(w / cell);
+        sinY5 = new Float32Array(rows);
+        cosY5 = new Float32Array(rows);
+        for (let j = 0; j < rows; j++) {
+          const y5 = (j / Math.max(rows, 1)) * 5;
+          sinY5[j] = Math.sin(y5);
+          cosY5[j] = Math.cos(y5);
+        }
+        canvas.width = w; canvas.height = h;
+        draw();
       };
       field.addEventListener('pointermove', event => {
-        const rect = field.getBoundingClientRect();
-        pointer.x = (event.clientX - rect.left) / Math.max(rect.width, 1);
-        pointer.y = (event.clientY - rect.top) / Math.max(rect.height, 1);
-        pointer.active = event.pointerType === 'mouse';
-      });
-      field.addEventListener('pointerleave', () => { pointer.active = false; });
-      new ResizeObserver(resize).observe(field);
+        if (event.pointerType !== 'mouse') return;
+        pointer.clientX = event.clientX;
+        pointer.clientY = event.clientY;
+        pointer.active = true;
+      }, { passive: true });
+      field.addEventListener('pointerleave', () => { pointer.active = false; }, { passive: true });
+      addEventListener('resize', resize, { passive: true });
       new IntersectionObserver(entries => { visible = entries[0].isIntersecting; sync(); }).observe(field);
       document.addEventListener('visibilitychange', sync); reduce.addEventListener('change', sync);
       resize(); sync();

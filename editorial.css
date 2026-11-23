@@ -75,3 +75,11 @@ body{background:var(--paper);color:var(--ink)}::selection{background:var(--acid)
 @font-face{font-family:'Portfolio Futura';src:url('assets/fonts/futura-pt-medium.woff2') format('woff2');font-weight:500 900;font-style:normal;font-display:swap}
 :root{--display:'Portfolio Futura','PingFang SC','Microsoft YaHei',sans-serif;--body:'Portfolio Futura','PingFang SC','Microsoft YaHei',sans-serif}
 .hero h1{letter-spacing:-.035em;font-weight:500}.section-heading .english-title{letter-spacing:-.035em}.case-hero h1{letter-spacing:-.03em}
+
+/* Latin first, then explicit Chinese families. Subsets cover current site copy. */
+@font-face{font-family:'Portfolio MiSans';src:url('assets/fonts/misans-medium.woff2') format('woff2');font-weight:400 900;font-display:swap}
+@font-face{font-family:'Portfolio Mincho';src:url('assets/fonts/huiwen-mincho.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Portfolio Rhymes';src:url('assets/fonts/rhymes-display-regular.woff2') format('woff2');font-weight:400;font-display:swap}
+:root{--display:'Portfolio Futura','Portfolio MiSans',sans-serif;--body:'Portfolio Futura','Portfolio MiSans',sans-serif;--serif:'Portfolio Rhymes','Portfolio Mincho',serif}
+.hero-copy h2,.section-heading .english-title,.about-lead,.contact h2{font-family:var(--serif);font-weight:400;font-synthesis:none;letter-spacing:-.025em}
+.english-title span{font-family:'Portfolio Mincho',serif;font-weight:400;letter-spacing:0}.hero-copy h2{line-height:1.6}.about-lead{line-height:1.65}.contact h2{line-height:1.4}

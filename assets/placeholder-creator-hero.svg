@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#171715" stroke-width="1" stroke-opacity="0.16"/>
+    </pattern>
+    <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#171715" fill-opacity="0.28"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="1000" fill="#f7f5ee"/>
+  <rect width="1600" height="1000" fill="url(#grid)"/>
+
+  <!-- Top Technical Frame Header -->
+  <rect x="40" y="40" width="1520" height="64" fill="#171715"/>
+  <text x="68" y="79" fill="#f7f5ee" font-family="SFMono-Regular, Consolas, monospace" font-size="18" letter-spacing="2">PLATE 01 // CREATOR OPS — HUMAN-IN-THE-LOOP TRIAGE DESK [1600×1000 PLACEHOLDER]</text>
+  <rect x="1350" y="56" width="186" height="32" fill="#b6a0e8"/>
+  <text x="1370" y="77" fill="#171715" font-family="SFMono-Regular, Consolas, monospace" font-weight="700" font-size="15" letter-spacing="1.5">REPLACEABLE</text>
+
+  <!-- Left Column: Incoming Stream Matrix -->
+  <rect x="40" y="136" width="420" height="824" fill="#ebe7dc" stroke="#171715" stroke-width="2"/>
+  <rect x="40" y="136" width="420" height="48" fill="#171715"/>
+  <text x="64" y="166" fill="#b6a0e8" font-family="SFMono-Regular, Consolas, monospace" font-size="16" letter-spacing="1.5">01 / INBOUND DM STREAM</text>
+
+  <!-- Stream items -->
+  <g transform="translate(64, 214)">
+    <rect width="372" height="108" fill="#f7f5ee" stroke="#171715" stroke-width="1.5"/>
+    <rect x="0" y="0" width="10" height="108" fill="#171715"/>
+    <text x="26" y="34" fill="#626259" font-family="SFMono-Regular, Consolas, monospace" font-size="13">IG_DM #0841 · STANDARD FAQ</text>
+    <text x="26" y="64" fill="#171715" font-family="PingFang SC, Helvetica Neue, sans-serif" font-weight="600" font-size="18">护理注意事项与预约时间确认</text>
+    <text x="26" y="90" fill="#171715" font-family="SFMono-Regular, Consolas, monospace" font-size="13">→ AUTO-ROUTED BY RULEBOOK</text>
+  </g>
+
+  <g transform="translate(64, 344)">
+    <rect width="372" height="128" fill="#b6a0e8" stroke="#171715" stroke-width="2"/>
+    <rect x="0" y="0" width="12" height="128" fill="#171715"/>
+    <text x="28" y="34" fill="#171715" font-family="SFMono-Regular, Consolas, monospace" font-weight="700" font-size="13">IG_DM #0842 · EXCEPTION / REFUND</text>
+    <text x="28" y="66" fill="#171715" font-family="PingFang SC, Helvetica Neue, sans-serif" font-weight="700" font-size="20">达人临时改期与定金退还申请</text>
+    <text x="28" y="98" fill="#171715" font-family="SFMono-Regular, Consolas, monospace" font-size="13">→ ESCALATED WITH CONTEXT</text>
+  </g>
+
+  <g transform="translate(64, 494)">
+    <rect width="372" height="108" fill="#f7f5ee" stroke="#171715" stroke-width="1.5"/>
+    <rect x="0" y="0" width="10" height="108" fill="#171715"/>
+    <text x="26" y="34" fill="#626259" font-family="SFMono-Regular, Consolas, monospace" font-size="13">IG_DM #0843 · ASSET DELIVERY</text>
+    <text x="26" y="64" fill="#171715" font-family="PingFang SC, Helvetica Neue, sans-serif" font-weight="600" font-size="18">原片回收链接与发布排期核对</text>
+    <text x="26" y="90" fill="#171715" font-family="SFMono-Regular, Consolas, monospace" font-size="13">→ AUTO-ROUTED BY RULEBOOK</text>
+  </g>
+
+  <g transform="translate(64, 624)">
+    <rect width="372" height="128" fill="#d5ef64" stroke="#171715" stroke-width="2"/>
+    <rect x="0" y="0" width="12" height="128" fill="#171715"/>
+    <text x="28" y="34" fill="#171715" font-family="SFMono-Regular, Consolas, monospace" font-weight="700" font-size="13">IG_DM #0844 · ELIGIBILITY CHECK</text>
+    <text x="28" y="66" fill="#171715" font-family="PingFang SC, Helvetica Neue, sans-serif" font-weight="700" font-size="20">跨平台合作资格与置换条件例外</text>
+    <text x="28" y="98" fill="#171715" font-family="SFMono-Regular, Consolas, monospace" font-size="13">→ HUMAN DECISION REQUIRED</text>
+  </g>
+
+  <!-- ASCII Wave Pattern Block at bottom left -->
+  <rect x="64" y="778" width="372" height="156" fill="#171715"/>
+  <text x="84" y="814" fill="#b6a0e8" font-family="SFMono-Regular, Consolas, monospace" font-size="14">:::...+++***###%%%@@@%%%###***+++</text>
+  <text x="84" y="840" fill="#d5ef64" font-family="SFMono-Regular, Consolas, monospace" font-size="14">..::++**##%%@@  RULE GATE  @@%%##</text>
+  <text x="84" y="866" fill="#f7f5ee" font-family="SFMono-Regular, Consolas, monospace" font-size="14">78% AUTO-DIGESTED / 22% HUMAN QUEUE</text>
+  <text x="84" y="906" fill="#b6a0e8" font-family="SFMono-Regular, Consolas, monospace" font-size="13">HERO VISUAL PLACEHOLDER · READY FOR ART</text>
+
+  <!-- Right Main Workspace Canvas: Ableton-style Split Routing & Context Card -->
+  <rect x="492" y="136" width="1068" height="824" fill="url(#dots)" stroke="#171715" stroke-width="2"/>
+  <rect x="528" y="172" width="996" height="440" fill="#f7f5ee" stroke="#171715" stroke-width="2"/>
+
+  <!-- Inside Routing Graphic -->
+  <rect x="528" y="172" width="996" height="52" fill="#b6a0e8" stroke="#171715" stroke-width="2"/>
+  <text x="556" y="204" fill="#171715" font-family="SFMono-Regular, Consolas, monospace" font-weight="700" font-size="16">02 / HUMAN DECISION QUEUE — CONTEXT-PRESERVING HANDOFF</text>
+  <text x="1290" y="204" fill="#171715" font-family="SFMono-Regular, Consolas, monospace" font-size="15">QUEUE STATUS: 02 PENDING</text>
+
+  <!-- Visual Signal Flow Diagram -->
+  <g transform="translate(568, 262)">
+    <rect x="0" y="0" width="260" height="140" fill="#171715"/>
+    <text x="24" y="40" fill="#b6a0e8" font-family="SFMono-Regular, Consolas, monospace" font-size="13">TRIGGER REASON</text>
+    <text x="24" y="78" fill="#f7f5ee" font-family="PingFang SC, Helvetica Neue, sans-serif" font-weight="700" font-size="24">触发退款/改期边界</text>
+    <text x="24" y="112" fill="#c5c3ba" font-family="SFMono-Regular, Consolas, monospace" font-size="13">RULE_ID: REFUND_POLICY_04</text>
+
+    <path d="M 260 70 L 330 70" stroke="#171715" stroke-width="3"/>
+    <polygon points="330,62 346,70 330,78" fill="#171715"/>
+
+    <rect x="346" y="0" width="260" height="140" fill="#b6a0e8" stroke="#171715" stroke-width="2"/>
+    <text x="370" y="40" fill="#171715" font-family="SFMono-Regular, Consolas, monospace" font-weight="700" font-size="13">ATTACHED CONTEXT</text>
+    <text x="370" y="78" fill="#171715" font-family="PingFang SC, Helvetica Neue, sans-serif" font-weight="700" font-size="24">原话 + 预约记录</text>
+    <text x="370" y="112" fill="#171715" font-family="SFMono-Regular, Consolas, monospace" font-size="13">NO INBOX DIGGING</text>
+
+    <path d="M 606 70 L 676 70" stroke="#171715" stroke-width="3"/>
+    <polygon points="676,62 692,70 676,78" fill="#171715"/>
+
+    <rect x="692" y="0" width="224" height="140" fill="#d5ef64" stroke="#171715" stroke-width="2"/>
+    <text x="716" y="40" fill="#171715" font-family="SFMono-Regular, Consolas, monospace" font-weight="700" font-size="13">OPERATOR ACTION</text>
+    <text x="716" y="78" fill="#171715" font-family="PingFang SC, Helvetica Neue, sans-serif" font-weight="700" font-size="24">一键拍板确认</text>
+    <text x="716" y="112" fill="#171715" font-family="SFMono-Regular, Consolas, monospace" font-size="13">APPROVE / RESCHEDULE</text>
+  </g>
+
+  <!-- Timeline / Audio-like Track Bars (Ableton Clip View vibe) -->
+  <g transform="translate(568, 438)">
+    <text x="0" y="20" fill="#626259" font-family="SFMono-Regular, Consolas, monospace" font-size="13">WORKFLOW TRACKS (ABLETON-STYLE SIGNAL VIEW · PLACEHOLDER ART)</text>
+    <rect x="0" y="36" width="916" height="32" fill="#ebe7dc" stroke="#171715" stroke-width="1.5"/>
+    <rect x="0" y="36" width="620" height="32" fill="#171715"/>
+    <text x="16" y="57" fill="#f7f5ee" font-family="SFMono-Regular, Consolas, monospace" font-size="13">TRACK 1 · KNOWLEDGE BASE AUTO-REPLY [========================]</text>
+
+    <rect x="0" y="80" width="916" height="32" fill="#ebe7dc" stroke="#171715" stroke-width="1.5"/>
+    <rect x="420" y="80" width="310" height="32" fill="#b6a0e8" stroke="#171715" stroke-width="1.5"/>
+    <text x="436" y="101" fill="#171715" font-family="SFMono-Regular, Consolas, monospace" font-weight="700" font-size="13">TRACK 2 · EXCEPTION HANDOFF CLIP</text>
+
+    <rect x="0" y="124" width="916" height="32" fill="#ebe7dc" stroke="#171715" stroke-width="1.5"/>
+    <rect x="730" y="124" width="186" height="32" fill="#f49a63" stroke="#171715" stroke-width="1.5"/>
+    <text x="744" y="145" fill="#171715" font-family="SFMono-Regular, Consolas, monospace" font-weight="700" font-size="13">TRACK 3 · AUDIT</text>
+  </g>
+
+  <!-- Bottom Large Placeholder Banner Notice -->
+  <rect x="528" y="644" width="996" height="278" fill="#171715"/>
+  <rect x="556" y="672" width="160" height="32" fill="#b6a0e8"/>
+  <text x="572" y="693" fill="#171715" font-family="SFMono-Regular, Consolas, monospace" font-weight="700" font-size="14">LARGE ART SLOT</text>
+  <text x="556" y="758" fill="#f7f5ee" font-family="Helvetica Neue, Arial, PingFang SC, sans-serif" font-weight="700" font-size="44" letter-spacing="-1">CREATOR OPS — 主页高精视觉占位画板</text>
+  <text x="556" y="808" fill="#c5c3ba" font-family="PingFang SC, Helvetica Neue, sans-serif" font-size="22">当前为瑞士网格架构占位图（1600 × 1000），原工作台截图已保留在案例详情页。</text>
+  <text x="556" y="868" fill="#d5ef64" font-family="SFMono-Regular, Consolas, monospace" font-size="15">REPLACE WITH: assets/placeholder-creator-hero.svg OR HIGH-RES SHOWCASE IMAGE</text>
+</svg>

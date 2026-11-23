@@ -7,11 +7,8 @@
     canvas.className = 'ascii-live'; canvas.setAttribute('aria-hidden', 'true');
     const ctx = canvas.getContext('2d');
     if (ctx) {
-      const button = document.createElement('button');
-      button.className = 'motion-toggle'; button.type = 'button';
-      button.textContent = '暂停流动'; button.setAttribute('aria-label', '暂停 ASCII 流动');
-      field.append(canvas, button);
-      let w = 0, h = 0, frame = 0, last = 0, phase = 0, visible = true, paused = false;
+      field.append(canvas);
+      let w = 0, h = 0, frame = 0, last = 0, phase = 0, visible = true;
       const draw = () => {
         ctx.clearRect(0, 0, w, h);
         const cell = w < 500 ? 9 : 10, rows = Math.ceil(h / 11), cols = Math.ceil(w / cell);
@@ -40,10 +37,7 @@
         cancelAnimationFrame(frame); frame = 0; last = 0;
         const staticMode = reduce.matches;
         field.classList.toggle('field-live', !staticMode);
-        button.hidden = staticMode;
-        button.textContent = paused ? '继续流动' : '暂停流动';
-        button.setAttribute('aria-label', paused ? '继续 ASCII 流动' : '暂停 ASCII 流动');
-        if (!staticMode && !paused && visible && !document.hidden) frame = requestAnimationFrame(tick);
+        if (!staticMode && visible && !document.hidden) frame = requestAnimationFrame(tick);
       };
       const resize = () => {
         const r = field.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 2);
@@ -52,7 +46,6 @@
       };
       new ResizeObserver(resize).observe(field);
       new IntersectionObserver(entries => { visible = entries[0].isIntersecting; sync(); }).observe(field);
-      button.addEventListener('click', () => { paused = !paused; sync(); });
       document.addEventListener('visibilitychange', sync); reduce.addEventListener('change', sync);
       resize(); sync();
     }

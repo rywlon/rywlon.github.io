@@ -1,14 +1,489 @@
-<!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>龙致君 Ryan Lonn — 业务系统排障 · 流程设计 · AI 工具落地</title><meta name="description" content="龙致君（Ryan Lonn）的个人作品集。覆盖跨境电商跨系统排障、达人运营工作台与 macOS 语音 AI 工具落地。"><link rel="icon" href="favicon.svg"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="editorial.css?v=6"><script src="site.js?v=4" defer></script><script src="motion.js?v=2" defer></script></head>
-<body class="editorial-home"><a class="skip" href="#main">跳到正文</a>
-<header class="site-head"><a class="identity" href="index.html" aria-label="龙致君 首页"><span class="monogram">r<span>.</span></span><span>龙致君<small>RYAN LONN</small></span></a><nav aria-label="主导航"><a href="#work">精选工作</a><a href="#about">一线经历</a><a href="#contact">联系我</a><a class="nav-contact" href="https://github.com/rywlon">GitHub <span>↗</span></a></nav></header>
-<main id="main">
-<section class="hero wrap"><div class="hero-topline"><span>RYAN LONN / PORTFOLIO</span><span>系统排障 · 流程设计 · AI 工具落地</span></div><div class="hero-editorial"><figure class="textmode-field"><img src="assets/input-field.svg" width="1400" height="360" alt="原创字符流场：多路散乱的输入逐渐汇合为清晰的路径"><figcaption><span>FIELD NOTES / 从问题到落地</span><span>TEXTMODE STUDY — R.L.</span></figcaption></figure><h1><span class="hero-word">WORK IN</span><span class="hero-word">PRACTICE.</span></h1><div class="hero-copy"><h2>把卡住业务的流程，<br>做成能跑的工具。</h2><p class="hero-intro">我是龙致君（Ryan）。做过跨境电商运营和达人合作，习惯钻进具体业务和系统规则里，把散在私信、表格和跨平台里的卡点理顺，落成工作流或 AI 工具。</p><a class="button" href="#work">看三个案例 <span>↘</span></a><a class="text-link hero-about" href="#about">业务背景 ↗</a></div></div><div class="hero-bottom"><span>三个切口：生产系统排障 · 达人工作台 · macOS 语音工具</span><a href="#work">向下浏览 ↓</a></div></section>
-<section class="work-section wrap" id="work"><div class="section-heading"><div><p class="eyebrow">SELECTED WORK / 精选工作</p><h2 class="english-title">Selected work<span>从一线排障，到自己把工具做出来。</span></h2></div><p>先查清底层规则，再决定哪里该写工具。</p></div>
-<article class="project featured project-creator"><a class="project-visual creator-visual" href="creator-ops.html" aria-label="阅读 Creator OPS 案例"><div class="visual-top"><span>CREATOR OPS</span><span>工作台原型</span></div><div class="creator-window"><img src="assets/creator-desk.png" alt="Creator OPS 运行状态与人工待办列表" loading="lazy" width="1920" height="1230"></div><div class="visual-caption"><span class="tiny-dot"></span> 常规咨询走规则，退款与改期带上下文转人工。</div><span class="visual-arrow">↗</span></a><div class="project-info"><div><p class="project-category">达人合作 / 人机分工</p><h3><a href="creator-ops.html">Creator OPS<br>达人合作管理工作台</a></h3><p class="project-summary">脱胎于一线达人合作交付的真实痛点。针对沟通散在私信与表格、运营反复回复同类问题的情况，设计人机分工工作台：标准咨询按规则消化，退款、改期等例外事项自动汇总前序对话生成待办，让人只处理需要拍板的环节。</p></div><div class="project-meta"><span>我的工作</span><p>业务规则 · 产品设计 · 验收</p><a class="case-link" href="creator-ops.html">阅读案例 <span>↗</span></a></div></div></article>
-<div class="project-pair"><article class="project project-inventory"><a class="project-visual inventory-visual" href="inventory.html" aria-label="阅读多仓库存案例"><div class="visual-top"><span>CIN7 × SHOPIFY</span><span>生产环境排障</span></div><div class="stock-diagram"><div><small>库存展示</small><b>全仓汇总</b><span>All Branches</span></div><strong>≠</strong><div><small>订单分配</small><b>所属分支</b><span>Order Branch</span></div></div><img src="assets/details/inventory-scope.webp" alt="实站脱敏截图：跨仓合计库存筛查" loading="lazy" width="1090" height="151"><span class="visual-arrow">↗</span></a><div class="project-info"><p class="project-category">系统规则 / 接口验证</p><h3><a href="inventory.html">电商多仓库存与<br>发货异常排查</a></h3><p class="project-summary">网店反复出现「前台有货、后台发不出」的库存错乱。逐项核对 Cin7 库存系统与 Shopify 网店的订单流、库存字段和接口返回，定位出核心规则冲突：前台展示读的是全仓汇总库存，订单分配却只扣所属分支仓。</p><div class="inline-meta"><span>规则核对 · 接口验证 · 根因定位</span><a class="case-link" href="inventory.html">阅读案例 ↗</a></div></div></article>
-<article class="project project-talk"><a class="project-visual talk-visual" href="talkwtf.html" aria-label="阅读 TalkWTF 案例"><div class="visual-top"><span>TALKWTF</span><span>macOS · 开源工具</span></div><div class="talk-route" aria-label="设计路径：按快捷键说话，转成文字，交给绑定会话"><span>按键说话</span><i>→</i><span>转成文字</span><i>→</i><span>绑定会话</span></div><div class="talk-promise"><span class="voice-icon" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><strong>说话之前，<br>目的地已经确定。</strong></div><img src="assets/details/talk-session.webp" alt="TalkWTF 已配对 Codex 会话和独立热键的真实界面" loading="lazy" width="1560" height="760"><span class="visual-arrow">↗</span></a><div class="project-info"><p class="project-category">交互定义 / AI 工具</p><h3><a href="talkwtf.html">TalkWTF<br>给 AI 编程助手的定向语音指令</a></h3><p class="project-summary">同时开多个终端和 AI 会话时，切窗口、复制粘贴很容易把指令发错地方。做了一个 macOS 语音工具：把独立热键预先绑定到指定 Codex 会话，按下说话转文字后直达目标窗口，免去反复切换和找会话。</p><div class="inline-meta"><span>产品定义 · 交互设计 · 验收</span><a class="case-link" href="talkwtf.html">阅读案例 ↗</a></div></div></article></div>
-</section>
-<section class="about-section wrap" id="about"><div class="about-title"><p class="eyebrow">EXPERIENCE & APPROACH</p><h2>龙致君<span>Ryan Lonn</span></h2><div class="about-mark" aria-hidden="true">R<span>↗</span></div></div><div class="about-content"><p class="about-lead" id="approach">先拆清规则，<br>再上工具。</p><p>跨境电商运营和达人合作，是我接触系统问题的起点。很多卡点不在某个软件本身，而是发生在工具与工具的接口之间、以及人与人的交接缝隙里。</p><p>我习惯从一条具体私信、一张异常订单或一次重复操作切入：先分清哪些能固化成规则、哪些必须留给人工拍板，再用原型、页面或 Agent 把确定性环节接管掉，最后回到真实记录里核对输出。</p><div class="experience" id="experience"><article><span>OZS / OAK</span><div><h3>内容运营与 Agent 发布流</h3><p>梳理评价来源、去重、选品到发布前检查的完整流程，把重复人工环节拆成 Agent 任务，负责需求定义与结果验收。</p></div></article><article><span>Yuki House</span><div><h3>创作者合作与交付管理</h3><p>拆解预约、到店、发布、原片回收与退款五个节点，定清合作边界并盯紧各环节交付——也是 Creator OPS 的业务原型来源。</p></div></article></div><div class="direction"><span class="blue-dot"></span><p>正在关注：AI 应用落地、业务流程优化，以及偏实施与交付的 FDE 岗位<br><small>能钻进业务现场定规则，也能带着 AI 把工具真正做出来。</small></p></div><div class="experience"><article><span>EMAIL</span><div><h3>邮件联系</h3><p><a class="case-link" href="mailto:ryanlonn555@gmail.com">ryanlonn555@gmail.com ↗</a></p></div></article><article><span>WECHAT</span><div><h3>微信联系</h3><p>扫码添加微信，点击可查看原图。</p><a href="assets/wechat-qr.jpg" aria-label="查看微信二维码原图"><img src="assets/wechat-qr.jpg" alt="龙致君的微信好友二维码" width="228" height="338" loading="lazy"></a></div></article></div></div></section>
-<section class="contact wrap" id="contact"><div><p class="eyebrow">LET’S TALK</p><h2>需要懂业务、<br>也能把工具落下去的人<span class="blue">？</span></h2></div><div><p>如果你的团队正在解决业务与系统之间的具体卡点，欢迎直接聊。</p><a class="button" href="https://github.com/rywlon">GitHub <span>↗</span></a></div></section>
-</main><footer class="wrap footer"><span>© 2026 龙致君 · Ryan Lonn</span><span>从现场出发，把流程跑顺。</span><a href="#main">回到顶部 ↑</a></footer></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>龙致君 Ryan Lonn — 业务系统排障 · 流程设计 · AI 工具落地</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="favicon.ico">
+  
+  <!-- 引入 Tailwind CSS 与 Google Fonts (Inter + Newsreader 衬线 + JetBrains Mono) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', '"Noto Sans SC"', 'system-ui', 'sans-serif'],
+            serif: ['Newsreader', '"Noto Serif SC"', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            'ableton-orange': '#FF5500',
+            'ableton-yellow': '#E6FF00',
+            'ableton-blue': '#0033FF',
+            'grid-bg': '#0A0A0A',
+            'grid-surface': '#111111',
+            'grid-line': '#242424',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #0A0A0A;
+      color: #EDEDED;
+      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    }
+    /* Ableton 级黄金阅读行宽控制：保证文字绝对成段、不散 */
+    .measure {
+      max-width: 62ch;
+    }
+    /* 图像反差微调 */
+    .case-img {
+      filter: contrast(1.03);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .group:hover .case-img {
+      transform: scale(1.015);
+    }
+  </style>
+</head>
+
+<body class="font-sans antialiased selection:bg-ableton-yellow selection:text-black">
+
+  <!-- 顶部无障碍跳转 -->
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-ableton-yellow focus:text-black focus:px-4 focus:py-2 focus:font-mono focus:text-xs">
+    跳到正文
+  </a>
+
+  <!-- 外层主网格轨道 (OpenAI 2023-2024 Exposed Grid 风格) -->
+  <div class="max-w-[1280px] mx-auto border-x border-grid-line min-h-screen flex flex-col justify-between">
+
+    <!-- ==================== 1. HEADER 导航栏 ==================== -->
+    <header class="sticky top-0 z-40 bg-grid-bg/90 backdrop-blur-md border-b border-grid-line">
+      <div class="grid grid-cols-12 text-xs font-mono">
+        <!-- 品牌标识 -->
+        <div class="col-span-6 md:col-span-3 p-4 md:px-8 border-r border-grid-line flex items-center justify-between">
+          <a href="index.html" class="flex items-center space-x-2.5 group">
+            <span class="inline-flex items-center justify-center w-5 h-5 bg-white text-black font-bold font-sans text-xs group-hover:bg-ableton-orange group-hover:text-white transition">r.</span>
+            <span class="font-sans font-bold text-sm tracking-tight text-white">龙致君</span>
+            <span class="text-neutral-500 hidden sm:inline">RYAN LONN</span>
+          </a>
+        </div>
+        <!-- 定位一句话 (桌面端显示) -->
+        <div class="hidden md:flex md:col-span-5 px-6 border-r border-grid-line items-center text-neutral-400">
+          <span>业务系统排障 · 流程设计 · AI 工具落地</span>
+        </div>
+        <!-- 导航链接 -->
+        <nav class="col-span-6 md:col-span-4 p-4 md:px-8 flex items-center justify-end space-x-5 md:space-x-7 text-neutral-400">
+          <a href="#work" class="hover:text-white transition">01.精选工作</a>
+          <a href="#about" class="hover:text-white transition">02.一线经历</a>
+          <a href="#contact" class="hover:text-white transition">03.联系</a>
+          <a href="https://github.com/rywlon" target="_blank" rel="noopener" class="text-white hover:text-ableton-yellow transition">GitHub ↗</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ==================== 2. HERO 第一屏 ==================== -->
+      <section class="grid grid-cols-12 border-b border-grid-line">
+        
+        <!-- 左侧叙事主栏 (占 7 列) -->
+        <div class="col-span-12 lg:col-span-7 p-6 sm:p-10 md:p-14 lg:p-16 border-b lg:border-b-0 lg:border-r border-grid-line flex flex-col justify-between">
+          <div>
+            <!-- 极简眉题：只留一行，绝不堆砌 -->
+            <div class="flex items-center space-x-3 font-mono text-xs text-neutral-400 mb-8">
+              <span class="w-2 h-2 bg-ableton-orange inline-block"></span>
+              <span>WORK IN PRACTICE — FIELD NOTES</span>
+            </div>
+
+            <!-- Ableton 风格高反差主标题 -->
+            <h1 class="text-4xl sm:text-5xl md:text-[52px] font-bold tracking-tight text-white leading-[1.12] mb-8">
+              把卡住业务的流程，<br>
+              做成<span class="underline decoration-ableton-orange decoration-4 underline-offset-8">能跑的工具</span>。
+            </h1>
+
+            <!-- 成段正文：严格控制行宽与字号，提升可读性 -->
+            <div class="measure space-y-5 text-lg md:text-[19px] text-neutral-300 leading-[1.75] font-normal">
+              <p>
+                我是龙致君（Ryan）。做过跨境电商运营和达人合作，习惯钻进具体业务和系统规则里，把散在私信、表格和跨平台里的卡点理顺，最终落成确定性的工作流或 AI 工具。
+              </p>
+              <p class="text-base text-neutral-400 leading-[1.7]">
+                先查清底层规则，再决定哪里该写代码、哪里该留给人拍板。以下是我从一线排障到独立交付的三个真实切口。
+              </p>
+            </div>
+          </div>
+
+          <!-- 行动按钮组 -->
+          <div class="mt-12 pt-8 border-t border-grid-line flex flex-wrap items-center gap-4">
+            <a href="#work" class="bg-white text-black hover:bg-ableton-yellow font-mono text-xs font-medium px-6 py-3.5 transition flex items-center space-x-2">
+              <span>阅读三个案例</span>
+              <span>↘</span>
+            </a>
+            <a href="#about" class="border border-grid-line hover:border-neutral-500 text-neutral-300 hover:text-white font-mono text-xs px-6 py-3.5 transition">
+              一线业务背景 ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- 右侧视觉与结构摘要栏 (占 5 列) -->
+        <div class="col-span-12 lg:col-span-5 flex flex-col justify-between bg-grid-surface/40">
+          <!-- 原创字符流场 SVG 展示区 -->
+          <div class="p-6 sm:p-10 border-b border-grid-line flex-grow flex flex-col justify-center">
+            <div class="border border-grid-line bg-black p-4">
+              <img src="assets/input-field.svg" alt="原创字符流场：多路散乱的输入逐渐汇合为清晰的路径" class="w-full h-auto opacity-90">
+            </div>
+            <p class="font-mono text-[11px] text-neutral-500 mt-3 flex justify-between">
+              <span>FIG 01. INPUT CONVERGENCE</span>
+              <span>多路散乱输入汇合为清晰路径</span>
+            </p>
+          </div>
+
+          <!-- 结构化索引表 (替代原本散落的短句) -->
+          <div class="p-6 sm:p-10 font-mono text-xs">
+            <div class="text-neutral-500 mb-4 uppercase tracking-wider">Index / 三个切口</div>
+            <dl class="space-y-3 divide-y divide-grid-line">
+              <div class="pt-2 flex justify-between items-baseline">
+                <dt class="text-white font-sans font-medium">01. Creator OPS</dt>
+                <dd class="text-neutral-400">达人工作台 · 人机分工</dd>
+              </div>
+              <div class="pt-3 flex justify-between items-baseline">
+                <dt class="text-white font-sans font-medium">02. Cin7 × Shopify</dt>
+                <dd class="text-neutral-400">生产系统排障 · 接口核对</dd>
+              </div>
+              <div class="pt-3 flex justify-between items-baseline">
+                <dt class="text-white font-sans font-medium">03. TalkWTF</dt>
+                <dd class="text-neutral-400">macOS 开源定向语音工具</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ==================== 3. SELECTED WORK 精选工作 ==================== -->
+      <section id="work" class="border-b border-grid-line">
+        
+        <!-- 章节通栏表头 -->
+        <div class="grid grid-cols-12 border-b border-grid-line bg-grid-surface/30">
+          <div class="col-span-12 md:col-span-4 p-6 sm:p-10 md:border-r border-grid-line">
+            <span class="font-mono text-xs text-ableton-orange block mb-2">01 / SELECTED WORK</span>
+            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">精选工作</h2>
+          </div>
+          <div class="col-span-12 md:col-span-8 p-6 sm:p-10 flex items-center">
+            <p class="measure text-neutral-300 text-base sm:text-lg leading-relaxed">
+              从一线排障，到自己把工具做出来。<span class="text-neutral-500">拒绝为了做工具而做工具——先查清底层规则与交接盲区，再决定用规则、工作台还是 AI 接管。</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- 案例列表容器 -->
+        <div class="divide-y divide-grid-line">
+
+          <!-- ---------- 案例 01: Creator OPS ---------- -->
+          <article class="grid grid-cols-12 group">
+            <!-- 左侧：元数据与规格表 (4列) -->
+            <div class="col-span-12 lg:col-span-4 p-6 sm:p-10 lg:border-r border-grid-line flex flex-col justify-between bg-grid-bg">
+              <div>
+                <div class="flex items-center justify-between font-mono text-xs text-neutral-500 mb-6">
+                  <span>CASE 01</span>
+                  <span class="text-ableton-yellow bg-ableton-yellow/10 px-2 py-0.5">工作台原型</span>
+                </div>
+                <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-white group-hover:text-ableton-yellow transition mb-2">
+                  <a href="creator-ops.html">Creator OPS<br><span class="text-xl sm:text-2xl font-normal text-neutral-300">达人合作管理工作台</span></a>
+                </h3>
+              </div>
+
+              <!-- 用说明书式表格代替零散标签 -->
+              <div class="mt-8 pt-6 border-t border-grid-line font-mono text-xs space-y-2.5">
+                <div class="grid grid-cols-3">
+                  <span class="text-neutral-500">DOMAIN</span>
+                  <span class="col-span-2 text-neutral-300">达人合作 / 人机分工</span>
+                </div>
+                <div class="grid grid-cols-3">
+                  <span class="text-neutral-500">ROLE</span>
+                  <span class="col-span-2 text-neutral-300">业务规则 · 产品设计 · 验收</span>
+                </div>
+                <div class="grid grid-cols-3">
+                  <span class="text-neutral-500">LOGIC</span>
+                  <span class="col-span-2 text-neutral-400">常规走规则 / 例外带上下文转人工</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 右侧：完整叙事段落 + 视觉证据 (8列) -->
+            <div class="col-span-12 lg:col-span-8 p-6 sm:p-10 md:p-12 flex flex-col justify-between">
+              <div class="measure">
+                <p class="text-lg text-neutral-200 leading-[1.75] mb-6">
+                  脱胎于一线达人合作交付的真实痛点。针对沟通散在私信与表格、运营反复回复同类问题的情况，设计了一套<strong>人机分工工作台</strong>：标准咨询按规则自动消化；退款、改期等例外事项则自动汇总前序对话生成待办，让人只处理需要拍板的环节。
+                </p>
+                <a href="creator-ops.html" class="inline-flex items-center space-x-2 font-mono text-xs text-white border-b border-white pb-1 hover:text-ableton-yellow hover:border-ableton-yellow transition">
+                  <span>阅读完整案例与规则拆解</span>
+                  <span>↗</span>
+                </a>
+              </div>
+
+              <!-- 案例截图框 -->
+              <a href="creator-ops.html" class="block mt-8 border border-grid-line bg-grid-surface overflow-hidden">
+                <img src="assets/creator-desk.png" alt="Creator OPS 运行状态与人工待办列表" class="w-full h-auto case-img">
+              </a>
+            </div>
+          </article>
+
+          <!-- ---------- 案例 02: Cin7 × Shopify ---------- -->
+          <article class="grid grid-cols-12 group">
+            <!-- 左侧：元数据与规格表 (4列) -->
+            <div class="col-span-12 lg:col-span-4 p-6 sm:p-10 lg:border-r border-grid-line flex flex-col justify-between bg-grid-bg">
+              <div>
+                <div class="flex items-center justify-between font-mono text-xs text-neutral-500 mb-6">
+                  <span>CASE 02</span>
+                  <span class="text-ableton-orange bg-ableton-orange/10 px-2 py-0.5">生产环境排障</span>
+                </div>
+                <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-white group-hover:text-ableton-orange transition mb-2">
+                  <a href="inventory.html">Cin7 × Shopify<br><span class="text-xl sm:text-2xl font-normal text-neutral-300">多仓库存与发货异常排查</span></a>
+                </h3>
+              </div>
+
+              <!-- 核心规则冲突公式化展示 -->
+              <div class="my-6 p-4 border border-grid-line bg-grid-surface font-mono text-xs">
+                <div class="text-neutral-500 mb-2">ROOT CAUSE CONFLICT:</div>
+                <div class="flex items-center justify-between text-neutral-200">
+                  <span>库存展示 (All Branches)</span>
+                  <span class="text-ableton-orange font-bold text-sm">≠</span>
+                  <span>订单分配 (Order Branch)</span>
+                </div>
+              </div>
+
+              <div class="pt-6 border-t border-grid-line font-mono text-xs space-y-2.5">
+                <div class="grid grid-cols-3">
+                  <span class="text-neutral-500">DOMAIN</span>
+                  <span class="col-span-2 text-neutral-300">系统规则 / 接口验证</span>
+                </div>
+                <div class="grid grid-cols-3">
+                  <span class="text-neutral-500">ROLE</span>
+                  <span class="col-span-2 text-neutral-300">规则核对 · 接口验证 · 根因定位</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 右侧：完整叙事段落 + 视觉证据 (8列) -->
+            <div class="col-span-12 lg:col-span-8 p-6 sm:p-10 md:p-12 flex flex-col justify-between">
+              <div class="measure">
+                <p class="text-lg text-neutral-200 leading-[1.75] mb-6">
+                  网店反复出现「前台有货、后台发不出」的库存错乱。通过逐项核对 Cin7 库存系统与 Shopify 网店的订单流、库存字段和接口返回，最终定位出核心规则冲突：<strong>前台展示读取的是全仓汇总库存（All Branches），而订单分配却只扣减所属分支仓（Order Branch）</strong>。
+                </p>
+                <a href="inventory.html" class="inline-flex items-center space-x-2 font-mono text-xs text-white border-b border-white pb-1 hover:text-ableton-orange hover:border-ableton-orange transition">
+                  <span>阅读排查链路与接口证据</span>
+                  <span>↗</span>
+                </a>
+              </div>
+
+              <a href="inventory.html" class="block mt-8 border border-grid-line bg-grid-surface overflow-hidden">
+                <img src="assets/details/inventory-scope.webp" alt="实站脱敏截图：跨仓合计库存筛查" class="w-full h-auto case-img">
+              </a>
+            </div>
+          </article>
+
+          <!-- ---------- 案例 03: TalkWTF ---------- -->
+          <article class="grid grid-cols-12 group">
+            <!-- 左侧：元数据与规格表 (4列) -->
+            <div class="col-span-12 lg:col-span-4 p-6 sm:p-10 lg:border-r border-grid-line flex flex-col justify-between bg-grid-bg">
+              <div>
+                <div class="flex items-center justify-between font-mono text-xs text-neutral-500 mb-6">
+                  <span>CASE 03</span>
+                  <span class="text-white bg-white/10 px-2 py-0.5">macOS · 开源工具</span>
+                </div>
+                <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-white group-hover:text-ableton-yellow transition mb-2">
+                  <a href="talkwtf.html">TalkWTF<br><span class="text-xl sm:text-2xl font-normal text-neutral-300">给 AI 编程助手的定向语音指令</span></a>
+                </h3>
+              </div>
+
+              <div class="my-6 p-4 border border-grid-line bg-grid-surface font-mono text-xs">
+                <div class="text-neutral-400">按键说话 → 转成文字 → 绑定会话</div>
+                <div class="text-white font-sans font-medium mt-1">“说话之前，目的地已经确定。”</div>
+              </div>
+
+              <div class="pt-6 border-t border-grid-line font-mono text-xs space-y-2.5">
+                <div class="grid grid-cols-3">
+                  <span class="text-neutral-500">DOMAIN</span>
+                  <span class="col-span-2 text-neutral-300">交互定义 / AI 工具</span>
+                </div>
+                <div class="grid grid-cols-3">
+                  <span class="text-neutral-500">ROLE</span>
+                  <span class="col-span-2 text-neutral-300">产品定义 · 交互设计 · 验收</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 右侧：完整叙事段落 + 视觉证据 (8列) -->
+            <div class="col-span-12 lg:col-span-8 p-6 sm:p-10 md:p-12 flex flex-col justify-between">
+              <div class="measure">
+                <p class="text-lg text-neutral-200 leading-[1.75] mb-6">
+                  同时开启多个终端和 AI 会话时，频繁切窗口、复制粘贴很容易把指令发错地方。为此独立做了一个 macOS 语音工具：<strong>把独立热键预先绑定到指定的 Codex 会话</strong>，按下说话转成文字后直达目标窗口，彻底免去反复切换和寻找会话的摩擦。
+                </p>
+                <a href="talkwtf.html" class="inline-flex items-center space-x-2 font-mono text-xs text-white border-b border-white pb-1 hover:text-ableton-yellow hover:border-ableton-yellow transition">
+                  <span>查看交互设计与开源实现</span>
+                  <span>↗</span>
+                </a>
+              </div>
+
+              <a href="talkwtf.html" class="block mt-8 border border-grid-line bg-grid-surface overflow-hidden">
+                <img src="assets/details/talk-session.webp" alt="TalkWTF 已配对 Codex 会话和独立热键的真实界面" class="w-full h-auto case-img">
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ==================== 4. EXPERIENCE & APPROACH 一线经历与方法论 ==================== -->
+      <section id="about" class="grid grid-cols-12 border-b border-grid-line">
+        
+        <!-- 左侧：方法论宣言 (5列) -->
+        <div class="col-span-12 lg:col-span-5 p-6 sm:p-10 md:p-12 border-b lg:border-b-0 lg:border-r border-grid-line flex flex-col justify-between">
+          <div>
+            <span class="font-mono text-xs text-ableton-orange block mb-2">02 / EXPERIENCE & APPROACH</span>
+            <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white leading-tight mb-6">
+              先拆清规则，<br>再上工具。
+            </h2>
+            <!-- 成段的方法论阐述 -->
+            <div class="space-y-4 text-base sm:text-[17px] text-neutral-300 leading-[1.75]">
+              <p>
+                跨境电商运营和达人合作，是我接触系统问题的起点。在现场待久了就会发现：<strong>很多卡点根本不在某个软件本身，而是发生在工具与工具的接口之间、以及人与人的交接缝隙里。</strong>
+              </p>
+              <p>
+                我习惯从一条具体私信、一张异常订单或一次重复操作切入：先分清哪些能固化成确定性规则、哪些必须留给人工拍板；再用原型、页面或 Agent 把确定性环节接管掉，最后回到真实业务记录里核对输出。
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-10 pt-6 border-t border-grid-line flex items-center justify-between font-mono text-xs text-neutral-500">
+            <span>RYAN LONN / 龙致君</span>
+            <span>FIELD-FIRST ENGINEERING</span>
+          </div>
+        </div>
+
+        <!-- 右侧：具体业务履历 + Ableton 高饱和撞色求职意向块 (7列) -->
+        <div class="col-span-12 lg:col-span-7 flex flex-col justify-between divide-y divide-grid-line">
+          
+          <!-- 履历 1: OZS / OAK -->
+          <div class="p-6 sm:p-10 hover:bg-grid-surface/40 transition">
+            <div class="flex items-baseline justify-between mb-3">
+              <h3 class="text-xl font-bold text-white">内容运营与 Agent 发布流</h3>
+              <span class="font-mono text-xs text-ableton-yellow">OZS / OAK</span>
+            </div>
+            <p class="measure text-neutral-300 leading-[1.7]">
+              梳理从评价来源、去重、选品到发布前检查的完整业务流程。将原本依赖人工反复核对的重复环节拆解为标准化的 Agent 任务，全程负责需求定义、边界约束与最终结果验收。
+            </p>
+          </div>
+
+          <!-- 履历 2: Yuki House -->
+          <div class="p-6 sm:p-10 hover:bg-grid-surface/40 transition">
+            <div class="flex items-baseline justify-between mb-3">
+              <h3 class="text-xl font-bold text-white">创作者合作与交付管理</h3>
+              <span class="font-mono text-xs text-ableton-orange">Yuki House</span>
+            </div>
+            <p class="measure text-neutral-300 leading-[1.7]">
+              拆解预约、到店、发布、原片回收与退款五个核心交付节点，定清合作边界并盯紧各环节异常——这段高频协调的一线经历，也是 <a href="creator-ops.html" class="text-white underline decoration-neutral-500 hover:decoration-white">Creator OPS 工作台</a> 的直接业务原型来源。
+            </p>
+          </div>
+
+          <!-- Ableton 标志性高饱和色块：聚合求职方向，极具视觉冲击力 -->
+          <div class="p-6 sm:p-10 bg-ableton-orange text-black">
+            <div class="font-mono text-xs uppercase tracking-wider border-b border-black/20 pb-2 mb-4 flex justify-between">
+              <span>CURRENT FOCUS / 正在关注</span>
+              <span>OPEN FOR OPPORTUNITIES</span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold leading-snug mb-2">
+              AI 应用落地、业务流程优化，以及偏实施与交付的 FDE（Forward Deployed Engineer）岗位。
+            </h3>
+            <p class="text-black/85 text-sm sm:text-base leading-relaxed">
+              能钻进业务现场定清规则，也能带着 AI 把工具真正做出来并跑通验收。
+            </p>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ==================== 5. CONTACT 联系方式 ==================== -->
+      <section id="contact" class="grid grid-cols-12">
+        
+        <!-- 左侧大呼吁 (5列) -->
+        <div class="col-span-12 lg:col-span-5 p-6 sm:p-10 md:p-12 border-b lg:border-b-0 lg:border-r border-grid-line flex flex-col justify-between">
+          <div>
+            <span class="font-mono text-xs text-neutral-500 block mb-2">03 / LET'S TALK</span>
+            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white leading-snug mb-4">
+              需要懂业务、也能把工具落下去的人？
+            </h2>
+            <p class="text-neutral-400 leading-relaxed">
+              如果你的团队正在解决业务与系统之间的具体卡点，或者需要能深入现场推进 AI 落地的伙伴，欢迎直接聊。
+            </p>
+          </div>
+          <div class="mt-8">
+            <a href="https://github.com/rywlon" target="_blank" rel="noopener" class="inline-flex items-center space-x-2 font-mono text-xs text-neutral-300 hover:text-white">
+              <span>访问 GitHub 主页 (github.com/rywlon)</span>
+              <span>↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 右侧：邮件与微信二维码网格 (7列) -->
+        <div class="col-span-12 lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-grid-line">
+          
+          <!-- 邮件联系 -->
+          <div class="p-6 sm:p-10 flex flex-col justify-between">
+            <div>
+              <span class="font-mono text-xs text-neutral-500 block mb-4">DIRECT EMAIL</span>
+              <h3 class="text-lg font-bold text-white mb-2">邮件联系</h3>
+              <p class="text-sm text-neutral-400 leading-relaxed mb-6">
+                适合发送岗位详情、业务探讨或项目合作邀约。
+              </p>
+            </div>
+            <a href="mailto:ryanlonn555@gmail.com" class="font-mono text-sm text-ableton-yellow hover:underline break-all">
+              ryanlonn555@gmail.com ↗
+            </a>
+          </div>
+
+          <!-- 微信联系 -->
+          <div class="p-6 sm:p-10 flex flex-col justify-between">
+            <div>
+              <span class="font-mono text-xs text-neutral-500 block mb-4">WECHAT</span>
+              <h3 class="text-lg font-bold text-white mb-2">微信联系</h3>
+              <p class="text-sm text-neutral-400 leading-relaxed mb-4">
+                扫码添加微信（点击图片可查看原图）。
+              </p>
+            </div>
+            <a href="assets/wechat-qr.jpg" target="_blank" class="block w-36 h-36 border border-grid-line p-1.5 bg-white hover:border-ableton-orange transition">
+              <img src="assets/wechat-qr.jpg" alt="龙致君的微信好友二维码" class="w-full h-full object-contain">
+            </a>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <!-- ==================== 6. FOOTER 页脚 ==================== -->
+    <footer class="border-t border-grid-line p-6 sm:px-10 flex flex-col sm:flex-row justify-between items-center font-mono text-xs text-neutral-500 bg-grid-surface/20">
+      <div class="flex items-center space-x-3">
+        <span>© 2026 龙致君 · Ryan Lonn</span>
+        <span>/</span>
+        <span class="text-neutral-400">从现场出发，把流程跑顺。</span>
+      </div>
+      <a href="#main" class="mt-4 sm:mt-0 hover:text-white transition">
+        回到顶部 ↑
+      </a>
+    </footer>
+
+  </div>
+
+</body>
+</html>

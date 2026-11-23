@@ -69,3 +69,9 @@ body{background:var(--paper);color:var(--ink)}::selection{background:var(--acid)
 }
 .project-inventory .inventory-visual{overflow:visible}.talk-route{justify-content:space-between}.talk-route span:last-child{margin-left:0}
 .project-creator .project-category,.project-creator .project-meta>span{color:var(--ink)}.hero-intro,.project-summary{text-wrap:pretty}
+
+/* User-provided Futura PT; Chinese keeps the existing system sans. */
+@font-face{font-family:'Portfolio Futura';src:url('assets/fonts/futura-pt-book.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Portfolio Futura';src:url('assets/fonts/futura-pt-medium.woff2') format('woff2');font-weight:500 900;font-style:normal;font-display:swap}
+:root{--display:'Portfolio Futura','PingFang SC','Microsoft YaHei',sans-serif;--body:'Portfolio Futura','PingFang SC','Microsoft YaHei',sans-serif}
+.hero h1{letter-spacing:-.035em;font-weight:500}.section-heading .english-title{letter-spacing:-.035em}.case-hero h1{letter-spacing:-.03em}

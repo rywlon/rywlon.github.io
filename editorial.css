@@ -88,7 +88,7 @@ body{background:var(--paper);color:var(--ink)}::selection{background:var(--acid)
 @media(prefers-reduced-motion:no-preference){.button,.case-link,.gallery-tabs button{transition:background .25s,color .25s}.button span,.case-link span{display:inline-block;transition:transform .3s}.button:hover span,.case-link:hover span{transform:translate(3px,-3px)}.project-visual .visual-arrow{transition:transform .3s}.site-head nav a{position:relative}.site-head nav a:after{content:'';position:absolute;left:0;bottom:-5px;width:100%;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .3s}.site-head nav a:hover:after,.site-head nav a.active-nav:after{transform:scaleX(1)}}
 @media(max-width:760px){.motion-toggle{right:10px;bottom:18px;font-size:10px;padding:5px 9px}}
 
-/* Klein blue is reserved for the hero ASCII field. */
-.hero-editorial .textmode-field{background:#002fa7}
+/* Hermes light-theme base blue for the hero ASCII field. */
+.hero-editorial .textmode-field{background:#0000f2}
 .hero-editorial .textmode-field img{filter:none;mix-blend-mode:screen;opacity:.6}
 .hero-editorial .textmode-field figcaption{color:#ffffff}

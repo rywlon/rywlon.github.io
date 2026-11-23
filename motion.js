@@ -53,13 +53,14 @@
 
             if (char && char !== ' ') {
               ctx.globalAlpha = 0.35 + (idx / set.length) * 0.55;
-              ctx.fillText(char, i * cell, j * 11 + 10);
+              window.portfolioMotion.glyph(ctx, char, i * cell, j * 11 + 10);
             }
           }
         }
       };
 
       const tick = now => {
+        if (window.portfolioMotion?.scrolling) { last=0; frame=requestAnimationFrame(tick); return; }
         frame = 0;
         if (last && now - last < 45) {
           frame = requestAnimationFrame(tick);
@@ -78,7 +79,7 @@
         if (!staticMode && visible && !document.hidden) frame = requestAnimationFrame(tick);
       };
       const resize = () => {
-        const r = field.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 2);
+        const r = field.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 1.5);
         w = r.width; h = r.height; canvas.width = Math.round(w*dpr); canvas.height = Math.round(h*dpr);
         ctx.setTransform(dpr,0,0,dpr,0,0); draw();
       };

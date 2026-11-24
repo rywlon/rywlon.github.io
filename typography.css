@@ -4,7 +4,20 @@
 @font-face{font-family:'Huiwen Mincho';src:url('assets/fonts/huiwen-site.woff') format('woff');font-weight:400;font-display:swap}
 @font-face{font-family:'GenRyu Moon';src:url('assets/fonts/genryu-moon-site.woff') format('woff');font-weight:400 900;font-display:swap}
 @font-face{font-family:'MiSans Site';src:url('assets/fonts/misans-site.woff') format('woff');font-weight:400 900;font-display:swap}
-:root{--body:'Futura PT','MiSans Site';--display:'Futura PT','MiSans Site';--serif:'Rhymes Display','GenRyu Moon','MiSans Site';--mono:'Futura PT','MiSans Site'}
-body,button,input,textarea,select{font-family:var(--body);font-synthesis:none}h1,h2,h3{font-family:var(--display);font-synthesis:none}
-.hero-copy h2,.about-lead,.contact h2,.english-title{font-family:var(--serif);font-weight:400}.english-title span{font-family:'GenRyu Moon'}
-.about-title h2{font-family:'Huiwen Mincho';font-weight:400}.about-title h2 span{font-family:'Futura PT'}.case-hero h1,.case-section h2{font-family:'Rhymes Display','GenRyu Moon','MiSans Site';font-weight:400}
+
+:root{
+  --body:'Futura PT','MiSans Site','PingFang SC','Hiragino Sans GB','Noto Sans SC','Microsoft YaHei',sans-serif;
+  --display:'Futura PT','MiSans Site','PingFang SC','Hiragino Sans GB','Noto Sans SC','Microsoft YaHei',sans-serif;
+  --serif:'Rhymes Display','GenRyu Moon','Noto Serif SC','Songti SC','STSong',serif;
+  --huiwen:'Huiwen Mincho','Noto Serif SC','Songti SC','STSong',serif;
+  --mono:'SFMono-Regular',ui-monospace,'Cascadia Mono',Consolas,'Futura PT',monospace;
+}
+
+body,button,input,textarea,select{font-family:var(--body);font-synthesis:none}
+h1,h2,h3{font-family:var(--display);font-synthesis:none}
+.hero-copy h2,.about-lead,.contact h2,.english-title{font-family:var(--serif);font-weight:400;text-wrap:balance}
+.english-title span{font-family:'GenRyu Moon','Noto Serif SC','Songti SC',serif}
+.about-title h2{font-family:var(--huiwen);font-weight:400}
+.about-title h2 span{font-family:'Futura PT',sans-serif}
+.case-hero h1,.case-section h2{font-family:'Rhymes Display','GenRyu Moon','Noto Serif SC','Songti SC',serif;font-weight:400;text-wrap:balance}
+.tabular-nums,.idx-num,.step-index,.kb-metric{font-variant-numeric:tabular-nums}

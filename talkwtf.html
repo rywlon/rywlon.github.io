@@ -1,1 +1,176 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>TalkWTF · 龙致君</title><meta name="description" content="TalkWTF 是一个 Mac 语音工具，面向同时使用多个 AI 编程助手会话的人，例如 Codex、Claude Code 用户。先把会话与快捷键绑定，再通过语音输入并发送文字，减少切换窗口和复制粘贴。它是 AI 辅助实现的开源实验，麦克风到各客户端的完整联调仍在进行。"><link rel="icon" href="favicon.svg"><link rel="stylesheet" href="style.css?v=restore-63bb363-20261123"><link rel="stylesheet" href="editorial.css?v=cover-woff-1"><script src="site.js?v=restore-63bb363-20261123" defer></script><script src="motion.js?v=klein-ascii-1" defer></script><link rel="stylesheet" href="typography.css?v=cover-woff-1"></head><body class="theme-talk"><a class="skip" href="#main">跳到正文</a><header class="site-head"><a class="identity" href="index.html" aria-label="龙致君 首页"><span>龙致君<small>LONG ZHIJUN</small></span></a><nav aria-label="主导航"><a href="index.html#work">精选工作</a><a href="index.html#approach">工作方式</a><a href="index.html#about">关于我</a><a class="nav-contact" href="https://github.com/rywlon">GitHub <span>↗</span></a></nav></header><main id="main" class="wrap"><a class="case-back" href="index.html#work">← 返回精选工作</a><header class="case-hero"><p class="eyebrow">macOS 应用 / 开源实验</p><h1>TalkWTF</h1><p class="lede">按快捷键说话，<br>给指定的 AI 编程助手发指令。</p><div class="case-intro"><span>项目摘要</span><p>TalkWTF 是一个 Mac 语音工具，面向同时使用多个 AI 编程助手会话的人，例如 Codex、Claude Code 用户。先把会话与快捷键绑定，再通过语音输入并发送文字，减少切换窗口和复制粘贴。它是 AI 辅助实现的开源实验，麦克风到各客户端的完整联调仍在进行。</p></div><dl class="case-meta"><div><dt>我的工作</dt><dd>产品定义、交互与验收</dd></div><div><dt>实现方式</dt><dd>基于 Handy，AI 辅助实现</dd></div><div><dt>当前状态</dt><dd>源码公开，完整联调进行中</dd></div></dl></header><figure class="case-cover talk-cover"><a href="assets/talk-voice.jpg" aria-label="打开完整界面原图"><img src="assets/talk-voice.jpg" alt="TalkWTF 实际界面 · 已配对的 Codex 会话与独立快捷键" width="2000" height="1400"></a><figcaption>TalkWTF 实际界面 · 已配对的 Codex 会话与独立快捷键</figcaption></figure><div class="case-layout"><nav class="case-index" aria-label="案例目录"><span>IN THIS CASE</span><a href="#context">现场问题</a><a href="#decision">关键判断</a><a href="#implementation">实现与职责</a><a href="#validation">验证与状态</a><a href="#screens">界面原图</a></nav><div class="case-body"><section class="case-section" id="context"><p class="eyebrow">现场问题</p><h2>会话一多，最麻烦的是确认目的地。</h2><p>本地转写已经能把话说成字。但要把指令交给 Agent，还得离开正在看的内容，找到对应会话，再粘贴进去。多个会话同时开着，每次都要重新确认。</p><p>这个项目从一个交互问题开始：能否在说话之前，就确定这句话应该交给哪个会话？</p></section><section class="case-section" id="decision"><p class="eyebrow">关键判断</p><h2>把热键绑在会话上。</h2><p>先选择 Codex、Claude Code、OpenCode、Cursor，或其他能读本机文件、运行命令的 Agent，再把配对提示词贴进要连接的会话。每个会话绑定独立热键。</p><div class="flow"><div><small>配对</small><b>连接具体会话</b><p>明确接收对象</p></div><span>→</span><div><small>绑定</small><b>独立语音热键</b><p>说话前锁定目的地</p></div><span>→</span><div><small>投递</small><b>检查结果回执</b><p>失败时保留文字</p></div></div><div class="decision"><p>中途切换窗口，也不改变投递对象。失败或结果不确定时保留转写，由人决定下一步，不自动重发。</p></div></section><section class="case-section" id="implementation"><p class="eyebrow">实现与职责</p><h2>我定义交互，用 AI 辅助实现与验证。</h2><p>我负责产品定义、交互和验收。SwiftUI 外壳与 Rust 核心在 Handy 上用 AI 辅助实现；润色与词库的部分交互参考了 OpenTypeless。</p><p>图中 Codex 的快捷键为 <code>fn + option_right + right</code>，只对应这个已经配对的会话。</p><p><a href="https://github.com/rywlon/TalkWTF">查看 GitHub 源码与构建说明 ↗</a></p></section><section class="case-section" id="validation"><p class="eyebrow">验证与状态</p><h2>局部路径已核对，端到端联调还在继续。</h2><div class="status-box"><h3>已经核对</h3><p>配对、回执、会话绑定和本地适配器投递已用测试数据核对，包含失败响应。</p><h3>仍在进行</h3><p>麦克风到各客户端的完整联调尚未完成。应用处于实验阶段，临时签名、未做 Apple 公证；构建需要 Apple Silicon、macOS 14+、Xcode 与 Rust。</p></div></section><section class="case-section" id="screens"><p class="eyebrow">SCREENSHOTS</p><h2>界面原图</h2><p>切换查看不同界面，点击图片可打开完整尺寸。</p><figure class="gallery" data-gallery="talk"><div class="gallery-tabs" role="group" aria-label="切换项目截图"><button type="button" aria-pressed="true" data-slide="0" aria-controls="talk-still">Voice to Agent</button><button type="button" aria-pressed="false" data-slide="1" aria-controls="talk-still">连接 Agent</button></div><div id="talk-still"><a class="gallery-full" href="assets/talk-voice.jpg"><img src="assets/talk-voice.jpg" alt="TalkWTF 实际界面 · 已配对的 Codex 会话与独立快捷键" loading="lazy" width="2000" height="1400"></a></div><figcaption aria-live="polite">TalkWTF 实际界面 · 已配对的 Codex 会话与独立快捷键</figcaption></figure></section><div class="case-next"><div><p>NEXT PROJECT</p><a href="creator-ops.html">Creator OPS ↗</a></div><span>→</span></div></div></div></main><footer class="wrap footer"><span>© 2026 龙致君 · Long Zhijun</span><span>从现场出发，持续迭代。</span><a href="#main">回到顶部 ↑</a></footer></body></html>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>03 · TalkWTF 开源语音转文字 · Voice to Agent · 龙致君</title>
+  <meta name="description" content="TalkWTF 是一个开源的 macOS 语音转文字工具，既适合日常随时语音输入，也提供 Voice to Agent 入口，按下热键说出需求即可自动判断并分发给本地 Agent 执行。">
+  <link rel="icon" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500&display=swap">
+  <link rel="stylesheet" href="style.css?v=restore-63bb363-20261123">
+  <link rel="stylesheet" href="editorial.css?v=refactor-20261124-3">
+  <script src="site.js?v=refactor-20261124-2" defer></script>
+  <script src="motion.js?v=klein-ascii-1" defer></script>
+  <link rel="stylesheet" href="typography.css?v=refactor-20261124-2">
+</head>
+<body class="theme-talk">
+  <a class="skip" href="#main">跳到正文</a>
+
+  <header class="site-head">
+    <a class="identity" href="index.html" aria-label="龙致君 首页">
+      <span>龙致君<small>LONG ZHIJUN</small></span>
+    </a>
+    <nav aria-label="主导航">
+      <a href="index.html#work">精选项目</a>
+      <a href="index.html#about">一线经历</a>
+      <!-- TODO: 放入简历 PDF 至 assets/resume.pdf 或更新此处路径 -->
+      <a href="assets/resume.pdf" data-resume-link>简历 PDF</a>
+      <a class="nav-contact" href="https://github.com/rywlon" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap">
+    <a class="case-back" href="index.html#project-talkwtf">← 返回精选项目</a>
+
+    <header class="case-hero">
+      <p class="eyebrow">03 · macOS 开源语音转文字工具 / VOICE TO AGENT</p>
+      <h1>TalkWTF</h1>
+      <p class="lede">日常顺手的 macOS 语音转文字工具，<br>也能按下热键直接把需求交给本地 Agent。</p>
+      <div class="case-intro">
+        <span>项目概览</span>
+        <p>最初因为用不惯 Typeless，我自己动手写了一个开源的 macOS 语音转文字工具。它最核心的用途就是日常语音输入——写文档、聊天、记想法时按住说话，松手文字直接上屏。用顺手之后发现，语音还可以更深地融入真实工作流，于是加入了 Voice to Agent：按下「交给 Agent」热键说出需求，由 TalkWTF 自己判断并分发给对应的本地 Agent 去执行。</p>
+      </div>
+      <div class="case-actions">
+        <a class="button" href="https://github.com/rywlon/TalkWTF" target="_blank" rel="noopener noreferrer">查看 GitHub 开源仓库 <span>↗</span></a>
+      </div>
+      <dl class="case-meta">
+        <div>
+          <dt>项目定位</dt>
+          <dd>macOS 开源语音转文字输入工具 + Voice to Agent 工作流入口</dd>
+        </div>
+        <div>
+          <dt>技术栈</dt>
+          <dd>SwiftUI 桌面壳 + Rust 核心，支持日常输入与本地 Agent 接入</dd>
+        </div>
+        <div>
+          <dt>运行环境</dt>
+          <dd>macOS 14+ · Apple Silicon · 源码开源</dd>
+        </div>
+      </dl>
+    </header>
+
+    <figure class="case-cover talk-cover">
+      <a href="assets/talk-voice.jpg" aria-label="打开完整界面原图">
+        <img src="assets/talk-voice.jpg" alt="TalkWTF 桌面界面：语音转文字与 Voice to Agent 工作流入口" width="2000" height="1400">
+      </a>
+      <figcaption>TalkWTF 桌面界面：既能日常语音转文字，也能把语音需求直接分发给本地 Agent</figcaption>
+    </figure>
+
+    <div class="case-layout">
+      <nav class="case-index" aria-label="案例目录">
+        <span>目录</span>
+        <a href="#origin">为什么做</a>
+        <a href="#voice-to-agent">日常输入 × Voice to Agent</a>
+        <a href="#architecture">实现细节</a>
+        <a href="#screens">界面原图</a>
+      </nav>
+
+      <div class="case-body">
+        <section class="case-section" id="origin">
+          <p class="eyebrow">01 · 起因</p>
+          <h2>用不惯 Typeless，先做一个自己每天愿意用的语音转文字工具。</h2>
+          <p>日常写文档、回消息、写提示词时，说话比打字快得多。但市面上的语音转文字工具（如 Typeless）在快捷键习惯、本地可控性和润色方式上总觉得别扭。索性自己动手，在 macOS 上写了一个开源的语音转文字工具——按住说话、松开上屏，配合个人词库和口语整理，首先把每天高频使用的基础输入体验做到顺手。</p>
+          <p>每天拿它当主力输入法之后，一个新的场景自然浮现出来：很多时候开口并不是为了把字打进某个输入框，而是想让电脑里的 AI Agent 直接开始干活。语音输入没必要只停留在「替代键盘」，完全可以进一步融入工作流。</p>
+        </section>
+
+        <section class="case-section" id="voice-to-agent">
+          <p class="eyebrow">02 · 融入工作流：VOICE TO AGENT</p>
+          <h2>既能日常打字，也能按下热键直接派活。</h2>
+          <p>在保留轻量日常语音输入的基础上，TalkWTF 增加了独立的 <strong>Voice to Agent</strong> 入口：不用切窗口、不用手动挑工具，直接开口交代任务即可：</p>
+          <div class="flow">
+            <div>
+              <small>日常模式</small>
+              <b>按住说话，松手即上屏</b>
+              <p>任意编辑器、聊天框、浏览器都能直接语音转文字输入</p>
+            </div>
+            <span>+</span>
+            <div>
+              <small>工作流模式</small>
+              <b>按下「交给 Agent」热键</b>
+              <p>不离开当前窗口，直接用自然语言说出要办的事</p>
+            </div>
+            <span>→</span>
+            <div>
+              <small>自动分发</small>
+              <b>判断并路由给本地 Agent</b>
+              <p>由 TalkWTF 识别任务并分发给对应的本地 Agent 执行</p>
+            </div>
+          </div>
+          <div class="decision">
+            <p>它首先是一个顺手的日常语音转文字工具；当你需要动用本地 AI 工具干活时，它又能无缝变成直接派活的 Voice to Agent 入口。</p>
+          </div>
+        </section>
+
+        <section class="case-section" id="architecture">
+          <p class="eyebrow">03 · 工程实现与开源</p>
+          <h2>SwiftUI 外壳 + Rust 核心，轻快且完全可控。</h2>
+          <p>桌面端采用 SwiftUI 构建 macOS 原生体验，底层核心基于 Rust（结合 Handy 底座，并借鉴了 OpenTypeless 在文本润色与个人词库上的交互经验）。除了常规语音转文字上屏，还支持接入 Codex、Claude Code、OpenCode、Cursor 等本地 Agent。</p>
+          <ul class="kb-list">
+            <li>
+              <strong>日常语音转文字</strong>
+              <span>随时在任意软件里按住说话即刻上屏，支持口语整理与自定义词库，替代重复手打。</span>
+            </li>
+            <li>
+              <strong>Voice to Agent 路由</strong>
+              <span>独立的「交给 Agent」触发热键，理解需求后自动判断并分发给合适的本地 Agent，省去来回切窗口。</span>
+            </li>
+            <li>
+              <strong>失败兜底不丢话</strong>
+              <span>如果目标 Agent 暂不可用或投递失败，完整保留转写文本并给出回执，绝不悄悄吞掉你说的话。</span>
+            </li>
+          </ul>
+          <div class="status-box">
+            <h3>源码与构建环境</h3>
+            <p>项目已在 GitHub 开源，支持在 Apple Silicon、macOS 14+ 环境下使用 Xcode 与 Rust 本地构建体验。欢迎查看源码、提 Issue 或一起折腾：</p>
+            <p><a href="https://github.com/rywlon/TalkWTF" target="_blank" rel="noopener noreferrer">打开 github.com/rywlon/TalkWTF ↗</a></p>
+          </div>
+        </section>
+
+        <section class="case-section" id="screens">
+          <p class="eyebrow">SCREENSHOTS</p>
+          <h2>界面截图</h2>
+          <p>切换查看 TalkWTF 界面，点击图片可查看完整尺寸。</p>
+          <figure class="gallery" data-gallery="talk">
+            <div class="gallery-tabs" role="group" aria-label="切换项目截图">
+              <button type="button" aria-pressed="true" data-slide="0" aria-controls="talk-still">语音转文字与 Voice to Agent</button>
+              <button type="button" aria-pressed="false" data-slide="1" aria-controls="talk-still">接入本地 Agent</button>
+            </div>
+            <div id="talk-still">
+              <a class="gallery-full" href="assets/talk-voice.jpg">
+                <img src="assets/talk-voice.jpg" alt="TalkWTF 桌面界面，展示日常语音转文字与 Voice to Agent 入口" loading="lazy" width="2000" height="1400">
+              </a>
+            </div>
+            <figcaption aria-live="polite">既可日常语音转文字上屏，也可按下热键直接把需求交给本地 Agent 执行。</figcaption>
+          </figure>
+        </section>
+
+        <div class="case-next">
+          <div>
+            <p>NEXT PROJECT · 01</p>
+            <a href="inventory.html">多仓库存查询系统 ↗</a>
+          </div>
+          <span aria-hidden="true">→</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="wrap footer">
+    <span>© 2026 龙致君 · Long Zhijun</span>
+    <span>业务现场 × 工程落地</span>
+    <a href="#main">回到顶部 ↑</a>
+  </footer>
+</body>
+</html>

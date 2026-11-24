@@ -1,1 +1,241 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Creator OPS · 龙致君</title><meta name="description" content="Creator OPS 是一个达人合作管理原型，面向需要处理咨询、预约、内容交付和退款的运营人员。它把常规问题交给业务规则处理，将退款、改期等需要人工判断的事项集中列出，并带上转交原因和原对话。当前是本地原型，使用模拟咨询验证流程。"><link rel="icon" href="favicon.svg"><link rel="stylesheet" href="style.css?v=restore-63bb363-20261123"><link rel="stylesheet" href="editorial.css?v=cover-woff-1"><script src="site.js?v=restore-63bb363-20261123" defer></script><script src="motion.js?v=klein-ascii-1" defer></script><link rel="stylesheet" href="typography.css?v=cover-woff-1"></head><body class="theme-creator"><a class="skip" href="#main">跳到正文</a><header class="site-head"><a class="identity" href="index.html" aria-label="龙致君 首页"><span>龙致君<small>LONG ZHIJUN</small></span></a><nav aria-label="主导航"><a href="index.html#work">精选工作</a><a href="index.html#approach">工作方式</a><a href="index.html#about">关于我</a><a class="nav-contact" href="https://github.com/rywlon">GitHub <span>↗</span></a></nav></header><main id="main" class="wrap"><a class="case-back" href="index.html#work">← 返回精选工作</a><header class="case-hero"><p class="eyebrow">创作者合作 / 流程设计与本地原型</p><h1>Creator OPS</h1><p class="lede">给达人合作运营用的<br>私信分流与待办工作台。</p><div class="case-intro"><span>项目摘要</span><p>Creator OPS 是一个达人合作管理原型，面向需要处理咨询、预约、内容交付和退款的运营人员。它把常规问题交给业务规则处理，将退款、改期等需要人工判断的事项集中列出，并带上转交原因和原对话。当前是本地原型，使用模拟咨询验证流程。</p></div><dl class="case-meta"><div><dt>我的工作</dt><dd>业务规则、产品方向与验收</dd></div><div><dt>实现方式</dt><dd>AI 辅助的本地工作台</dd></div><div><dt>当前状态</dt><dd>本地原型可运行</dd></div></dl></header><figure class="case-cover creator-cover"><a href="assets/creator-desk.png" aria-label="打开完整界面原图"><img src="assets/creator-desk.png" alt="本地原型界面 · 账号、数字与对话为合成数据" width="1920" height="1230"></a><figcaption>本地原型界面 · 账号、数字与对话为合成数据</figcaption></figure><div class="case-layout"><nav class="case-index" aria-label="案例目录"><span>IN THIS CASE</span><a href="#context">现场问题</a><a href="#decision">关键判断</a><a href="#implementation">方案与职责</a><a href="#validation">验证与状态</a><a href="#screens">界面原图</a></nav><div class="case-body"><section class="case-section" id="context"><p class="eyebrow">现场问题</p><h2>人不该翻完全部咨询，才看到一笔需要决定的退款。</h2><p>在创作者合作中，护理咨询、预约、内容发布与退款会叠在同一轮对话里。原来的三栏收件箱把常规问题与需要人拍板的事项放在一起，值班的人需要逐条打开，再判断下一步。</p><p>我把真实合作中的业务规则整理成分流与交接要求，并负责这个本地原型的产品方向和验收。</p></section><section class="case-section" id="decision"><p class="eyebrow">关键判断</p><h2>先划清谁来处理，再设计处理界面。</h2><p>常规咨询和预约按知识库规则处理；退款、档期、身份疑问与合作资格交给人。界面从「所有消息」转向「需要你处理的事项」。</p><div class="flow"><div><small>输入</small><b>咨询与合作消息</b><p>识别问题与所需信息</p></div><span>→</span><div><small>分流</small><b>规则 / 人工</b><p>按业务边界确定去向</p></div><span>→</span><div><small>交接</small><b>待办 + 原对话</b><p>保留原因和判断依据</p></div></div><div class="decision"><p>人工接管不应只是一个「转人工」按钮。它需要交代：为什么转交、发生过什么、现在要决定什么。</p></div></section><section class="case-section" id="implementation"><p class="eyebrow">方案与职责</p><h2>总览看状态，待办看原因。</h2><p>值班总览先呈现运行状态，再集中列出需要人工处理的事项。每个待办保留转交原因和相关对话，让人能直接判断退款或合作条件，减少重新翻找私信的步骤。</p><div class="case-scope"><div><h3>我负责</h3><p>梳理合作规则、定义分流与交接要求、确定产品方向和检查结果。</p></div><div><h3>实现方式</h3><p>AI 辅助实现本地工作台；以合成咨询验证处理路径与异常转交。</p></div></div></section><section class="case-section" id="validation"><p class="eyebrow">验证与状态</p><h2>先确认路径能走通，再谈完整自动化。</h2><div class="status-box"><h3>当前可以核对的部分</h3><p>本地原型能用合成咨询验证处理路径、转交异常并记录状态。Instagram 已能读取消息和起草回复。</p><h3>仍未完成的部分</h3><p>自动发送尚未接入这个控制台。截图中的账号、数字和对话均为原型数据，不能据此推导生产效率或业务增长。</p></div></section><section class="case-section" id="screens"><p class="eyebrow">SCREENSHOTS</p><h2>界面原图</h2><p>切换查看不同界面，点击图片可打开完整尺寸。</p><figure class="gallery" data-gallery="creator"><div class="gallery-tabs" role="group" aria-label="切换项目截图"><button type="button" aria-pressed="true" data-slide="0" aria-controls="creator-still">值班总览</button><button type="button" aria-pressed="false" data-slide="1" aria-controls="creator-still">人工待办</button><button type="button" aria-pressed="false" data-slide="2" aria-controls="creator-still">知识库</button><button type="button" aria-pressed="false" data-slide="3" aria-controls="creator-still">转交规则</button><button type="button" aria-pressed="false" data-slide="4" aria-controls="creator-still">运行记录</button><button type="button" aria-pressed="false" data-slide="5" aria-controls="creator-still">发现红人</button></div><div id="creator-still"><a class="gallery-full" href="assets/creator-desk.png"><img src="assets/creator-desk.png" alt="本地原型界面 · 账号、数字与对话为合成数据" loading="lazy" width="1920" height="1230"></a></div><figcaption aria-live="polite">本地原型界面 · 账号、数字与对话为合成数据</figcaption></figure></section><div class="case-next"><div><p>NEXT PROJECT</p><a href="inventory.html">多仓库存与履约 ↗</a></div><span>→</span></div></div></div></main><footer class="wrap footer"><span>© 2026 龙致君 · Long Zhijun</span><span>从现场出发，持续迭代。</span><a href="#main">回到顶部 ↑</a></footer></body></html>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>02 · Creator OPS 海外红人运营工作台 · 龙致君</title>
+  <meta name="description" content="Creator OPS 是从一线海外红人营销实战中长出来的运营工作台：12 份结构化 Markdown 知识库、Chrome DOM 浏览器自动化，以及以 9 步状态机为核心的 KOL Workspace。">
+  <link rel="icon" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500&display=swap">
+  <link rel="stylesheet" href="style.css?v=restore-63bb363-20261123">
+  <link rel="stylesheet" href="editorial.css?v=refactor-20261124-3">
+  <script src="site.js?v=refactor-20261124-2" defer></script>
+  <script src="motion.js?v=klein-ascii-1" defer></script>
+  <link rel="stylesheet" href="typography.css?v=refactor-20261124-2">
+</head>
+<body class="theme-creator">
+  <a class="skip" href="#main">跳到正文</a>
+
+  <header class="site-head">
+    <a class="identity" href="index.html" aria-label="龙致君 首页">
+      <span>龙致君<small>LONG ZHIJUN</small></span>
+    </a>
+    <nav aria-label="主导航">
+      <a href="index.html#work">精选项目</a>
+      <a href="index.html#about">一线经历</a>
+      <!-- TODO: 放入简历 PDF 至 assets/resume.pdf 或更新此处路径 -->
+      <a href="assets/resume.pdf" data-resume-link>简历 PDF</a>
+      <a class="nav-contact" href="https://github.com/rywlon" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap">
+    <a class="case-back" href="index.html#project-creator">← 返回精选项目</a>
+
+    <header class="case-hero">
+      <p class="eyebrow">02 · 红人运营工作台 / KOL WORKSPACE</p>
+      <h1>Creator OPS</h1>
+      <p class="lede">从 10 步红人一线交付里长出来的<br>规则知识库、浏览器自动化与状态机工作台。</p>
+      <div class="case-intro">
+        <span>项目概览</span>
+        <p>在一线负责海外红人营销全流程时，每天大量精力被困在手动刷 Instagram 私信、在红人 / 客服 / 门店之间传话、以及靠人脑死记硬背合作政策上。我把全部业务规则写成 12 份结构化 Markdown 知识库，绕开 Meta API 限制用 Chrome DOM 自动化跑通私信收发，最终把工具从「自动回复机器人」做成以 9 步合作状态机为核心的红人运营工作台。</p>
+      </div>
+      <dl class="case-meta">
+        <div>
+          <dt>业务背景</dt>
+          <dd>海外红人 10 步全流程 · 月目标约 20 位 KOL / 周产 3 条品牌 Reels</dd>
+        </div>
+        <div>
+          <dt>核心技术</dt>
+          <dd>12 份 Markdown 知识库 · AppleScript → Chrome JS → DOM · AI Agent</dd>
+        </div>
+        <div>
+          <dt>架构原则</dt>
+          <dd>确定性程序管执行，AI 管理解与草拟，高风险项人工拍板</dd>
+        </div>
+      </dl>
+    </header>
+
+    <figure class="case-cover creator-cover">
+      <a href="assets/creator-desk.png" aria-label="打开完整界面原图">
+        <img src="assets/creator-desk.png" alt="Creator OPS 红人运营工作台总览界面" width="1920" height="1230">
+      </a>
+      <figcaption>Creator OPS 工作台：把待办队列、合作阶段、KOL CRM、规则知识库和 Agent 运行记录收进同一界面</figcaption>
+    </figure>
+
+    <div class="case-layout">
+      <nav class="case-index" aria-label="案例目录">
+        <span>目录</span>
+        <a href="#context">一线瓶颈</a>
+        <a href="#kb">12 份知识库</a>
+        <a href="#automation">浏览器自动化</a>
+        <a href="#pivot">9 步状态机</a>
+        <a href="#progress">进展与边界</a>
+        <a href="#screens">界面原图</a>
+      </nav>
+
+      <div class="case-body">
+        <section class="case-section" id="context">
+          <p class="eyebrow">01 · 一线瓶颈</p>
+          <h2>不是消息太多，是人天天在当传话筒。</h2>
+          <p>在 Yuki House 负责海外红人合作期间，我亲手跑通从头到尾的 10 个环节：筛选、邀约、沟通、预约协调、确认预约、到店履约、内容交付、素材回收、二次剪辑、运营管理，背着每月约 20 位 KOL 发布内容、每周用回收素材产 3 条品牌 Reels 的硬指标。</p>
+          <p>真正拖垮节奏的并不是创意，而是高频率的低价值信息中转：每天要反复手动刷新 Instagram 查新消息；红人提个时间，我得转去问客服和门店，门店确认完再翻成英文回给红人；聊天记录散在私信、客服群和表格里，已经确认好的预约还经常被门店临时改期。更麻烦的是，各种门店限制、项目菜单和押金条款全靠人脑硬记，一忙就容易漏。</p>
+        </section>
+
+        <section class="case-section" id="kb">
+          <p class="eyebrow">02 · 业务知识库</p>
+          <h2>先把人脑硬记的规矩，拆成 12 份结构化 Markdown。</h2>
+          <p>要让程序和 AI 帮上忙，第一步不是写提示词，而是把模糊的口头约定变成可检索、可维护的规则文件。我将实际合作里的全部细则整理为 <strong>12 份结构化 Markdown 知识库文件</strong>，让 AI 草拟每一条英文回复都有明确依据：</p>
+          <ul class="kb-list">
+            <li>
+              <strong>门店与时段约束</strong>
+              <span>仅限 Box Hill 门店，仅开放工作日预约，最晚预约时间为 17:00。</span>
+            </li>
+            <li>
+              <strong>合作与项目范围</strong>
+              <span>单次合作遵循「一次一人一项目」，对应完整的门店护理项目菜单与适用说明。</span>
+            </li>
+            <li>
+              <strong>押金与取消改期</strong>
+              <span>预约需支付 40 澳元可退押金；明确临时取消、迟到和改期的处理条件。</span>
+            </li>
+            <li>
+              <strong>内容交付标准</strong>
+              <span>清晰写明 Reel 与 Tagged Post 的发布要求、标注规范与原片回收约定。</span>
+            </li>
+            <li>
+              <strong>回复风格与转交红线</strong>
+              <span>统一的英文沟通语气规范，以及必须触发人工介入的边界条件（退款、档期冲突、身份或合作资格存疑）。</span>
+            </li>
+          </ul>
+        </section>
+
+        <section class="case-section" id="automation">
+          <p class="eyebrow">03 · 工程方案与架构原则</p>
+          <h2>API 走不通，就走桌面浏览器 DOM 路线。</h2>
+          <p>受限于 Meta 官方接口权限，常规 API 路线无法直接收发所需的商业账号私信。我改走务实的桌面浏览器自动化路线：通过 <code>AppleScript → Chrome JavaScript → DOM</code> 直接操作 Meta Business Suite 页面，跑通了定时轮询新消息、解析网页 DOM 提取会话内容、识别合作需求以及自动填入并发送回复。</p>
+          <p>在工程拆分上，我坚持一条核心原则——<strong>绝不让大模型去做该由代码保证稳定性的事</strong>：</p>
+          <div class="arch-split">
+            <div class="arch-col">
+              <h3>确定性程序负责执行</h3>
+              <p>定时轮询新私信、消息去重、Chrome DOM 读写、私信发送动作、发送后状态校验与记录归档。</p>
+              <p>所有可复现的步骤全部写成确定性脚本，可追踪、可重试、不靠模型碰运气。</p>
+            </div>
+            <div class="arch-col">
+              <h3>AI Agent 负责理解与判断</h3>
+              <p>阅读非结构化英文私信、提取红人意向（想做的项目、可用时间、粉丝情况）、检索 12 份知识库草拟得体回复、识别异常诉求。</p>
+              <p>遇到退款、改期或超纲问题，自动整理上下文转交真人处理。</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-section" id="pivot">
+          <p class="eyebrow">04 · 关键产品转折</p>
+          <h2>自动回私信只是起点，核心是管住业务状态。</h2>
+          <p>私信自动收发跑通之后，我很快发现一个更现实的问题：如果只做一个自动回复 Chatbot，聊完十轮还是得人工去翻记录「这位红人交押金了吗？到店了吗？发 Reel 了吗？原片收齐了吗？」。</p>
+          <p>于是我把整个产品转向<strong>以业务状态为中心的红人运营工作台（KOL Workspace）</strong>——把散乱的非结构化私信抽成一条清晰的 9 步状态机，并将待办队列、阶段看板、KOL CRM、知识库和 Agent 执行收进同一个界面：</p>
+          <div class="state-pipeline" aria-label="红人合作 9 步状态机">
+            <div class="state-step">
+              <span class="step-index">01</span>
+              <strong>表达意向</strong>
+              <p>抓取新私信并识别合作意愿</p>
+            </div>
+            <div class="state-step">
+              <span class="step-index">02</span>
+              <strong>选项目</strong>
+              <p>按菜单确认单次体验项目</p>
+            </div>
+            <div class="state-step">
+              <span class="step-index">03</span>
+              <strong>提供时间</strong>
+              <p>校验工作日与 17:00 前档期</p>
+            </div>
+            <div class="state-step">
+              <span class="step-index">04</span>
+              <strong>客服排期</strong>
+              <p>同步门店与客服锁定位置</p>
+            </div>
+            <div class="state-step">
+              <span class="step-index">05</span>
+              <strong>押金</strong>
+              <p>核对 40 澳元可退押金状态</p>
+            </div>
+            <div class="state-step">
+              <span class="step-index">06</span>
+              <strong>预约成功</strong>
+              <p>发出到店指引与注意事项</p>
+            </div>
+            <div class="state-step">
+              <span class="step-index">07</span>
+              <strong>到店履约</strong>
+              <p>追踪实际到店与体验完成</p>
+            </div>
+            <div class="state-step">
+              <span class="step-index">08</span>
+              <strong>发布检查</strong>
+              <p>核对 Reel 与 Tagged Post</p>
+            </div>
+            <div class="state-step">
+              <span class="step-index">09</span>
+              <strong>素材归档</strong>
+              <p>回收原片并转入周更剪辑库</p>
+            </div>
+          </div>
+          <div class="decision">
+            <p>好用的工作台不是把所有私信堆给你看，而是告诉你：当前卡在哪一步、哪些 AI 已经按规矩办妥了、哪几笔改期和退款需要你现在拍板。</p>
+          </div>
+        </section>
+
+        <section class="case-section" id="progress">
+          <p class="eyebrow">05 · 进展与边界</p>
+          <h2>什么已经跑通，什么留给人拍板。</h2>
+          <div class="status-box">
+            <h3>已跑通的能力</h3>
+            <p>12 份结构化 Markdown 知识库、Meta Business Suite 定时轮询、Chrome DOM 私信读取、合作需求提取、规则驱动的英文回复生成以及浏览器端自动发送均已跑通；工作台已将待办队列、9 步阶段管理、KOL CRM、知识库与运行记录整合在同一界面。</p>
+            <h3>持续完善与人为保留的边界</h3>
+            <p>客服与 KOL 之间的全自动双向协调及自动改期流程仍在持续完善。涉及押金退款、门店临时改期以及合作资格例外等高风险变更，刻意保持默认转人工拍板，不交给模型擅自决定。</p>
+          </div>
+        </section>
+
+        <section class="case-section" id="screens">
+          <p class="eyebrow">SCREENSHOTS</p>
+          <h2>工作台界面截图</h2>
+          <p>切换查看工作台核心模块，点击图片可打开完整尺寸。</p>
+          <figure class="gallery" data-gallery="creator">
+            <div class="gallery-tabs" role="group" aria-label="切换项目截图">
+              <button type="button" aria-pressed="true" data-slide="0" aria-controls="creator-still">运营总览</button>
+              <button type="button" aria-pressed="false" data-slide="1" aria-controls="creator-still">高风险待办</button>
+              <button type="button" aria-pressed="false" data-slide="2" aria-controls="creator-still">12 份知识库</button>
+              <button type="button" aria-pressed="false" data-slide="3" aria-controls="creator-still">转交规则</button>
+              <button type="button" aria-pressed="false" data-slide="4" aria-controls="creator-still">状态记录</button>
+              <button type="button" aria-pressed="false" data-slide="5" aria-controls="creator-still">KOL CRM</button>
+            </div>
+            <div id="creator-still">
+              <a class="gallery-full" href="assets/creator-desk.png">
+                <img src="assets/creator-desk.png" alt="Creator OPS 工作台总览，展示状态统计、运行记录与人工待办队列" loading="lazy" width="1920" height="1230">
+              </a>
+            </div>
+            <figcaption aria-live="polite">把私信动态、合作阶段进度与需要人工拍板的改期/退款集中到同一屏处理。</figcaption>
+          </figure>
+        </section>
+
+        <div class="case-next">
+          <div>
+            <p>NEXT PROJECT · 03</p>
+            <a href="talkwtf.html">TalkWTF · macOS 开源 Voice to Agent 工具 ↗</a>
+          </div>
+          <span aria-hidden="true">→</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="wrap footer">
+    <span>© 2026 龙致君 · Long Zhijun</span>
+    <span>业务现场 × 工程落地</span>
+    <a href="#main">回到顶部 ↑</a>
+  </footer>
+</body>
+</html>

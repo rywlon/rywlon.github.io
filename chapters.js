@@ -2,7 +2,7 @@
 (() => {
  const reduce=matchMedia('(prefers-reduced-motion: reduce)');
  let smooth,rafId=0;
- const chapters=[...document.querySelectorAll('.hero,.reading-intro,.project-creator,.project-inventory,.project-talk,.contact')].map(section=>({
+ const chapters=[...document.querySelectorAll('.hero,.reading-intro,.project-creator,.project-inventory,.project-talk,.site-closing')].map(section=>({
   section,
   isHero:section.classList.contains('hero'),
   top:0,
@@ -10,12 +10,13 @@
   lastProgress:NaN,
   targets:[
    [section.querySelector('.ascii-live,.project-creator>.project-ascii'),240],
-   [section.querySelector('.chapter-dots'),260],
-   [section.querySelector('h1,.contact>.chapter-dots+div'),-180],
+   [section.querySelector('.chapter-dots'),180],
+   [section.querySelector('h1'),-160],
+   [section.querySelector('.hero-panel'),-80],
    [section.querySelector('figcaption'),-85],
    [section.querySelector('.creator-visual,.inventory-visual,.talk-visual'),-65],
    [section.querySelector('.hero-copy'),-35],
-   [section.querySelector('.project-info,.contact>div:last-child'),-130]
+   [section.querySelector('.project-info'),-110]
   ].filter(([el])=>Boolean(el))
  }));
  let lastW=0,lastH=0;

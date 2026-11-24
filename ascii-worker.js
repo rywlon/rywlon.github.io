@@ -1,15 +1,15 @@
+importScripts('ascii-gpu.js?v=1');
 /* Direct text rendering off the main thread; pattern math retained from 6eecfce. */
 const fields=new Map();
 const expScale=128/2.5,expLut=new Float32Array(129);
 for(let i=0;i<=128;i++)expLut[i]=Math.exp(-i/expScale);
 let timer=0,hidden=false,reduced=false;
 function render(f){
- const {ctx,w,h,rows,cols,cell,mode,phase,pointer,clip,ink,sinY5,cosY5}=f;
+ const {ctx,gpu,w,h,rows,cols,cell,mode,phase,pointer,clip,ink,sinY5,cosY5}=f;
  if(!w||!h||!clip||clip.right<=clip.left||clip.bottom<=clip.top)return;
  const set=mode==='triage'?' .:-=>#§@':mode==='sync'?' .:|+x#█@':' .:+*#%@',setLen=set.length;
  let cells=0,glyphs=0;
- ctx.clearRect(0,0,w,h);
- ctx.font='700 10px SFMono-Regular, Consolas, monospace';ctx.fillStyle=ink;
+ if(gpu)gpu.begin();else{ctx.clearRect(0,0,w,h);ctx.font='700 10px SFMono-Regular, Consolas, monospace';ctx.fillStyle=ink;}
       const aspect = (h / Math.max(w, 1)) * 1.8;
       const ptrActive = pointer.active;
       const ptrX = ptrActive ? (pointer.x) / Math.max(w, 1) : -1;
@@ -103,12 +103,14 @@ function render(f){
           const pulse = 0.8 + 0.2 * (sinPB * cosY5[j] + cosPB * sinY5[j]);
           const idx = Math.min(setLen - 1, (density * pulse * setLen) | 0);
           if (idx > 0) {
-            ctx.globalAlpha = 0.35 + (idx / setLen) * 0.55;
-              ctx.fillText(set[idx], i * cell, j * 11 + 10); glyphs++;
+            const alpha=0.35+(idx/setLen)*0.55;
+            if(gpu)gpu.glyph(i*cell,j*11+10,idx,alpha);
+            else{ctx.globalAlpha=alpha;ctx.fillText(set[idx],i*cell,j*11+10);}glyphs++;
           }
         }
       }
 
+ if(gpu)gpu.end();
  f.frames++;f.cells=cells;f.glyphs=glyphs;
 }
 function run(){
@@ -122,7 +124,9 @@ function run(){
 function schedule(){if(!timer&&!hidden&&!reduced)timer=setTimeout(run,0);}
 onmessage=({data:m})=>{
  if(m.type==='init'){
-  fields.set(m.id,{...m,ctx:m.canvas.getContext('2d'),phase:0,last:0,frames:0,pointer:{active:false,x:0,y:0},visible:false});return;
+  const chars=m.mode==='triage'?' .:-=>#§@':m.mode==='sync'?' .:|+x#█@':' .:+*#%@';
+  const gpu=createAsciiGPU(m.canvas,chars,m.ink);
+  fields.set(m.id,{...m,gpu,ctx:gpu?null:m.canvas.getContext('2d'),phase:0,last:0,frames:0,pointer:{active:false,x:0,y:0},visible:false});return;
  }
  if(m.type==='state'){
   hidden=m.hidden;reduced=m.reduced;
@@ -136,7 +140,7 @@ onmessage=({data:m})=>{
    const resized=f.w!==v.w||f.h!==v.h||f.dpr!==v.dpr;
    Object.assign(f,v);
    if(resized){
-    f.canvas.width=Math.round(f.w*f.dpr);f.canvas.height=Math.round(f.h*f.dpr);f.ctx.setTransform(f.dpr,0,0,f.dpr,0,0);
+    f.canvas.width=Math.round(f.w*f.dpr);f.canvas.height=Math.round(f.h*f.dpr);if(f.gpu)f.gpu.resize(f.w,f.h,f.dpr);else f.ctx.setTransform(f.dpr,0,0,f.dpr,0,0);
     f.cell=f.w<500?9:10;f.rows=Math.ceil(f.h/11);f.cols=Math.ceil(f.w/f.cell);
     f.sinY5=Float32Array.from({length:f.rows},(_,j)=>Math.sin(j/f.rows*5));
     f.cosY5=Float32Array.from({length:f.rows},(_,j)=>Math.cos(j/f.rows*5));
@@ -145,5 +149,5 @@ onmessage=({data:m})=>{
   }schedule();return;
  }
  if(m.type==='pointer'){const f=fields.get(m.id);if(f)f.pointer=m.pointer;return;}
- if(m.type==='stats')postMessage({type:'stats',fields:[...fields.values()].map(f=>({id:f.id,frames:f.frames,cells:f.cells,glyphs:f.glyphs,totalCells:f.rows*f.cols,visible:f.visible,phase:f.phase}))});
+ if(m.type==='stats')postMessage({type:'stats',fields:[...fields.values()].map(f=>({id:f.id,backend:f.gpu?'webgl2':'canvas2d',frames:f.frames,cells:f.cells,glyphs:f.glyphs,totalCells:f.rows*f.cols,visible:f.visible,phase:f.phase}))});
 };

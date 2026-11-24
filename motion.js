@@ -19,7 +19,8 @@
         if (!w || !h) return;
         const pm = window.portfolioMotion;
         if (!pm) return;
-        const atlas = pm.getSetAtlas('#ffffff', charsConverge);
+        ctx.font = '700 10px SFMono-Regular, Consolas, monospace';
+        ctx.fillStyle = '#ffffff';
         const expLut = pm.expLut;
         const expScale = pm.EXP_SCALE;
 
@@ -76,7 +77,8 @@
             const pulse = 0.8 + 0.2 * (sinPB * cosY5[j] + cosPB * sinY5[j]);
             const idx = Math.min(setLen - 1, (density * pulse * setLen) | 0);
             if (idx > 0) {
-              ctx.drawImage(atlas, idx * 24, 0, 24, 28, drawX, j * 11 - 1, 12, 14);
+              ctx.globalAlpha = 0.35 + (idx / setLen) * 0.55;
+              ctx.fillText(charsConverge[idx], i * cell, j * 11 + 10);
             }
           }
         }
@@ -97,7 +99,8 @@
       const sync = () => {
         cancelAnimationFrame(frame); frame = 0; last = 0;
         const staticMode = reduce.matches;
-        field.classList.toggle('field-live', !staticMode);
+        field.classList.add('field-live');
+        if(staticMode) draw();
         if (!staticMode && visible && !document.hidden) frame = requestAnimationFrame(tick);
       };
       const resize = () => {
@@ -115,7 +118,9 @@
           sinY5[j] = Math.sin(y5);
           cosY5[j] = Math.cos(y5);
         }
-        canvas.width = w; canvas.height = h;
+        const dpr=Math.min(devicePixelRatio||1,2);
+        canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);
+        ctx.setTransform(dpr,0,0,dpr,0,0);
         draw();
       };
       field.addEventListener('pointermove', event => {

@@ -42,7 +42,7 @@
 .hero-editorial .textmode-field{inset:-180px 0;top:-180px;left:0;width:100%;height:calc(100% + 360px);background:transparent;z-index:-1;transform:translate3d(0,var(--field-drift,0px),0);will-change:transform}
 .hero .ascii-live{opacity:.48}.hero .textmode-field>img{opacity:.3}
 .hero .textmode-field figcaption{left:var(--gutter);right:var(--gutter);bottom:220px;transform:translate3d(0,var(--caption-drift,0px),0);will-change:transform}
-.chapter-dots{position:absolute;inset:-180px 0;background:url('assets/dot-terrain.svg') center bottom/100% auto no-repeat;opacity:.4;z-index:-2;pointer-events:none;transform:translate3d(0,var(--dots-drift,0px),0);will-change:transform}
+.chapter-dots{position:absolute;inset:-180px 0;background:none;opacity:.4;z-index:-2;pointer-events:none;transform:translate3d(0,var(--dots-drift,0px),0);will-change:transform}
 .reading-intro{position:relative;background:white;padding-top:85px}.reading-intro .hero-copy{margin:0;padding-bottom:65px;transform:translate3d(0,calc(var(--visual-drift,0px) * .45),0);will-change:transform}.reading-intro .hero-copy .button{grid-column:2;justify-self:start;margin-top:22px}.reading-intro .hero-bottom{margin:0}
 .work-section{padding-top:110px}
 /* Full-bleed #0038FF Creator OPS chapter with background ASCII and readable white text */
@@ -78,3 +78,6 @@
 html,body{overscroll-behavior-y:none}
 html.lenis,html.lenis body{height:auto}
 html.lenis{scroll-behavior:auto!important}
+
+/* Direct text-rendered ASCII replaces the closing SVG terrain. */
+.contact .chapter-dots .project-ascii{opacity:1;z-index:0}

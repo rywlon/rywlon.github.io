@@ -2,7 +2,7 @@
 (() => {
  if(!window.Worker||!HTMLCanvasElement.prototype.transferControlToOffscreen)return;
  let worker;
- try{worker=new Worker('ascii-worker.js?v=4');}catch{return;}
+ try{worker=new Worker('ascii-worker.js?v=5');}catch{return;}
  window.asciiWorkers=true;
  const reduce=matchMedia('(prefers-reduced-motion: reduce)');
  const items=[...document.querySelectorAll('.textmode-field,[data-project-ascii]')].map((field,id)=>{
@@ -13,35 +13,49 @@
   worker.postMessage({type:'init',id,canvas:offscreen,mode:hero?'converge':field.dataset.projectAscii,ink:hero?'#ffffff':getComputedStyle(field).color,speed:hero?.55:.45},[offscreen]);
   const clips=[];
   for(let e=field;e&&e!==document.body;e=e.parentElement){if(/hidden|clip|auto|scroll/.test(getComputedStyle(e).overflow))clips.push(e);}
-  const item={id,field,canvas,surface,clips,active:true};
+  const item={id,field,canvas,surface,clips,active:true,pointer:null,tileKey:null};
   field.addEventListener('pointermove',e=>{
    if(reduce.matches||e.pointerType!=='mouse')return;
-   const r=surface.getBoundingClientRect();worker.postMessage({type:'pointer',id,pointer:{active:true,x:e.clientX-r.left,y:e.clientY-r.top}});
+   const r=surface.getBoundingClientRect();item.pointer={active:true,x:e.clientX-r.left,y:e.clientY-r.top};
   },{passive:true});
-  field.addEventListener('pointerleave',()=>worker.postMessage({type:'pointer',id,pointer:{active:false,x:0,y:0}}));
+  field.addEventListener('pointerleave',()=>{item.pointer={active:false,x:0,y:0};});
   return item;
  });
- let pending=0;
+ let pending=true,frameId=0,busy=false;
  function update(){
-  pending=0;const batch=[];
+  pending=false;const batch=[],changes=[];
   for(const item of items){
    if(!item.active){batch.push({id:item.id,visible:false});continue;}
    const r=item.surface.getBoundingClientRect();let left=Math.max(0,r.left),right=Math.min(innerWidth,r.right),top=Math.max(0,r.top),bottom=Math.min(innerHeight,r.bottom);
    for(const e of item.clips){const c=e.getBoundingClientRect();left=Math.max(left,c.left);right=Math.min(right,c.right);top=Math.max(top,c.top);bottom=Math.min(bottom,c.bottom);}
-   const tile={left:Math.floor(Math.max(0,left-r.left-128)/128)*128,top:Math.floor(Math.max(0,top-r.top-128)/128)*128,w:innerWidth+384,h:innerHeight+384};
-   Object.assign(item.canvas.style,{left:tile.left+'px',top:tile.top+'px',width:tile.w+'px',height:tile.h+'px'});
+   const tile={left:Math.floor(Math.max(0,left-r.left-8)/8)*8,top:Math.floor(Math.max(0,top-r.top-48)/32)*32,w:innerWidth+24,h:innerHeight+128};
+   const key=[tile.left,tile.top,tile.w,tile.h].join(',');
+   if(key!==item.tileKey){item.tileKey=key;changes.push([item.canvas,tile]);}
    batch.push({id:item.id,tile,w:Math.round(r.width),h:Math.round(r.height),dpr:Math.min(devicePixelRatio||1,2),visible:right>left&&bottom>top,clip:{left:left-r.left,right:right-r.left,top:top-r.top,bottom:bottom-r.top}});
   }
+  // Finish geometry reads before writing styles: avoid forced layouts between fields.
+  for(const [canvas,tile] of changes)Object.assign(canvas.style,{left:tile.left+'px',top:tile.top+'px',width:tile.w+'px',height:tile.h+'px'});
   worker.postMessage({type:'layout',fields:batch});
  }
- function request(){if(!pending)pending=requestAnimationFrame(update);}
+ // One outstanding draw: never enqueue frames the browser cannot present.
+ function tick(now){
+  frameId=0;
+  if(document.hidden)return;
+  if(pending)update();
+  if(!reduce.matches&&!busy&&items.some(i=>i.active)){
+   for(const item of items)if(item.pointer){worker.postMessage({type:'pointer',id:item.id,pointer:item.pointer});item.pointer=null;}
+   busy=true;worker.postMessage({type:'frame',now});
+  }
+  if(!reduce.matches)frameId=requestAnimationFrame(tick);
+ }
+ function request(){pending=true;if(!frameId&&!document.hidden)frameId=requestAnimationFrame(tick);}
  const observer=new IntersectionObserver(entries=>{for(const e of entries){items.find(i=>i.field===e.target).active=e.isIntersecting;}request();},{rootMargin:'100px'});
  items.forEach(i=>observer.observe(i.field));
  const resize=new ResizeObserver(request);items.forEach(i=>resize.observe(i.surface));
- function state(){worker.postMessage({type:'state',hidden:document.hidden,reduced:reduce.matches});request();}
+ function state(){if(frameId){cancelAnimationFrame(frameId);frameId=0;}worker.postMessage({type:'state',hidden:document.hidden,reduced:reduce.matches});request();}
  addEventListener('scroll',request,{passive:true});addEventListener('resize',request,{passive:true});addEventListener('load',request);document.addEventListener('visibilitychange',state);reduce.addEventListener('change',state);
  // Read-only diagnostics for verifying worker activity and viewport culling.
- worker.onmessage=({data})=>{if(data.type==='stats')window.asciiWorkerStats=data.fields;};
+ worker.onmessage=({data})=>{if(data.type==='stats')window.asciiWorkerStats=data.fields;else if(data.type==='done')busy=false;};
  window.inspectAsciiWorker=()=>worker.postMessage({type:'stats'});
  state();
 })();

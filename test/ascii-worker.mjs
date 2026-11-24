@@ -26,7 +26,13 @@ const gpuSend=data=>gpuSandbox.onmessage({data});
 for(let id=0;id<2;id++)gpuSend({type:'init',id,canvas:{getContext:()=>({transferFromImageBitmap(){}})},mode:'converge',ink:'#fff',speed:.55});
 const tile={left:0,top:128,w:1384,h:584};
 gpuSend({type:'layout',fields:[0,1].map(id=>({id,w:1000,h:1000+id*600,dpr:2,tile,visible:true,clip:{left:0,right:1000,top:200,bottom:400}}))});
-for(let i=0;i<3;i++)vm.runInContext('run()',gpuSandbox);
-assert.equal(resizes,1);assert.equal(draws,6);assert.ok(scheduled>=3);
+for(let i=0;i<3;i++)gpuSend({type:'frame',now:100+i*16});
+assert.equal(resizes,1);assert.equal(draws,6);assert.equal(output.type,'done');
 
 console.log('PASS overlapping fields keep one GPU allocation and continue on animation frames.');
+const completed=draws;
+gpuSend({type:'state',hidden:true,reduced:false});gpuSend({type:'frame',now:164});
+assert.equal(draws,completed);assert.equal(output.type,'done');
+gpuSend({type:'state',hidden:false,reduced:false});gpuSend({type:'frame',now:180});
+assert.equal(draws,completed+2);
+console.log('PASS hidden/resumed frame requests always acknowledge and resume drawing.');

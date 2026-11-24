@@ -7,9 +7,7 @@ const sharedGPU=createAsciiGPU(gpuCanvas,atlasChars,'#ffffff');
 let gpuWidth=0,gpuHeight=0,gpuDpr=0;
 const expScale=128/2.5,expLut=new Float32Array(129);
 for(let i=0;i<=128;i++)expLut[i]=Math.exp(-i/expScale);
-let timer=0,hidden=false,reduced=false;
-const nextFrame=typeof requestAnimationFrame==='function'?requestAnimationFrame.bind(self):fn=>setTimeout(()=>fn(performance.now()),16);
-const cancelFrame=typeof cancelAnimationFrame==='function'?cancelAnimationFrame.bind(self):clearTimeout;
+let hidden=false,reduced=false;
 let surfaceResizes=0;
 function render(f){
  const {ctx,gpu,w,h,tile,rows,cols,cell,mode,phase,pointer,clip,ink,sinY5,cosY5}=f;
@@ -120,16 +118,14 @@ function render(f){
  if(gpu){gpu.end();f.output.transferFromImageBitmap(gpuCanvas.transferToImageBitmap());}
  f.frames++;f.cells=cells;f.glyphs=glyphs;
 }
-function run(){
- timer=0;if(hidden||reduced)return;
- const now=performance.now();let active=false;
+function run(now=performance.now()){
+ if(hidden||reduced)return;
  for(const f of fields.values())if(f.visible){
-  active=true;f.phase+=f.last?Math.min((now-f.last)/1000,.1)*f.speed:0;f.last=now;render(f);
+  f.phase+=f.last?Math.min((now-f.last)/1000,.1)*f.speed:0;f.last=now;render(f);
  }else f.last=0;
- if(active)timer=nextFrame(run);
 }
-function schedule(){if(!timer&&!hidden&&!reduced)timer=nextFrame(run);}
 onmessage=({data:m})=>{
+ if(m.type==='frame'){run(m.now);postMessage({type:'done'});return;}
  if(m.type==='init'){
   const chars=m.mode==='triage'?' .:-=>#§@':m.mode==='sync'?' .:|+x#█@':' .:+*#%@';
   const gpu=sharedGPU;const output=gpu?m.canvas.getContext('bitmaprenderer'):null;
@@ -137,9 +133,8 @@ onmessage=({data:m})=>{
  }
  if(m.type==='state'){
   hidden=m.hidden;reduced=m.reduced;
-  cancelFrame(timer);timer=0;
   for(const f of fields.values()){f.last=0;if(reduced&&f.visible)render(f);}
-  schedule();return;
+  return;
  }
  if(m.type==='layout'){
   for(const v of m.fields){const f=fields.get(v.id);if(!f)continue;
@@ -154,7 +149,7 @@ onmessage=({data:m})=>{
     f.cosY5=Float32Array.from({length:f.rows},(_,j)=>Math.cos(j/f.rows*5));
    }
    if(reduced&&f.visible)render(f);
-  }schedule();return;
+  }return;
  }
  if(m.type==='pointer'){const f=fields.get(m.id);if(f)f.pointer=m.pointer;return;}
  if(m.type==='stats')postMessage({type:'stats',fields:[...fields.values()].map(f=>({id:f.id,backend:f.gpu?'webgl2':'canvas2d',gpu:f.gpu?.inspect(),surfaceResizes,tile:f.tile,frames:f.frames,cells:f.cells,glyphs:f.glyphs,totalCells:f.rows*f.cols,visible:f.visible,phase:f.phase}))});

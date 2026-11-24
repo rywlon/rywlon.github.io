@@ -1,6 +1,10 @@
-importScripts('ascii-gpu.js?v=1');
+importScripts('ascii-gpu.js?v=2');
 /* Direct text rendering off the main thread; pattern math retained from 6eecfce. */
 const fields=new Map();
+const atlasChars=' .:-=>#§@|+x█*%';
+const gpuCanvas=new OffscreenCanvas(1,1);
+const sharedGPU=createAsciiGPU(gpuCanvas,atlasChars,'#ffffff');
+let gpuWidth=0,gpuHeight=0,gpuDpr=0;
 const expScale=128/2.5,expLut=new Float32Array(129);
 for(let i=0;i<=128;i++)expLut[i]=Math.exp(-i/expScale);
 let timer=0,hidden=false,reduced=false;
@@ -9,7 +13,7 @@ function render(f){
  if(!w||!h||!clip||clip.right<=clip.left||clip.bottom<=clip.top)return;
  const set=mode==='triage'?' .:-=>#§@':mode==='sync'?' .:|+x#█@':' .:+*#%@',setLen=set.length;
  let cells=0,glyphs=0;
- if(gpu)gpu.begin();else{ctx.clearRect(0,0,w,h);ctx.font='700 10px SFMono-Regular, Consolas, monospace';ctx.fillStyle=ink;}
+ if(gpu){if(gpuWidth!==w||gpuHeight!==h||gpuDpr!==f.dpr){gpuWidth=w;gpuHeight=h;gpuDpr=f.dpr;gpuCanvas.width=Math.round(w*f.dpr);gpuCanvas.height=Math.round(h*f.dpr);gpu.resize(w,h,f.dpr);}gpu.setInk(ink);gpu.begin();}else{ctx.clearRect(0,0,w,h);ctx.font='700 10px SFMono-Regular, Consolas, monospace';ctx.fillStyle=ink;}
       const aspect = (h / Math.max(w, 1)) * 1.8;
       const ptrActive = pointer.active;
       const ptrX = ptrActive ? (pointer.x) / Math.max(w, 1) : -1;
@@ -104,13 +108,13 @@ function render(f){
           const idx = Math.min(setLen - 1, (density * pulse * setLen) | 0);
           if (idx > 0) {
             const alpha=0.35+(idx/setLen)*0.55;
-            if(gpu)gpu.glyph(i*cell,j*11+10,idx,alpha);
+            if(gpu)gpu.glyph(i*cell,j*11+10,atlasChars.indexOf(set[idx]),alpha);
             else{ctx.globalAlpha=alpha;ctx.fillText(set[idx],i*cell,j*11+10);}glyphs++;
           }
         }
       }
 
- if(gpu)gpu.end();
+ if(gpu){gpu.end();f.output.transferFromImageBitmap(gpuCanvas.transferToImageBitmap());}
  f.frames++;f.cells=cells;f.glyphs=glyphs;
 }
 function run(){
@@ -125,8 +129,8 @@ function schedule(){if(!timer&&!hidden&&!reduced)timer=setTimeout(run,0);}
 onmessage=({data:m})=>{
  if(m.type==='init'){
   const chars=m.mode==='triage'?' .:-=>#§@':m.mode==='sync'?' .:|+x#█@':' .:+*#%@';
-  const gpu=createAsciiGPU(m.canvas,chars,m.ink);
-  fields.set(m.id,{...m,gpu,ctx:gpu?null:m.canvas.getContext('2d'),phase:0,last:0,frames:0,pointer:{active:false,x:0,y:0},visible:false});return;
+  const gpu=sharedGPU;const output=gpu?m.canvas.getContext('bitmaprenderer'):null;
+  fields.set(m.id,{...m,gpu,output,ctx:gpu?null:m.canvas.getContext('2d'),phase:0,last:0,frames:0,pointer:{active:false,x:0,y:0},visible:false});return;
  }
  if(m.type==='state'){
   hidden=m.hidden;reduced=m.reduced;
@@ -140,7 +144,7 @@ onmessage=({data:m})=>{
    const resized=f.w!==v.w||f.h!==v.h||f.dpr!==v.dpr;
    Object.assign(f,v);
    if(resized){
-    f.canvas.width=Math.round(f.w*f.dpr);f.canvas.height=Math.round(f.h*f.dpr);if(f.gpu)f.gpu.resize(f.w,f.h,f.dpr);else f.ctx.setTransform(f.dpr,0,0,f.dpr,0,0);
+    f.canvas.width=Math.round(f.w*f.dpr);f.canvas.height=Math.round(f.h*f.dpr);if(!f.gpu)f.ctx.setTransform(f.dpr,0,0,f.dpr,0,0);
     f.cell=f.w<500?9:10;f.rows=Math.ceil(f.h/11);f.cols=Math.ceil(f.w/f.cell);
     f.sinY5=Float32Array.from({length:f.rows},(_,j)=>Math.sin(j/f.rows*5));
     f.cosY5=Float32Array.from({length:f.rows},(_,j)=>Math.cos(j/f.rows*5));
@@ -149,5 +153,5 @@ onmessage=({data:m})=>{
   }schedule();return;
  }
  if(m.type==='pointer'){const f=fields.get(m.id);if(f)f.pointer=m.pointer;return;}
- if(m.type==='stats')postMessage({type:'stats',fields:[...fields.values()].map(f=>({id:f.id,backend:f.gpu?'webgl2':'canvas2d',frames:f.frames,cells:f.cells,glyphs:f.glyphs,totalCells:f.rows*f.cols,visible:f.visible,phase:f.phase}))});
+ if(m.type==='stats')postMessage({type:'stats',fields:[...fields.values()].map(f=>({id:f.id,backend:f.gpu?'webgl2':'canvas2d',gpu:f.gpu?.inspect(),frames:f.frames,cells:f.cells,glyphs:f.glyphs,totalCells:f.rows*f.cols,visible:f.visible,phase:f.phase}))});
 };

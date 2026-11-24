@@ -2,7 +2,7 @@
 (() => {
  if(!window.Worker||!HTMLCanvasElement.prototype.transferControlToOffscreen)return;
  let worker;
- try{worker=new Worker('ascii-worker.js?v=2');}catch{return;}
+ try{worker=new Worker('ascii-worker.js?v=3');}catch{return;}
  window.asciiWorkers=true;
  const reduce=matchMedia('(prefers-reduced-motion: reduce)');
  const items=[...document.querySelectorAll('.textmode-field,[data-project-ascii]')].map((field,id)=>{

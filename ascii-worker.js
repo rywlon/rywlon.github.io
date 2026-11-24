@@ -1,4 +1,4 @@
-importScripts('ascii-gpu.js?v=2');
+importScripts('ascii-gpu.js?v=3');
 /* Direct text rendering off the main thread; pattern math retained from 6eecfce. */
 const fields=new Map();
 const atlasChars=' .:-=>#§@|+x█*%';
@@ -8,12 +8,15 @@ let gpuWidth=0,gpuHeight=0,gpuDpr=0;
 const expScale=128/2.5,expLut=new Float32Array(129);
 for(let i=0;i<=128;i++)expLut[i]=Math.exp(-i/expScale);
 let timer=0,hidden=false,reduced=false;
+const nextFrame=typeof requestAnimationFrame==='function'?requestAnimationFrame.bind(self):fn=>setTimeout(()=>fn(performance.now()),16);
+const cancelFrame=typeof cancelAnimationFrame==='function'?cancelAnimationFrame.bind(self):clearTimeout;
+let surfaceResizes=0;
 function render(f){
- const {ctx,gpu,w,h,rows,cols,cell,mode,phase,pointer,clip,ink,sinY5,cosY5}=f;
+ const {ctx,gpu,w,h,tile,rows,cols,cell,mode,phase,pointer,clip,ink,sinY5,cosY5}=f;
  if(!w||!h||!clip||clip.right<=clip.left||clip.bottom<=clip.top)return;
  const set=mode==='triage'?' .:-=>#§@':mode==='sync'?' .:|+x#█@':' .:+*#%@',setLen=set.length;
  let cells=0,glyphs=0;
- if(gpu){if(gpuWidth!==w||gpuHeight!==h||gpuDpr!==f.dpr){gpuWidth=w;gpuHeight=h;gpuDpr=f.dpr;gpuCanvas.width=Math.round(w*f.dpr);gpuCanvas.height=Math.round(h*f.dpr);gpu.resize(w,h,f.dpr);}gpu.setInk(ink);gpu.begin();}else{ctx.clearRect(0,0,w,h);ctx.font='700 10px SFMono-Regular, Consolas, monospace';ctx.fillStyle=ink;}
+ if(gpu){if(gpuWidth!==tile.w||gpuHeight!==tile.h||gpuDpr!==f.dpr){gpuWidth=tile.w;gpuHeight=tile.h;surfaceResizes++;gpuDpr=f.dpr;gpuCanvas.width=Math.round(tile.w*f.dpr);gpuCanvas.height=Math.round(tile.h*f.dpr);gpu.resize(tile.w,tile.h,f.dpr);}gpu.setInk(ink);gpu.begin();}else{ctx.clearRect(0,0,tile.w,tile.h);ctx.font='700 10px SFMono-Regular, Consolas, monospace';ctx.fillStyle=ink;}
       const aspect = (h / Math.max(w, 1)) * 1.8;
       const ptrActive = pointer.active;
       const ptrX = ptrActive ? (pointer.x) / Math.max(w, 1) : -1;
@@ -108,8 +111,8 @@ function render(f){
           const idx = Math.min(setLen - 1, (density * pulse * setLen) | 0);
           if (idx > 0) {
             const alpha=0.35+(idx/setLen)*0.55;
-            if(gpu)gpu.glyph(i*cell,j*11+10,atlasChars.indexOf(set[idx]),alpha);
-            else{ctx.globalAlpha=alpha;ctx.fillText(set[idx],i*cell,j*11+10);}glyphs++;
+            if(gpu)gpu.glyph(i*cell-tile.left,j*11+10-tile.top,atlasChars.indexOf(set[idx]),alpha);
+            else{ctx.globalAlpha=alpha;ctx.fillText(set[idx],i*cell-tile.left,j*11+10-tile.top);}glyphs++;
           }
         }
       }
@@ -123,9 +126,9 @@ function run(){
  for(const f of fields.values())if(f.visible){
   active=true;f.phase+=f.last?Math.min((now-f.last)/1000,.1)*f.speed:0;f.last=now;render(f);
  }else f.last=0;
- if(active)timer=setTimeout(run,50);
+ if(active)timer=nextFrame(run);
 }
-function schedule(){if(!timer&&!hidden&&!reduced)timer=setTimeout(run,0);}
+function schedule(){if(!timer&&!hidden&&!reduced)timer=nextFrame(run);}
 onmessage=({data:m})=>{
  if(m.type==='init'){
   const chars=m.mode==='triage'?' .:-=>#§@':m.mode==='sync'?' .:|+x#█@':' .:+*#%@';
@@ -134,7 +137,7 @@ onmessage=({data:m})=>{
  }
  if(m.type==='state'){
   hidden=m.hidden;reduced=m.reduced;
-  clearTimeout(timer);timer=0;
+  cancelFrame(timer);timer=0;
   for(const f of fields.values()){f.last=0;if(reduced&&f.visible)render(f);}
   schedule();return;
  }
@@ -142,9 +145,10 @@ onmessage=({data:m})=>{
   for(const v of m.fields){const f=fields.get(v.id);if(!f)continue;
    if(v.w===undefined){f.visible=false;f.last=0;continue;}
    const resized=f.w!==v.w||f.h!==v.h||f.dpr!==v.dpr;
+   const outputResized=!f.tile||f.tile.w!==v.tile.w||f.tile.h!==v.tile.h||f.dpr!==v.dpr;
    Object.assign(f,v);
+   if(outputResized){f.canvas.width=Math.round(f.tile.w*f.dpr);f.canvas.height=Math.round(f.tile.h*f.dpr);if(!f.gpu)f.ctx.setTransform(f.dpr,0,0,f.dpr,0,0);}
    if(resized){
-    f.canvas.width=Math.round(f.w*f.dpr);f.canvas.height=Math.round(f.h*f.dpr);if(!f.gpu)f.ctx.setTransform(f.dpr,0,0,f.dpr,0,0);
     f.cell=f.w<500?9:10;f.rows=Math.ceil(f.h/11);f.cols=Math.ceil(f.w/f.cell);
     f.sinY5=Float32Array.from({length:f.rows},(_,j)=>Math.sin(j/f.rows*5));
     f.cosY5=Float32Array.from({length:f.rows},(_,j)=>Math.cos(j/f.rows*5));
@@ -153,5 +157,5 @@ onmessage=({data:m})=>{
   }schedule();return;
  }
  if(m.type==='pointer'){const f=fields.get(m.id);if(f)f.pointer=m.pointer;return;}
- if(m.type==='stats')postMessage({type:'stats',fields:[...fields.values()].map(f=>({id:f.id,backend:f.gpu?'webgl2':'canvas2d',gpu:f.gpu?.inspect(),frames:f.frames,cells:f.cells,glyphs:f.glyphs,totalCells:f.rows*f.cols,visible:f.visible,phase:f.phase}))});
+ if(m.type==='stats')postMessage({type:'stats',fields:[...fields.values()].map(f=>({id:f.id,backend:f.gpu?'webgl2':'canvas2d',gpu:f.gpu?.inspect(),surfaceResizes,tile:f.tile,frames:f.frames,cells:f.cells,glyphs:f.glyphs,totalCells:f.rows*f.cols,visible:f.visible,phase:f.phase}))});
 };

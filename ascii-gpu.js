@@ -30,13 +30,14 @@ function createAsciiGPU(canvas,chars,ink){
  gl.bindTexture(gl.TEXTURE_2D,texture);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
  const colorCanvas=new OffscreenCanvas(1,1),cc=colorCanvas.getContext('2d');cc.fillStyle=ink;cc.fillRect(0,0,1,1);const rgb=cc.getImageData(0,0,1,1).data;
  gl.uniform3f(gl.getUniformLocation(program,'ink'),rgb[0]/255,rgb[1]/255,rgb[2]/255);gl.uniform1f(gl.getUniformLocation(program,'count'),chars.length);gl.uniform1i(gl.getUniformLocation(program,'atlas'),0);
+ const colors=new Map([[ink,rgb]]);let lastInk=ink;
  let data=new Float32Array(4096),used=0,ratio=0,capacity=0;
  return {
   resize(w,h,dpr){
    gl.viewport(0,0,canvas.width,canvas.height);gl.uniform2f(gl.getUniformLocation(program,'size'),w,h);
    if(ratio!==dpr){ratio=dpr;const scale=Math.max(2,Math.ceil(dpr));const a=new OffscreenCanvas(chars.length*12*scale,14*scale),c=a.getContext('2d');c.scale(scale,scale);c.font='700 10px SFMono-Regular, Consolas, monospace';c.fillStyle='#fff';for(let i=1;i<chars.length;i++)c.fillText(chars[i],i*12+1,11);gl.bindTexture(gl.TEXTURE_2D,texture);gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL,false);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,a);}
   },
-  setInk(ink){cc.clearRect(0,0,1,1);cc.fillStyle=ink;cc.fillRect(0,0,1,1);const c=cc.getImageData(0,0,1,1).data;gl.uniform3f(gl.getUniformLocation(program,'ink'),c[0]/255,c[1]/255,c[2]/255);},
+  setInk(ink){if(ink===lastInk)return;lastInk=ink;let c=colors.get(ink);if(!c){cc.clearRect(0,0,1,1);cc.fillStyle=ink;cc.fillRect(0,0,1,1);c=cc.getImageData(0,0,1,1).data;colors.set(ink,c);}gl.uniform3f(gl.getUniformLocation(program,'ink'),c[0]/255,c[1]/255,c[2]/255);},
   inspect(){return {error:gl.getError(),lost:gl.isContextLost(),used};},
   begin(){used=0;},
   glyph(x,y,index,alpha){if(used+4>data.length){const next=new Float32Array(data.length*2);next.set(data);data=next;}data[used++]=x-1;data[used++]=y-11;data[used++]=index;data[used++]=alpha;},

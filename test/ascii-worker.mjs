@@ -9,10 +9,24 @@ vm.runInContext('var onmessage;\n'+fs.readFileSync('ascii-worker.js','utf8'),san
 const send=data=>sandbox.onmessage({data});
 send({type:'init',id:0,canvas:{getContext:()=>context},mode:'converge',ink:'#fff',speed:.55});
 send({type:'state',hidden:false,reduced:true});
-send({type:'layout',fields:[{id:0,w:1000,h:1000,dpr:2,visible:true,clip:{left:0,right:1000,top:200,bottom:400}}]});
+send({type:'layout',fields:[{id:0,w:1000,h:1000,dpr:2,tile:{left:0,top:128,w:1384,h:584},visible:true,clip:{left:0,right:1000,top:200,bottom:400}}]});
 send({type:'stats'});
 assert.ok(calls>0);assert.ok(output.fields[0].cells<output.fields[0].totalCells/3);
 const frames=output.fields[0].frames;
 send({type:'layout',fields:[{id:0,visible:false}]});send({type:'stats'});
 assert.equal(output.fields[0].frames,frames);assert.equal(output.fields[0].totalCells,9100);
 console.log('PASS worker renders text, culls invisible rows, retains dimensions while offscreen.');
+// Different logical field sizes must share one viewport-sized GPU allocation.
+let resizes=0,draws=0,scheduled=0;
+const gpu={resize(){resizes++},setInk(){},begin(){},glyph(){},end(){draws++},inspect(){return {}}};
+const gpuSandbox={...sandbox,self:{},OffscreenCanvas:class {transferToImageBitmap(){return {}}},createAsciiGPU:()=>gpu,requestAnimationFrame:()=>++scheduled,cancelAnimationFrame(){}};
+vm.createContext(gpuSandbox);
+vm.runInContext('var onmessage;\n'+fs.readFileSync('ascii-worker.js','utf8'),gpuSandbox);
+const gpuSend=data=>gpuSandbox.onmessage({data});
+for(let id=0;id<2;id++)gpuSend({type:'init',id,canvas:{getContext:()=>({transferFromImageBitmap(){}})},mode:'converge',ink:'#fff',speed:.55});
+const tile={left:0,top:128,w:1384,h:584};
+gpuSend({type:'layout',fields:[0,1].map(id=>({id,w:1000,h:1000+id*600,dpr:2,tile,visible:true,clip:{left:0,right:1000,top:200,bottom:400}}))});
+for(let i=0;i<3;i++)vm.runInContext('run()',gpuSandbox);
+assert.equal(resizes,1);assert.equal(draws,6);assert.ok(scheduled>=3);
+
+console.log('PASS overlapping fields keep one GPU allocation and continue on animation frames.');

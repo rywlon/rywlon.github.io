@@ -1,0 +1,11 @@
+.hero.wrap{width:100%;max-width:none;min-height:100svh;margin:0;padding:8svh 5.5vw 7svh;display:flex;flex-direction:column;justify-content:space-between;gap:7svh;overflow:hidden;background:#961D26;position:relative;isolation:isolate}
+.hero .hero-editorial{position:static;padding:0;min-height:0}
+.hero h1{font-family:'Huiwen Mincho';font-size:clamp(84px,min(11.5vw,19svh),220px);font-weight:400;line-height:1.03;letter-spacing:0;color:white;z-index:2;font-synthesis:none}
+.hero h1 span{display:block}
+.hero .textmode-field{position:absolute;inset:0!important;width:100%;height:100%!important;background:transparent;z-index:-1;pointer-events:none;margin:0}
+.hero .ascii-live{opacity:.22}.hero .textmode-field>img{opacity:.15}
+.hero .cover-nav{display:flex;justify-content:space-between;align-items:baseline;gap:3vw;position:relative;z-index:2;width:100%;margin:0;font:400 clamp(22px,4.65vw,90px)/1.2 'Rhymes Display','GenRyu Moon';letter-spacing:0;color:white}
+.cover-nav a{white-space:nowrap}.cover-nav a:hover{text-decoration:underline;text-underline-offset:.14em;text-decoration-thickness:1px}
+@media(max-width:700px){.hero.wrap{padding:8svh 7vw 6svh;min-height:100svh;gap:9svh}.hero h1{font-size:clamp(88px,min(23vw,18svh),160px);line-height:1.08}.hero .cover-nav{display:grid;grid-template-columns:1fr 1fr;column-gap:8vw;row-gap:24px;font-size:clamp(25px,7.2vw,42px)}.hero .ascii-live{opacity:.2}}
+.hero .hero-editorial{margin:0;max-width:none;width:100%}
+.hero .cover-nav a{display:block}

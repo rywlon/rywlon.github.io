@@ -115,7 +115,9 @@ function render(f){
         }
       }
 
- if(gpu){gpu.end();f.output.transferFromImageBitmap(gpuCanvas.transferToImageBitmap());}
+ if(gpu)gpu.end();
+ const bitmap=(gpu?gpuCanvas:f.canvas).transferToImageBitmap();
+ postMessage({type:'image',id:f.id,tile:{...tile},bitmap},[bitmap]);
  f.frames++;f.cells=cells;f.glyphs=glyphs;
 }
 function run(now=performance.now()){
@@ -128,8 +130,8 @@ onmessage=({data:m})=>{
  if(m.type==='frame'){run(m.now);postMessage({type:'done'});return;}
  if(m.type==='init'){
   const chars=m.mode==='triage'?' .:-=>#§@':m.mode==='sync'?' .:|+x#█@':' .:+*#%@';
-  const gpu=sharedGPU;const output=gpu?m.canvas.getContext('bitmaprenderer'):null;
-  fields.set(m.id,{...m,gpu,output,ctx:gpu?null:m.canvas.getContext('2d'),phase:0,last:0,frames:0,pointer:{active:false,x:0,y:0},visible:false});return;
+  const gpu=sharedGPU,canvas=new OffscreenCanvas(1,1);
+  fields.set(m.id,{...m,canvas,gpu,ctx:gpu?null:canvas.getContext('2d'),phase:0,last:0,frames:0,pointer:{active:false,x:0,y:0},visible:false});return;
  }
  if(m.type==='state'){
   hidden=m.hidden;reduced=m.reduced;

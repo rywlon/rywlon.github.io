@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import assert from 'node:assert/strict';
 let calls=0, output;
 const context={clearRect(){},setTransform(){},fillText(){calls++}};
-const sandbox={OffscreenCanvas:class {},importScripts(){},createAsciiGPU:()=>null,Map,Float32Array,Math,performance:{now:()=>100},setTimeout:()=>1,clearTimeout(){},postMessage:m=>output=m};
+const sandbox={OffscreenCanvas:class {getContext(){return context}transferToImageBitmap(){return {}}},importScripts(){},createAsciiGPU:()=>null,Map,Float32Array,Math,performance:{now:()=>100},setTimeout:()=>1,clearTimeout(){},postMessage:m=>output=m};
 vm.createContext(sandbox);
 vm.runInContext('var onmessage;\n'+fs.readFileSync('ascii-worker.js','utf8'),sandbox);
 const send=data=>sandbox.onmessage({data});

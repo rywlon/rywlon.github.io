@@ -1,0 +1,10 @@
+@font-face{font-family:'Futura PT';src:url('assets/fonts/futura-book.woff') format('woff');font-weight:400;font-display:swap}
+@font-face{font-family:'Futura PT';src:url('assets/fonts/futura-medium.woff') format('woff');font-weight:500 900;font-display:swap}
+@font-face{font-family:'Rhymes Display';src:url('assets/fonts/rhymes-regular.woff') format('woff');font-weight:400;font-display:swap}
+@font-face{font-family:'Huiwen Mincho';src:url('assets/fonts/huiwen-site.woff') format('woff');font-weight:400;font-display:swap}
+@font-face{font-family:'GenRyu Moon';src:url('assets/fonts/genryu-moon-site.woff') format('woff');font-weight:400 900;font-display:swap}
+@font-face{font-family:'MiSans Site';src:url('assets/fonts/misans-site.woff') format('woff');font-weight:400 900;font-display:swap}
+:root{--body:'Futura PT','MiSans Site';--display:'Futura PT','MiSans Site';--serif:'Rhymes Display','GenRyu Moon','MiSans Site';--mono:'Futura PT','MiSans Site'}
+body,button,input,textarea,select{font-family:var(--body);font-synthesis:none}h1,h2,h3{font-family:var(--display);font-synthesis:none}
+.hero-copy h2,.about-lead,.contact h2,.english-title{font-family:var(--serif);font-weight:400}.english-title span{font-family:'GenRyu Moon'}
+.about-title h2{font-family:'Huiwen Mincho';font-weight:400}.about-title h2 span{font-family:'Futura PT'}.case-hero h1,.case-section h2{font-family:'Rhymes Display','GenRyu Moon','MiSans Site';font-weight:400}

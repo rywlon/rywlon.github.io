@@ -71,18 +71,18 @@ body{background:var(--paper);color:var(--ink)}::selection{background:var(--acid)
 .project-creator .project-category,.project-creator .project-meta>span{color:var(--ink)}.hero-intro,.project-summary{text-wrap:pretty}
 
 /* User-provided Futura PT; Chinese keeps the existing system sans. */
-@font-face{font-family:'Portfolio Futura';src:url('assets/fonts/futura-pt-book.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:'Portfolio Futura';src:url('assets/fonts/futura-pt-medium.woff2') format('woff2');font-weight:500 900;font-style:normal;font-display:swap}
-:root{--display:'Portfolio Futura','PingFang SC','Microsoft YaHei',sans-serif;--body:'Portfolio Futura','PingFang SC','Microsoft YaHei',sans-serif}
+
+
+:root{--display:'Futura PT','PingFang SC','Microsoft YaHei',sans-serif;--body:'Futura PT','PingFang SC','Microsoft YaHei',sans-serif}
 .hero h1{letter-spacing:-.035em;font-weight:500}.section-heading .english-title{letter-spacing:-.035em}.case-hero h1{letter-spacing:-.03em}
 
 /* Latin first, then explicit Chinese families. Subsets cover current site copy. */
-@font-face{font-family:'Portfolio MiSans';src:url('assets/fonts/misans-medium.woff2') format('woff2');font-weight:400 900;font-display:swap}
-@font-face{font-family:'Portfolio Mincho';src:url('assets/fonts/huiwen-mincho.woff2') format('woff2');font-weight:400;font-display:swap}
-@font-face{font-family:'Portfolio Rhymes';src:url('assets/fonts/rhymes-display-regular.woff2') format('woff2');font-weight:400;font-display:swap}
-:root{--display:'Portfolio Futura','Portfolio MiSans',sans-serif;--body:'Portfolio Futura','Portfolio MiSans',sans-serif;--serif:'Portfolio Rhymes','Portfolio Mincho',serif}
+
+
+
+:root{--display:'Futura PT','MiSans Site',sans-serif;--body:'Futura PT','MiSans Site',sans-serif;--serif:'Rhymes Display','GenRyu Moon',serif}
 .hero-copy h2,.section-heading .english-title,.about-lead,.contact h2{font-family:var(--serif);font-weight:400;font-synthesis:none;letter-spacing:-.025em}
-.english-title span{font-family:'Portfolio Mincho',serif;font-weight:400;letter-spacing:0}.hero-copy h2{line-height:1.6}.about-lead{line-height:1.65}.contact h2{line-height:1.4}
+.english-title span{font-family:'GenRyu Moon',serif;font-weight:400;letter-spacing:0}.hero-copy h2{line-height:1.6}.about-lead{line-height:1.65}.contact h2{line-height:1.4}
 /* Motion has a static default and an explicit pause control. */
 .ascii-live{position:absolute;inset:0;width:100%;height:100%;display:none;pointer-events:none}.field-live .ascii-live{display:block}.hero-editorial .field-live>img{visibility:hidden}.motion-toggle{position:absolute;right:16px;bottom:14px;z-index:5;border:1px solid #17171570;background:var(--paper);color:var(--ink);font:11px/1.5 var(--body);padding:7px 12px;cursor:pointer}.motion-toggle[hidden]{display:none}
 @media(prefers-reduced-motion:no-preference){.button,.case-link,.gallery-tabs button{transition:background .25s,color .25s}.button span,.case-link span{display:inline-block;transition:transform .3s}.button:hover span,.case-link:hover span{transform:translate(3px,-3px)}.project-visual .visual-arrow{transition:transform .3s}.site-head nav a{position:relative}.site-head nav a:after{content:'';position:absolute;left:0;bottom:-5px;width:100%;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .3s}.site-head nav a:hover:after,.site-head nav a.active-nav:after{transform:scaleX(1)}}

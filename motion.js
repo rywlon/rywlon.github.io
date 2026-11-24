@@ -2,7 +2,7 @@
 (() => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
   const field = document.querySelector('.textmode-field');
-  if (field) {
+  if (field && !window.asciiWorkers) {
     const canvas = document.createElement('canvas');
     canvas.className = 'ascii-live'; canvas.setAttribute('aria-hidden', 'true');
     const ctx = canvas.getContext('2d');

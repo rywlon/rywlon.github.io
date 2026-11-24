@@ -1,0 +1,18 @@
+import vm from 'node:vm';
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+let calls=0, output;
+const context={clearRect(){},setTransform(){},fillText(){calls++}};
+const sandbox={Map,Float32Array,Math,performance:{now:()=>100},setTimeout:()=>1,clearTimeout(){},postMessage:m=>output=m};
+vm.createContext(sandbox);
+vm.runInContext('var onmessage;\n'+fs.readFileSync('ascii-worker.js','utf8'),sandbox);
+const send=data=>sandbox.onmessage({data});
+send({type:'init',id:0,canvas:{getContext:()=>context},mode:'converge',ink:'#fff',speed:.55});
+send({type:'state',hidden:false,reduced:true});
+send({type:'layout',fields:[{id:0,w:1000,h:1000,dpr:2,visible:true,clip:{left:0,right:1000,top:200,bottom:400}}]});
+send({type:'stats'});
+assert.ok(calls>0);assert.ok(output.fields[0].cells<output.fields[0].totalCells/3);
+const frames=output.fields[0].frames;
+send({type:'layout',fields:[{id:0,visible:false}]});send({type:'stats'});
+assert.equal(output.fields[0].frames,frames);assert.equal(output.fields[0].totalCells,9100);
+console.log('PASS worker renders text, culls invisible rows, retains dimensions while offscreen.');

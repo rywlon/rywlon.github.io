@@ -1,5 +1,6 @@
 /* Pattern math ported from c9d626a: triage, converge and sync. */
 (() => {
+  if(window.asciiWorkers)return;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
   document.querySelectorAll('[data-project-ascii]').forEach(field => {
     const canvas = document.createElement('canvas');

@@ -61,20 +61,94 @@ for (const forbidden of ['Cin7', 'Shopify', '赋能', '闭环', '抓手', '链�
 assert.ok(home.includes('assets/resume.pdf'), 'Missing Resume PDF entry on homepage');
 assert.ok(home.includes('https://github.com/rywlon/TalkWTF'), 'Missing TalkWTF GitHub link on homepage');
 
-// Case study checks
+// Case study checks: Ableton Live-style GenRyu Moon switcher + in-page lightbox
+const expectedTabs = { 'inventory': 6, 'creator-ops': 6, 'talkwtf': 4 };
 for (const name of ['inventory', 'creator-ops', 'talkwtf']) {
   const html = read(`${name}.html`);
-  assert.ok(html.includes('class="case-intro"'), `${name}: missing plain-language introduction`);
+  assert.ok(html.includes('data-case-switcher'), `${name}: missing interactive directory switcher`);
   assert.ok(html.includes('index.html#project-'), `${name}: missing return link`);
-  assert.equal((html.match(/data-slide=/g) || []).length, name === 'creator-ops' ? 6 : 2);
+  assert.ok(html.includes('id="img-lightbox"'), `${name}: missing in-page image lightbox`);
+  assert.equal((html.match(/role="tab"/g) || []).length, expectedTabs[name], `${name}: unexpected tab count`);
+  assert.equal((html.match(/role="tabpanel"/g) || []).length, expectedTabs[name], `${name}: unexpected panel count`);
   for (const banned of ['赋能', '闭环', '抓手', '链路', '打通', '演进', '脱胎于', '人机分工', '痛点', '验收', '核对输出', 'WORK IN PRACTICE', 'TEXTMODE STUDY']) {
     assert.ok(!html.includes(banned), `${name}.html contains banned term: ${banned}`);
   }
 }
 
-assert.ok(read('talkwtf.html').includes('语音转文字'));
-assert.ok(read('talkwtf.html').includes('https://github.com/rywlon/TalkWTF'));
-assert.ok(read('creator-ops.html').includes('12 份结构化 Markdown'));
-assert.ok(read('inventory.html').includes('团队协作交付'));
+// Unified Apple-inspired Selected work on homepage (zero color blocks, unified 01/02/03 structure) + new optimized WebP assets
+assert.equal((home.match(/class="project project-[a-z]+ work-item"/g) || []).length, 3, 'All 3 Selected work projects must share the unified work-item layout');
+assert.ok(!home.includes('ableton-showcase'), 'Homepage must not use separate Project 01 Ableton showcase UI');
+assert.ok(!home.includes('ableton-card'), 'Homepage must not have green color-block card');
+assert.ok(!home.includes('data-project-ascii="triage"'), 'Homepage Selected work must not overlay ASCII color blocks');
+assert.ok(!home.includes('data-project-ascii="sync"'), 'Homepage Selected work must not overlay ASCII color blocks');
+assert.ok(read('editorial.css').includes('.live-panel.live-panel-ableton[hidden]'), 'editorial.css must preserve [hidden] display:none for inventory tabpanels');
+assert.ok(read('server.js').includes('max-age=86400'), 'server.js must cache static images and fonts');
+
+const expectedOpts = [
+  'inv-search.webp', 'inv-aging.webp', 'inv-loading.webp', 'inv-showroom.webp', 'inv-box.webp', 'inv-pricing.webp',
+  'creator-home.webp', 'creator-scenarios.webp', 'creator-tone.webp', 'creator-duty.webp', 'creator-templates.webp', 'creator-handoff.webp',
+  'talk-overview.webp', 'talk-connect.webp', 'talk-polish.webp', 'talk-models.webp'
+];
+for (const opt of expectedOpts) {
+  assert.ok(existsSync(`assets/opt/${opt}`), `Missing optimized WebP asset: assets/opt/${opt}`);
+  assert.ok(existsSync(`assets/opt/sm/${opt}`), `Missing responsive 760w WebP asset: assets/opt/sm/${opt}`);
+  assert.ok(existsSync(`assets/opt/full/${opt}`), `Missing full-res lightbox WebP asset: assets/opt/full/${opt}`);
+}
+assert.ok(existsSync('assets/opt/wechat-qr.webp'), 'Missing optimized WeChat QR WebP');
+
+const invHtml = read('inventory.html');
+const creatorHtml = read('creator-ops.html');
+const talkHtml = read('talkwtf.html');
+const siteJs = read('site.js');
+const serverJs = read('server.js');
+
+assert.ok(serverJs.includes('immutable'), 'server.js must send immutable caching for versioned image assets');
+assert.ok(serverJs.includes('createBrotliCompress'), 'server.js must support Brotli compression');
+
+for (const [pageName, content] of [['index.html', home], ['inventory.html', invHtml], ['creator-ops.html', creatorHtml], ['talkwtf.html', talkHtml]]) {
+  assert.ok(content.includes('rel="preload" as="image"'), `${pageName} missing LCP image preload`);
+  assert.ok(content.includes('srcset='), `${pageName} missing responsive srcset`);
+}
+
+for (const page of ['inventory.html', 'creator-ops.html', 'talkwtf.html']) {
+  assert.ok(read(page).includes('case-one-screen'), `${page} missing single-screen layout class`);
+}
+
+// Verify zero references to old project screenshots across all pages and site.js
+const oldAssetRefs = [
+  '01-aging-report_1f272c41.png',
+  '02-pricing-calculator_1c00c4a6.png',
+  '03-inventory-search_a392fd9e.png',
+  '04-box-management_9de33eaf.png',
+  'assets/creator-desk.png',
+  'assets/creator-library.png',
+  'assets/creator-records.png',
+  'assets/creator-discovery.png',
+  'assets/creator-handoff.png',
+  'assets/talk-voice.jpg',
+  'assets/talk-pair.jpg',
+  'assets/inventory-orders.png',
+  'assets/inventory-stocktake.png',
+  'assets/opt/creator-desk.webp',
+  'assets/opt/talk-voice.webp',
+  'assets/opt/talk-pair.webp'
+];
+for (const [file, content] of [['index.html', home], ['inventory.html', invHtml], ['creator-ops.html', creatorHtml], ['talkwtf.html', talkHtml], ['site.js', siteJs]]) {
+  for (const oldRef of oldAssetRefs) {
+    assert.ok(!content.includes(oldRef), `${file} still references old asset: ${oldRef}`);
+  }
+}
+
+// Verify all referenced local data-zoom-src assets exist on disk
+const allPages = home + invHtml + creatorHtml + talkHtml;
+for (const match of allPages.matchAll(/data-zoom-src="([^"?]+)/g)) {
+  const rel = match[1].startsWith('/') ? `public${match[1]}` : match[1];
+  assert.ok(existsSync(rel), `Missing referenced lightbox asset on disk: ${rel}`);
+}
+
+assert.ok(talkHtml.includes('语音转文字'));
+assert.ok(talkHtml.includes('https://github.com/rywlon/TalkWTF'));
+assert.ok(creatorHtml.includes('43 份知识库'));
+assert.ok(invHtml.includes('团队协作交付'));
 assert.ok(existsSync('.nojekyll'));
-console.log('PASS: all second-round refinements, hero, manifesto, Huiwen CTA, contact/footer, and case studies verified.');
+console.log('PASS: Responsive 760w/1400w WebP srcset, full-res WebP lightbox, LCP preload, Brotli/immutable caching, and zero old image references verified.');

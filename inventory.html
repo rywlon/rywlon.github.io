@@ -4,18 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>01 · 多仓库存查询系统 · 龙致君</title>
-  <meta name="description" content="电商内部多仓库存查询 Web 系统（团队协作交付）：定位线上商城与多仓库存后台口径冲突，核对接口与分仓逻辑，统一真实库存查询口径替代人工跨后台核对。">
+  <meta name="description" content="在家具电商上班时，网店总显示有货、仓库却发不出。查清两边记账方式不同后，和团队一起做了一套内部网页查库与定价工具。">
   <link rel="icon" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500&display=swap"></noscript>
+  <link rel="preload" as="image" href="assets/opt/inv-search.webp?v=20261128-2" imagesrcset="assets/opt/sm/inv-search.webp?v=20261128-2 760w, assets/opt/inv-search.webp?v=20261128-2 1400w" imagesizes="(max-width: 960px) calc(100vw - 36px), 62vw" fetchpriority="high">
   <link rel="stylesheet" href="style.css?v=restore-63bb363-20261123">
-  <link rel="stylesheet" href="editorial.css?v=refactor-20261124-3">
-  <script src="site.js?v=refactor-20261124-2" defer></script>
-  <script src="motion.js?v=klein-ascii-1" defer></script>
+  <link rel="stylesheet" href="editorial.css?v=20261128-3">
+  <script src="site.js?v=20261128-2" defer></script>
   <link rel="stylesheet" href="typography.css?v=refactor-20261124-2">
 </head>
-<body class="theme-inventory">
+<body class="theme-inventory case-one-screen">
   <a class="skip" href="#main">跳到正文</a>
 
   <header class="site-head">
@@ -23,8 +24,8 @@
       <span>龙致君<small>LONG ZHIJUN</small></span>
     </a>
     <nav aria-label="主导航">
-      <a href="index.html#work">精选项目</a>
-      <a href="index.html#about">一线经历</a>
+      <a href="index.html#work">做的项目</a>
+      <a href="index.html#about">关于我</a>
       <!-- TODO: 放入简历 PDF 至 assets/resume.pdf 或更新此处路径 -->
       <a href="assets/resume.pdf" data-resume-link>简历 PDF</a>
       <a class="nav-contact" href="https://github.com/rywlon" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a>
@@ -32,168 +33,295 @@
   </header>
 
   <main id="main" class="wrap">
-    <a class="case-back" href="index.html#project-inventory">← 返回精选项目</a>
-
-    <header class="case-hero">
-      <p class="eyebrow">01 · 电商内部 WEB 系统 / 团队协作交付</p>
-      <h1>多仓库存查询系统</h1>
-      <p class="lede">查清商城与库存后台的口径冲突，<br>和团队落地内部多仓查询系统。</p>
-      <div class="case-intro">
-        <span>项目概览</span>
-        <p>跨境电商业务中，线上商城反复出现「前台显示有货、客户下单后后台发不出」的库存异常。我逐项核对线上商城（Shopify，负责对外销售展示）与多仓库存后台（Cin7 Omni，负责分仓库存与 ERP 履约）的订单流和接口字段，定位出前台展示与后台扣减的口径冲突，随后与团队共同交付了内部多仓库存查询 Web 系统，统一各分仓真实库存口径，替代人工跨后台核对。</p>
+    <header class="case-topbar">
+      <div class="case-topbar-left">
+        <a class="case-back" href="index.html#project-inventory">← 返回项目列表</a>
+        <h1>多仓库存查询系统</h1>
       </div>
-      <dl class="case-meta">
-        <div>
-          <dt>交付方式</dt>
-          <dd>团队协作交付的内部 Web 系统</dd>
-        </div>
-        <div>
-          <dt>我的角色</dt>
-          <dd>跨系统排障、业务口径定义、接口验证、推动落地</dd>
-        </div>
-        <div>
-          <dt>解决的问题</dt>
-          <dd>统一多仓真实库存查询，消除人工来回切后台核对</dd>
-        </div>
-      </dl>
+      <div class="case-topbar-meta">
+        <span>01 · 团队协作交付</span>
+        <span>我的工作：查清问题 · 实测接口 · 和团队一起做成内部工具</span>
+      </div>
     </header>
 
-    <figure class="case-cover inventory-cover">
-      <a href="assets/inventory-orders.png" aria-label="打开完整界面原图">
-        <img src="assets/inventory-orders.png" alt="内部多仓库存查询系统实站脱敏截图：可满足订单跨仓筛查" width="1120" height="302">
-      </a>
-      <figcaption>内部多仓库存查询 Web 系统实站截图（已脱敏）：按各分仓真实口径筛查可履约订单</figcaption>
-    </figure>
+    <section class="live-switcher" data-case-switcher aria-label="多仓库存查询系统详情目录">
+      <div class="live-dir-head">
+        <span class="live-dir-num">1.</span>
+        <p class="live-dir-lead">从发现问题到做出系统</p>
+      </div>
 
-    <div class="case-layout">
-      <nav class="case-index" aria-label="案例目录">
-        <span>目录</span>
-        <a href="#context">业务问题</a>
-        <a href="#root-cause">根因定位</a>
-        <a href="#api-check">接口核验</a>
-        <a href="#delivery">系统落地</a>
-        <a href="#screens">界面原图</a>
-      </nav>
+      <div class="live-dir-list" role="tablist" aria-label="切换项目章节">
+        <button type="button" class="live-tab" role="tab" id="inv-tab-1" aria-selected="true" aria-controls="inv-panel-1">为什么总是发不出货</button>
+        <button type="button" class="live-tab" role="tab" id="inv-tab-2" aria-selected="false" aria-controls="inv-panel-2">动手前先测接口</button>
+        <button type="button" class="live-tab" role="tab" id="inv-tab-3" aria-selected="false" aria-controls="inv-panel-3">多仓装车与日常作业</button>
+        <button type="button" class="live-tab" role="tab" id="inv-tab-4" aria-selected="false" aria-controls="inv-panel-4">展厅样品位一眼看清</button>
+        <button type="button" class="live-tab is-last-row" role="tab" id="inv-tab-5" aria-selected="false" aria-controls="inv-panel-5">大件家具分箱尺寸表</button>
+        <button type="button" class="live-tab is-last-row" role="tab" id="inv-tab-6" aria-selected="false" aria-controls="inv-panel-6">按体积自动算零售价</button>
+      </div>
 
-      <div class="case-body">
-        <section class="case-section" id="context">
-          <p class="eyebrow">01 · 业务问题</p>
-          <h2>前台看着有货，仓库却发不出去。</h2>
-          <p>日常运营里经常撞见同一个怪象：线上商城（Shopify）的商品页明明显示可买，客人付完款，订单进了库存后台（Cin7 Omni，多仓 ERP 系统）却卡在待发货——所属发货仓根本没货。仓库和运营每天都要在两个后台之间来回切窗口，按 SKU 和订单号一条条人工对账。</p>
-          <p>团队一开始的诉求很笼统：「能不能按全仓总库存直接卖货？」但我拿真实异常订单顺着系统查下去，发现这句诉求里其实混着两件完全不同的事：<strong>前台按什么口径展示可售库存</strong>，以及<strong>后台按什么规则决定由哪个仓履约</strong>。</p>
-        </section>
-
-        <section class="case-section" id="root-cause">
-          <p class="eyebrow">02 · 根因定位</p>
-          <h2>展示读的是全仓合计，履约只扣所属分支仓。</h2>
-          <div class="flow">
-            <div>
-              <small>线上商城展示（Shopify）</small>
-              <b>All Branches</b>
-              <p>汇总所有分仓库存后对外展示</p>
+      <div class="live-stage live-stage-ableton">
+        <!-- Chapter 01 -->
+        <article class="live-panel live-panel-ableton" role="tabpanel" id="inv-panel-1" aria-labelledby="inv-tab-1">
+          <aside class="detail-green-card">
+            <div class="detail-card-head">
+              <p class="stage-kicker">01 / 06 · 为什么总是发不出货</p>
+              <h2>网店算的是总库存，仓库只认自己手里的货。</h2>
             </div>
-            <span>≠</span>
-            <div>
-              <small>库存后台履约（Cin7）</small>
-              <b>Order Branch</b>
-              <p>只从订单归属的单一分支仓扣减</p>
+            <div class="detail-card-body">
+              <p>公司在澳洲卖大件家具，有好几个分布在不同州的仓库。网店用的是 Shopify，管仓库用的是 Cin7。平时最常出的岔子，就是顾客明明在网上下单成功了，仓库打单时却发现没货可发，运营和仓库同事每天只能在两个后台之间一条条人工对账。</p>
+              <p>我顺着真实订单一条条查下去，很快发现两边根本不是一套算法：Shopify 显示的是所有仓库加起来的总数，Cin7 发货时却只扣订单对应的那一个仓库；再加上有些商品漏配了仓库对应关系，或者被条码自动匹配悄悄覆盖，两边数字就一直打架。</p>
             </div>
+            <div class="detail-card-foot">
+              <p class="detail-card-takeaway">先把这件事查明白，后面做查询页时，第一件事就是按 VIC、#9、QLD 把各仓库存清清楚楚分开显示。</p>
+              <button type="button" class="detail-expand-btn"
+                data-zoom-src="assets/opt/full/inv-search.webp?v=20261128-2"
+                data-zoom-alt="多仓库存查询系统界面：按仓库分开查询库存"
+                data-zoom-caption="库存查询首页：按全部 / VIC / #9 / QLD 分仓展示库存，支持按 SKU、订单号或箱标检索，订单每 3 分钟自动刷新。">展开原图 ↗</button>
+            </div>
+          </aside>
+
+          <div class="browser-shell">
+            <div class="browser-bar">
+              <div class="browser-controls" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="browser-address">cin7.ozstudydesks.com.au /</div>
+              <button type="button" class="browser-expand-btn"
+                data-zoom-src="assets/opt/full/inv-search.webp?v=20261128-2"
+                data-zoom-alt="多仓库存查询系统界面：按仓库分开查询库存"
+                data-zoom-caption="库存查询首页：按全部 / VIC / #9 / QLD 分仓展示库存，支持按 SKU、订单号或箱标检索，订单每 3 分钟自动刷新。">放大查看 ↗</button>
+            </div>
+            <button type="button" class="browser-viewport"
+              data-zoom-src="assets/opt/full/inv-search.webp?v=20261128-2"
+              data-zoom-alt="多仓库存查询系统界面：按仓库分开查询库存"
+              data-zoom-caption="库存查询首页：按全部 / VIC / #9 / QLD 分仓展示库存，支持按 SKU、订单号或箱标检索，订单每 3 分钟自动刷新。">
+              <img src="assets/opt/inv-search.webp?v=20261128-2" srcset="assets/opt/sm/inv-search.webp?v=20261128-2 760w, assets/opt/inv-search.webp?v=20261128-2 1400w" sizes="(max-width: 960px) calc(100vw - 36px), 62vw" alt="多仓库存查询系统界面：按仓库分开查询库存" width="1400" height="836" decoding="async" fetchpriority="high">
+            </button>
           </div>
-          <p>核对订单流、仓库映射关系和库存字段后，根因一目了然：线上商城读取的是跨仓汇总数，但库存后台并不会因为 A 仓没货就自动从 B 仓发货；同时部分商品存在跨店仓库映射遗漏，以及相同 SKU / 条码触发自动匹配覆盖手工映射的问题。</p>
-          <div class="decision">
-            <p>先把「多仓合计可见」和「单仓实际可发」拆成两个清晰口径，系统设计才不会沿着错误前提越改越乱。</p>
-          </div>
-        </section>
+        </article>
 
-        <section class="case-section" id="api-check">
-          <p class="eyebrow">03 · 接口核验</p>
-          <h2>返回 200 成功，不代表库存字段真的生效了。</h2>
-          <p>在讨论方案时，曾有设想通过库存后台的调整接口（Adjustments）直接把库存标成「在途占用」来规避错卖。我没有直接拍板，而是先拿测试数据实测写入，并把写入后的记录重新读回比对：</p>
-          <div class="flow">
-            <div>
-              <small>写入请求</small>
-              <b><code>holdingQty = 1</code></b>
-              <p>尝试经调整接口改写在途量</p>
+        <!-- Chapter 02 -->
+        <article class="live-panel live-panel-ableton" role="tabpanel" id="inv-panel-2" aria-labelledby="inv-tab-2" hidden>
+          <aside class="detail-green-card">
+            <div class="detail-card-head">
+              <p class="stage-kicker">02 / 06 · 动手前先测接口</p>
+              <h2>接口返回成功，不代表数据真的写进去了。</h2>
             </div>
-            <span>→</span>
-            <div>
-              <small>接口回执</small>
-              <b>返回创建成功</b>
-              <p>HTTP 请求无报错</p>
+            <div class="detail-card-body">
+              <p>商量怎么改的时候，大家本来想偷个懒：直接调用库存系统的调整接口，把货标成「调拨在途」。我没急着按这个想法开工，先拿测试数据试着往 <code>holdingQty</code> 里写了个 <code>1</code>，再马上重新读出来看——结果接口虽然回了个成功，读出来的数居然还是 <code>0</code>。</p>
+              <p>后来跟 Cin7 官方技术支持确认，才证实系统底层根本不允许这样改，必须老老实实建一张仓间调货单并发运，在途库存才会真的生效。</p>
             </div>
-            <span>→</span>
-            <div>
-              <small>读回比对</small>
-              <b><code>holdingQty = 0</code></b>
-              <p>实际在途字段未被修改</p>
+            <div class="detail-card-foot">
+              <p class="detail-card-takeaway">提前做了这一步实测，直接帮团队避开了一条走不通的弯路，后面做库龄和分仓报表时心里也有底。</p>
+              <button type="button" class="detail-expand-btn"
+                data-zoom-src="assets/opt/full/inv-aging.webp?v=20261128-2"
+                data-zoom-alt="多仓库存查询系统界面：库龄报告"
+                data-zoom-caption="库龄报告：按仓库、货架位置与存放天数查看 2,400 多条库存记录，支持一键拉取最新数据或导出 CSV。">展开原图 ↗</button>
             </div>
-          </div>
-          <p>和 Cin7 官方技术支持交叉确认后坐实了底层规则：<code>holdingQty</code> 不能通过库存调整接口直接改写，只有真实创建并发运仓间调货单（Branch Transfers），系统才会把发出仓可用量转入在途。这一步直接帮团队排除了错误的接口改造路线，避免白费开发工期。</p>
-        </section>
+          </aside>
 
-        <section class="case-section" id="delivery">
-          <p class="eyebrow">04 · 系统落地</p>
-          <h2>把多仓真实口径收进内部 Web 查询系统。</h2>
-          <p>摸清两套系统的边界、补齐跨店仓库映射异常后，我与团队共同推动并交付了内部多仓库存查询 Web 系统，把运营和仓库每天高频核对的场景收进同一个页面：</p>
-          <ul class="kb-list">
-            <li>
-              <strong>多维度实时查询</strong>
-              <span>支持按 SKU、商品、订单号或箱标直接查询，不再在商城后台和 ERP 之间反复切换。</span>
-            </li>
-            <li>
-              <strong>统一分仓真实口径</strong>
-              <span>明确区分「全仓汇总」与「各分仓实际可发库存」，一眼看出哪些订单当前可满足、哪些需要仓间调货。</span>
-            </li>
-            <li>
-              <strong>衔接到盘点与调货</strong>
-              <span>在同一工作台内支持按仓库、库位和货架筛选盘点范围，让系统账面与线下货位保持一致。</span>
-            </li>
-          </ul>
-          <div class="case-scope">
-            <div>
-              <h3>我在团队中的贡献</h3>
-              <p>从异常订单切入排查，核对商城与 ERP 仓库映射及接口读回行为，对齐跨部门业务口径，把排障结论沉淀为内部系统的查询与筛查规则，并全程跟进交付落地。</p>
+          <div class="browser-shell">
+            <div class="browser-bar">
+              <div class="browser-controls" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="browser-address">cin7.ozstudydesks.com.au / aging-report</div>
+              <button type="button" class="browser-expand-btn"
+                data-zoom-src="assets/opt/full/inv-aging.webp?v=20261128-2"
+                data-zoom-alt="多仓库存查询系统界面：库龄报告"
+                data-zoom-caption="库龄报告：按仓库、货架位置与存放天数查看 2,400 多条库存记录，支持一键拉取最新数据或导出 CSV。">放大查看 ↗</button>
             </div>
-            <div>
-              <h3>业务价值</h3>
-              <p>原本需要人工逐单跨后台核对的库存状态，改为在内部系统按统一口径集中筛查，减少因口径打架导致的超卖沟通和仓库返工。</p>
-            </div>
+            <button type="button" class="browser-viewport"
+              data-zoom-src="assets/opt/full/inv-aging.webp?v=20261128-2"
+              data-zoom-alt="多仓库存查询系统界面：库龄报告"
+              data-zoom-caption="库龄报告：按仓库、货架位置与存放天数查看 2,400 多条库存记录，支持一键拉取最新数据或导出 CSV。">
+              <img src="assets/opt/inv-aging.webp?v=20261128-2" srcset="assets/opt/sm/inv-aging.webp?v=20261128-2 760w, assets/opt/inv-aging.webp?v=20261128-2 1400w" sizes="(max-width: 960px) calc(100vw - 36px), 62vw" alt="多仓库存查询系统界面：库龄报告" width="1400" height="836" decoding="async" loading="lazy">
+            </button>
           </div>
-        </section>
+        </article>
 
-        <section class="case-section" id="screens">
-          <p class="eyebrow">SCREENSHOTS</p>
-          <h2>系统界面截图</h2>
-          <p>切换查看实站脱敏界面，点击图片可查看完整尺寸。</p>
-          <figure class="gallery" data-gallery="inventory">
-            <div class="gallery-tabs" role="group" aria-label="切换项目截图">
-              <button type="button" aria-pressed="true" data-slide="0" aria-controls="inventory-still">可满足订单筛查</button>
-              <button type="button" aria-pressed="false" data-slide="1" aria-controls="inventory-still">分仓盘点视图</button>
+        <!-- Chapter 03 -->
+        <article class="live-panel live-panel-ableton" role="tabpanel" id="inv-panel-3" aria-labelledby="inv-tab-3" hidden>
+          <aside class="detail-green-card">
+            <div class="detail-card-head">
+              <p class="stage-kicker">03 / 06 · 多仓装车与日常作业</p>
+              <h2>把每天要切好几个后台的活，收进一个网页里。</h2>
             </div>
-            <div id="inventory-still">
-              <a class="gallery-full" href="assets/inventory-orders.png">
-                <img src="assets/inventory-orders.png" alt="多仓库存查询系统实站脱敏截图：可满足订单筛查" loading="lazy" width="1120" height="302">
-              </a>
+            <div class="detail-card-body">
+              <p>把两边规则理顺、修好仓库对应关系之后，我和团队一起把这套内部网页系统做了出来。大家用顺手之后，陆续把平时仓库每天都在做的活也收了进来——看库龄、打箱标、扫码盘点、按车次装车、客户自提全都在同一条导航里办完。</p>
+              <p>像装车页面会按 VIC、QLD、#9 三个仓库分组列出每一趟送货车次，哪一单漏扫了箱标、哪一单有异常会直接标红提醒，扫码枪一扫就能自动定位到对应订单。</p>
             </div>
-            <figcaption aria-live="polite">按各分仓真实库存口径筛查可履约订单，替代人工在商城与库存后台之间反复核对（订单明细已脱敏）。</figcaption>
-          </figure>
-        </section>
+            <div class="detail-card-foot">
+              <p class="detail-card-takeaway">这个项目是和团队一起交付的，我主要负责前期查清问题、梳理业务规则、实测接口并推动落地。</p>
+              <button type="button" class="detail-expand-btn"
+                data-zoom-src="assets/opt/full/inv-loading.webp?v=20261128-2"
+                data-zoom-alt="多仓库存查询系统界面：多仓装车与自提调度列表"
+                data-zoom-caption="装车与自提列表：按 VIC / QLD / #9 仓库分组排车，自动标出漏扫与异常订单，支持扫码直接装车。">展开原图 ↗</button>
+            </div>
+          </aside>
 
-        <div class="case-next">
-          <div>
-            <p>NEXT PROJECT · 02</p>
-            <a href="creator-ops.html">Creator OPS · 海外红人运营工作台 ↗</a>
+          <div class="browser-shell">
+            <div class="browser-bar">
+              <div class="browser-controls" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="browser-address">cin7.ozstudydesks.com.au / loading</div>
+              <button type="button" class="browser-expand-btn"
+                data-zoom-src="assets/opt/full/inv-loading.webp?v=20261128-2"
+                data-zoom-alt="多仓库存查询系统界面：多仓装车与自提调度列表"
+                data-zoom-caption="装车与自提列表：按 VIC / QLD / #9 仓库分组排车，自动标出漏扫与异常订单，支持扫码直接装车。">放大查看 ↗</button>
+            </div>
+            <button type="button" class="browser-viewport"
+              data-zoom-src="assets/opt/full/inv-loading.webp?v=20261128-2"
+              data-zoom-alt="多仓库存查询系统界面：多仓装车与自提调度列表"
+              data-zoom-caption="装车与自提列表：按 VIC / QLD / #9 仓库分组排车，自动标出漏扫与异常订单，支持扫码直接装车。">
+              <img src="assets/opt/inv-loading.webp?v=20261128-2" srcset="assets/opt/sm/inv-loading.webp?v=20261128-2 760w, assets/opt/inv-loading.webp?v=20261128-2 1400w" sizes="(max-width: 960px) calc(100vw - 36px), 62vw" alt="多仓库存查询系统界面：多仓装车与自提调度列表" width="1400" height="884" decoding="async" loading="lazy">
+            </button>
           </div>
-          <span aria-hidden="true">→</span>
+        </article>
+
+        <!-- Chapter 04 -->
+        <article class="live-panel live-panel-ableton" role="tabpanel" id="inv-panel-4" aria-labelledby="inv-tab-4" hidden>
+          <aside class="detail-green-card">
+            <div class="detail-card-head">
+              <p class="stage-kicker">04 / 06 · 展厅样品位一眼看清</p>
+              <h2>展厅里摆着的家具，哪个没货、哪个滞销直接上地图。</h2>
+            </div>
+            <div class="detail-card-body">
+              <p>线下展厅经常遇到一个尴尬事：顾客在店里看中了一张桌子，导购去查才发现本地仓早就卖空了；或者某件占着好位置的样品连续一两个月都没人买，没人注意到该换样了。</p>
+              <p>我们干脆把布里斯班等展厅的一二楼平面图画进系统里，直接连上库存和销量数据——绿色代表本地有货，黄色代表只有其他州有货，红色代表全仓断货，右上角还能直接筛出 30 天无动销的样品位。</p>
+            </div>
+            <div class="detail-card-foot">
+              <p class="detail-card-takeaway">导购和店长不用再对着表格猜位置，看一眼展厅平面图就知道今天该撤哪件、补哪件。</p>
+              <button type="button" class="detail-expand-btn"
+                data-zoom-src="assets/opt/full/inv-showroom.webp?v=20261128-2"
+                data-zoom-alt="多仓库存查询系统界面：布里斯班展厅样品位库存平面图"
+                data-zoom-caption="展厅样品位平面图：绿/黄/红实时区分本地有货、仅他仓有货与全仓无货，并标记 30 天无动销样品。">展开原图 ↗</button>
+            </div>
+          </aside>
+
+          <div class="browser-shell">
+            <div class="browser-bar">
+              <div class="browser-controls" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="browser-address">cin7.ozstudydesks.com.au / showroom</div>
+              <button type="button" class="browser-expand-btn"
+                data-zoom-src="assets/opt/full/inv-showroom.webp?v=20261128-2"
+                data-zoom-alt="多仓库存查询系统界面：布里斯班展厅样品位库存平面图"
+                data-zoom-caption="展厅样品位平面图：绿/黄/红实时区分本地有货、仅他仓有货与全仓无货，并标记 30 天无动销样品。">放大查看 ↗</button>
+            </div>
+            <button type="button" class="browser-viewport"
+              data-zoom-src="assets/opt/full/inv-showroom.webp?v=20261128-2"
+              data-zoom-alt="多仓库存查询系统界面：布里斯班展厅样品位库存平面图"
+              data-zoom-caption="展厅样品位平面图：绿/黄/红实时区分本地有货、仅他仓有货与全仓无货，并标记 30 天无动销样品。">
+              <img src="assets/opt/inv-showroom.webp?v=20261128-2" srcset="assets/opt/sm/inv-showroom.webp?v=20261128-2 760w, assets/opt/inv-showroom.webp?v=20261128-2 1400w" sizes="(max-width: 960px) calc(100vw - 36px), 62vw" alt="多仓库存查询系统界面：布里斯班展厅样品位库存平面图" width="1400" height="836" decoding="async" loading="lazy">
+            </button>
+          </div>
+        </article>
+
+        <!-- Chapter 05 -->
+        <article class="live-panel live-panel-ableton" role="tabpanel" id="inv-panel-5" aria-labelledby="inv-tab-5" hidden>
+          <aside class="detail-green-card">
+            <div class="detail-card-head">
+              <p class="stage-kicker">05 / 06 · 大件家具分箱尺寸表</p>
+              <h2>一件家具拆成几箱发，每箱多大先记成一本账。</h2>
+            </div>
+            <div class="detail-card-body">
+              <p>卖大件家具跟小件商品不一样，一张床或一套餐桌往往要拆成两三个甚至更多纸箱发海运。以前每个箱子的长宽高、总体积（CBM）和套件组成散落在不同表格里，仓库配货怕漏箱，运营算运费也经常算漏。</p>
+              <p>我们把 270 多个高优先大件 SKU 按销量和体积排好序，做成统一的分箱尺寸维护表，一眼就能看出哪件是单箱、哪件是组合装、哪些还缺尺寸待补齐。</p>
+            </div>
+            <div class="detail-card-foot">
+              <p class="detail-card-takeaway">把分箱和体积这层底账补齐之后，仓库少漏发箱子，后面的体积定价计算器才算得准。</p>
+              <button type="button" class="detail-expand-btn"
+                data-zoom-src="assets/opt/full/inv-box.webp?v=20261128-2"
+                data-zoom-alt="多仓库存查询系统界面：大件家具分箱尺寸维护表"
+                data-zoom-caption="分箱尺寸维护表：集中记录每个 SKU 实际发几箱、每箱长宽高与总体积 CBM，区分单箱与组合装。">展开原图 ↗</button>
+            </div>
+          </aside>
+
+          <div class="browser-shell">
+            <div class="browser-bar">
+              <div class="browser-controls" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="browser-address">cin7.ozstudydesks.com.au / box-split</div>
+              <button type="button" class="browser-expand-btn"
+                data-zoom-src="assets/opt/full/inv-box.webp?v=20261128-2"
+                data-zoom-alt="多仓库存查询系统界面：大件家具分箱尺寸维护表"
+                data-zoom-caption="分箱尺寸维护表：集中记录每个 SKU 实际发几箱、每箱长宽高与总体积 CBM，区分单箱与组合装。">放大查看 ↗</button>
+            </div>
+            <button type="button" class="browser-viewport"
+              data-zoom-src="assets/opt/full/inv-box.webp?v=20261128-2"
+              data-zoom-alt="多仓库存查询系统界面：大件家具分箱尺寸维护表"
+              data-zoom-caption="分箱尺寸维护表：集中记录每个 SKU 实际发几箱、每箱长宽高与总体积 CBM，区分单箱与组合装。">
+              <img src="assets/opt/inv-box.webp?v=20261128-2" srcset="assets/opt/sm/inv-box.webp?v=20261128-2 760w, assets/opt/inv-box.webp?v=20261128-2 1400w" sizes="(max-width: 960px) calc(100vw - 36px), 62vw" alt="多仓库存查询系统界面：大件家具分箱尺寸维护表" width="1400" height="884" decoding="async" loading="lazy">
+            </button>
+          </div>
+        </article>
+
+        <!-- Chapter 06 -->
+        <article class="live-panel live-panel-ableton" role="tabpanel" id="inv-panel-6" aria-labelledby="inv-tab-6" hidden>
+          <aside class="detail-green-card">
+            <div class="detail-card-head">
+              <p class="stage-kicker">06 / 06 · 按体积自动算零售价</p>
+              <h2>海运费、汇率和毛利档位，填进去直接出建议售价。</h2>
+            </div>
+            <div class="detail-card-body">
+              <p>以前给新品定价全靠人在表格里手动套公式，换一次汇率或者整柜海运费涨价，就容易算错毛利。既然每个商品发几箱、每箱多大已经在系统里记清楚了，我们干脆在旁边做了一个体积定价计算器。</p>
+              <p>填上采购成本和整柜海运费，选一下引流款 45%、正常款 55% 还是利润款 60%，系统自动按体积摊入运费，算出含澳洲消费税（GST）和预留折扣的建议零售价，确认没问题就能同步回网店。</p>
+            </div>
+            <div class="detail-card-foot">
+              <p class="detail-card-takeaway">原本只是为了解决「发不出货」，把基础数据理顺后，连展厅管理和定价算账都一起解决了。</p>
+              <button type="button" class="detail-expand-btn"
+                data-zoom-src="assets/opt/full/inv-pricing.webp?v=20261128-2"
+                data-zoom-alt="多仓库存查询系统界面：体积定价计算器与定价模型"
+                data-zoom-caption="体积定价页面：按采购成本、汇率、整柜海运费与各箱尺寸自动试算含 GST 建议售价，支持同步覆盖网店售价。">展开原图 ↗</button>
+            </div>
+          </aside>
+
+          <div class="browser-shell">
+            <div class="browser-bar">
+              <div class="browser-controls" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="browser-address">cin7.ozstudydesks.com.au / volume-pricing</div>
+              <button type="button" class="browser-expand-btn"
+                data-zoom-src="assets/opt/full/inv-pricing.webp?v=20261128-2"
+                data-zoom-alt="多仓库存查询系统界面：体积定价计算器与定价模型"
+                data-zoom-caption="体积定价页面：按采购成本、汇率、整柜海运费与各箱尺寸自动试算含 GST 建议售价，支持同步覆盖网店售价。">放大查看 ↗</button>
+            </div>
+            <button type="button" class="browser-viewport"
+              data-zoom-src="assets/opt/full/inv-pricing.webp?v=20261128-2"
+              data-zoom-alt="多仓库存查询系统界面：体积定价计算器与定价模型"
+              data-zoom-caption="体积定价页面：按采购成本、汇率、整柜海运费与各箱尺寸自动试算含 GST 建议售价，支持同步覆盖网店售价。">
+              <img src="assets/opt/inv-pricing.webp?v=20261128-2" srcset="assets/opt/sm/inv-pricing.webp?v=20261128-2 760w, assets/opt/inv-pricing.webp?v=20261128-2 1400w" sizes="(max-width: 960px) calc(100vw - 36px), 62vw" alt="多仓库存查询系统界面：体积定价计算器与定价模型" width="1400" height="902" decoding="async" loading="lazy">
+            </button>
+          </div>
+        </article>
+
+        <div class="stage-nav">
+          <button type="button" class="stage-step-btn" data-step-prev>← 上一节</button>
+          <span class="stage-counter" data-step-counter>01 / 06</span>
+          <button type="button" class="stage-step-btn" data-step-next>下一节 →</button>
         </div>
       </div>
+    </section>
+
+    <div class="case-next">
+      <div>
+        <p>NEXT PROJECT · 02</p>
+        <a href="creator-ops.html">Creator OPS · 海外博主合作工作台 ↗</a>
+      </div>
+      <span aria-hidden="true">→</span>
     </div>
   </main>
 
   <footer class="wrap footer">
     <span>© 2026 龙致君 · Long Zhijun</span>
-    <span>业务现场 × 工程落地</span>
+    <span>懂业务，也自己动手做</span>
     <a href="#main">回到顶部 ↑</a>
   </footer>
+
+  <div class="img-lightbox" id="img-lightbox" role="dialog" aria-modal="true" aria-label="放大查看项目截图" hidden>
+    <div class="img-lightbox-backdrop" data-close-lightbox></div>
+    <div class="img-lightbox-panel">
+      <div class="img-lightbox-head">
+        <p class="img-lightbox-caption" data-lightbox-caption></p>
+        <button type="button" class="img-lightbox-close" data-close-lightbox>关闭 ×</button>
+      </div>
+      <div class="img-lightbox-body">
+        <img src="" alt="" data-lightbox-img>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

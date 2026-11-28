@@ -1,4 +1,4 @@
-/* Unconventional poster cover: raw white typography directly over deep crimson & flowing ASCII. */
+/* Unconventional poster cover: raw white typography directly over International Klein Blue & flowing ASCII. */
 /* Unified editorial interaction: anchored typography (zero floating), left-to-right hairline sweep, and directional arrow nudge. */
 .hero.wrap{
   width:100%;
@@ -11,7 +11,7 @@
   justify-content:space-between;
   gap:clamp(32px,5svh,56px);
   overflow:hidden;
-  background:#961D26;
+  background:rgb(0, 47, 167);
   color:#ffffff;
   position:relative;
   isolation:isolate;

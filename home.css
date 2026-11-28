@@ -4,7 +4,7 @@
 
 
 
-:root{--paper:#fff;--ink:#171715;--muted:#64645f;--line:#d5d5cf;--blue:#961D26;--violet:#6500ff;--acid:#c4ff00;--orange:#ff5a00;--body:'Futura PT',MiSans,sans-serif;--serif:'Rhymes Display','GenRyu Moon';--mono:'Futura PT',MiSans,sans-serif;--gutter:clamp(24px,4.5vw,80px)}
+:root{--paper:#fff;--ink:#171715;--muted:#64645f;--line:#d5d5cf;--blue:rgb(0, 47, 167);--violet:#6500ff;--acid:#c4ff00;--orange:#ff5a00;--body:'Futura PT',MiSans,sans-serif;--serif:'Rhymes Display','GenRyu Moon';--mono:'Futura PT',MiSans,sans-serif;--gutter:clamp(24px,4.5vw,80px)}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:28px}body{margin:0;color:var(--ink);background:var(--paper);font:16px/1.8 var(--body);-webkit-font-smoothing:antialiased}h1,h2,h3,p,figure{margin:0}h1,h2,h3{font-weight:500}a{color:inherit;text-decoration:none}img{display:block;max-width:100%;height:auto}a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offset:6px}::selection{background:var(--acid);color:var(--ink)}.wrap{width:calc(100% - 2*var(--gutter));max-width:1440px;margin-inline:auto}.skip{position:fixed;top:-100px;left:20px;z-index:99;background:white;padding:12px}.skip:focus{top:10px}
 .site-head{height:100px;max-width:1600px;padding-inline:var(--gutter);margin:auto;display:flex;justify-content:space-between;align-items:center}.identity{display:flex;align-items:center;gap:18px;font-size:14px;line-height:1.2}.identity small{display:block;font-size:10px;letter-spacing:1px;margin-top:8px}.monogram{font:500 60px/.8 'Futura PT';letter-spacing:-5px}.monogram span{color:var(--blue)}nav{display:flex;gap:36px;font-size:13px}nav a:hover,.case-link:hover,.text-link:hover{text-decoration:underline;text-underline-offset:7px}.nav-contact{margin-left:28px}.nav-contact span{margin-left:18px}.hero{padding-top:15px}.hero-topline{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.8px;padding-top:20px;border-top:1px solid var(--ink)}
 .hero-editorial{position:relative;isolation:isolate;padding-top:35px}.hero h1{position:relative;z-index:2;pointer-events:none;font:500 clamp(100px,17.7vw,270px)/.92 'Futura PT';letter-spacing:-.045em}.hero-word{display:block}.hero-word:last-child{color:white;margin-top:28px;margin-left:3.7%;font-size:.99em}.textmode-field{position:absolute;z-index:0;top:clamp(160px,20vw,305px);left:0;width:100%;height:clamp(300px,30vw,460px);overflow:hidden;background:var(--blue)}.textmode-field>img{width:100%;height:100%;object-fit:cover;mix-blend-mode:screen;opacity:.6}.textmode-field figcaption{position:absolute;bottom:24px;left:3.7%;right:3.7%;display:flex;justify-content:space-between;color:white;font-size:11px;letter-spacing:.6px;z-index:2}.ascii-live{position:absolute;inset:0;width:100%;height:100%;display:none;pointer-events:none}.field-live .ascii-live{display:block}.field-live>img{visibility:hidden}
@@ -624,6 +624,355 @@ nav a:hover,.case-link:hover,.text-link:hover{text-decoration:none}
   .footer-wordmark-cn{font-size:24px}
   .resume-notice{left:16px;right:16px;bottom:16px;max-width:none}
 }
+
+/* Unified Apple-inspired Selected Work system (01, 02, 03): zero color blocks, unobstructed studio framing, two-tone typographic emphasis */
+.work-section{
+  padding-block:clamp(88px,9vw,130px) clamp(72px,8vw,112px);
+}
+.work-section .section-heading{
+  margin-bottom:clamp(44px,5vw,72px);
+}
+.work-item,
+.work-item.project-inventory,
+.work-item.project-creator,
+.work-item.project-talk{
+  position:relative;
+  width:100%;
+  max-width:none;
+  margin:0;
+  margin-left:0;
+  padding:clamp(48px,5.5vw,76px) 0 0;
+  margin-bottom:clamp(60px,6.5vw,92px);
+  border-top:1px solid #e5e5e7;
+  background:transparent;
+  color:var(--ink);
+  overflow:visible;
+  display:grid;
+  grid-template-columns:minmax(0,1.24fr) minmax(320px,0.86fr);
+  gap:clamp(30px,4.5vw,68px);
+  align-items:center;
+}
+.work-item:last-of-type{
+  margin-bottom:0;
+}
+
+/* Clean frameless studio presentation: zero color blocks or tinted mats behind screenshots */
+.work-item .work-visual,
+.work-item .inventory-visual,
+.work-item .creator-visual,
+.work-item .talk-visual{
+  grid-column:1;
+  grid-row:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  max-width:none;
+  min-height:0;
+  margin:0;
+  padding:0;
+  background:transparent;
+  color:var(--ink);
+  border:0;
+  border-radius:0;
+  overflow:visible;
+  transform:translate3d(0,var(--visual-drift,0px),0);
+  will-change:transform;
+}
+.work-frame{
+  width:100%;
+  background:#ffffff;
+  border:1px solid rgba(23,23,21,0.1);
+  box-shadow:0 12px 32px rgba(23,23,21,0.06),0 1px 4px rgba(23,23,21,0.03);
+  overflow:hidden;
+  transition:transform .32s cubic-bezier(.16,1,.3,1),box-shadow .32s cubic-bezier(.16,1,.3,1),border-color .32s ease;
+}
+.work-visual:hover .work-frame,
+.work-visual:focus-visible .work-frame{
+  transform:translateY(-2px);
+  border-color:rgba(23,23,21,0.18);
+  box-shadow:0 18px 44px rgba(23,23,21,0.09),0 2px 8px rgba(23,23,21,0.04);
+}
+.work-item .work-frame img{
+  width:100%;
+  max-width:100%;
+  max-height:460px;
+  height:auto;
+  margin:0;
+  border:0;
+  object-fit:contain;
+  object-position:top center;
+  display:block;
+  background:#ffffff;
+}
+
+/* Alternating rhythm: swap 02 Creator OPS so copy sits left and screenshot sits right */
+.work-item.project-creator{
+  grid-template-columns:minmax(320px,0.86fr) minmax(0,1.24fr);
+}
+.work-item.project-creator .work-info,
+.work-item.project-creator .project-info{
+  grid-column:1;
+  grid-row:1;
+}
+.work-item.project-creator .work-visual,
+.work-item.project-creator .creator-visual{
+  grid-column:2;
+  grid-row:1;
+}
+
+/* Unified Editorial Info column with Apple-style two-tone luminance emphasis */
+.work-item .work-info,
+.work-item .project-info{
+  grid-column:2;
+  grid-row:1;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  margin:0;
+  padding:0;
+  max-width:none;
+  color:var(--ink);
+  background:transparent;
+  transform:translate3d(0,var(--info-drift,0px),0);
+  will-change:transform;
+}
+.work-item .project-category{
+  grid-column:auto;
+  grid-row:auto;
+  margin:0 0 12px;
+  font-size:12px;
+  letter-spacing:.04em;
+  color:#6e6e73;
+  font-weight:400;
+  text-shadow:none;
+}
+.work-num{
+  color:var(--blue);
+  font-weight:500;
+  font-variant-numeric:tabular-nums;
+}
+.work-item h3{
+  grid-column:auto;
+  grid-row:auto;
+  margin:0;
+  font-size:clamp(28px,2.7vw,40px);
+  line-height:1.24;
+  letter-spacing:-.028em;
+  color:var(--ink);
+  text-wrap:balance;
+  text-shadow:none;
+}
+.work-item h3 a{
+  color:var(--ink);
+}
+.work-subtitle{
+  margin-top:8px;
+  font-family:var(--body);
+  font-size:clamp(15.5px,1.25vw,18px);
+  line-height:1.5;
+  color:#424245;
+}
+.work-item .project-summary{
+  grid-column:auto;
+  grid-row:auto;
+  margin-top:18px;
+  font-size:15px;
+  line-height:1.9;
+  color:#6e6e73;
+  opacity:1;
+  text-shadow:none;
+  text-wrap:pretty;
+}
+.work-item .project-summary strong{
+  color:var(--ink);
+  font-weight:500;
+}
+
+.work-foot{
+  width:100%;
+  margin-top:26px;
+  padding-top:18px;
+  border-top:1px solid #e5e5e7;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+.work-role span{
+  display:block;
+  font-size:11px;
+  letter-spacing:.06em;
+  color:#86868b;
+  margin-bottom:4px;
+}
+.work-role p{
+  font-size:13.5px;
+  line-height:1.6;
+  color:var(--ink);
+}
+.work-actions{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  flex-wrap:wrap;
+}
+.work-item.project-creator .case-link-huiwen{
+  border-color:var(--ink);
+  color:var(--ink);
+  background:transparent;
+}
+.work-item.project-creator .case-link-huiwen:hover,
+.work-item.project-creator .case-link-huiwen:focus-visible{
+  background:var(--blue);
+  border-color:var(--blue);
+  color:#ffffff;
+}
+
+/* In-page Image Lightbox Modal (sharp corners, never leaves page) */
+.img-lightbox[hidden]{display:none}
+.img-lightbox{
+  position:fixed;
+  inset:0;
+  z-index:220;
+  display:grid;
+  place-items:center;
+  padding:clamp(16px,3vw,40px);
+}
+.img-lightbox-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(20,20,18,0.84);
+}
+.img-lightbox-panel{
+  position:relative;
+  z-index:1;
+  width:min(1260px,100%);
+  max-height:92svh;
+  display:flex;
+  flex-direction:column;
+  background:#ffffff;
+  border:0;
+  border-radius:0;
+  padding:16px 20px 20px;
+}
+.img-lightbox-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  padding-bottom:12px;
+  border-bottom:1px solid var(--line);
+}
+.img-lightbox-caption{
+  font-size:13px;
+  line-height:1.5;
+  color:var(--muted);
+  margin:0;
+}
+.img-lightbox-close{
+  background:transparent;
+  border:1px solid var(--ink);
+  border-radius:0;
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:13px;
+  padding:6px 14px;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:background .2s ease,color .2s ease;
+}
+.img-lightbox-close:hover,
+.img-lightbox-close:focus-visible{
+  background:var(--ink);
+  color:#ffffff;
+}
+.img-lightbox-body{
+  overflow:auto;
+  margin-top:16px;
+  display:grid;
+  place-items:center;
+}
+.img-lightbox-body img{
+  max-width:100%;
+  max-height:76svh;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+}
+
+@media(prefers-reduced-motion:reduce){
+  .work-item .work-visual,
+  .work-item .work-info,
+  .work-visual:hover .work-frame{
+    transform:none!important;
+    will-change:auto;
+  }
+}
+
+@media(max-width:960px){
+  .work-item,
+  .work-item.project-inventory,
+  .work-item.project-creator,
+  .work-item.project-talk{
+    grid-template-columns:1fr;
+    gap:26px;
+  }
+  .work-item .work-visual,
+  .work-item .inventory-visual,
+  .work-item .creator-visual,
+  .work-item .talk-visual,
+  .work-item.project-creator .work-visual,
+  .work-item.project-creator .creator-visual{
+    grid-column:1;
+    grid-row:1;
+    order:1;
+  }
+  .work-item .work-info,
+  .work-item .project-info,
+  .work-item.project-creator .work-info,
+  .work-item.project-creator .project-info{
+    grid-column:1;
+    grid-row:2;
+    order:2;
+  }
+}
+
+@media(max-width:700px){
+  .work-section{
+    padding-block:68px 44px;
+  }
+  .work-item,
+  .work-item.project-inventory,
+  .work-item.project-creator,
+  .work-item.project-talk{
+    padding-top:36px;
+    margin-bottom:54px;
+    gap:22px;
+  }
+  .work-item .work-visual,
+  .work-item .inventory-visual,
+  .work-item .creator-visual,
+  .work-item .talk-visual{
+    padding:0;
+  }
+  .work-item h3{
+    font-size:28px;
+  }
+  .work-subtitle{
+    font-size:16px;
+  }
+  .work-item .project-summary{
+    font-size:14.5px;
+    margin-top:14px;
+  }
+  .work-foot{
+    margin-top:20px;
+    padding-top:16px;
+    gap:16px;
+  }
+}
+
+
 
 
 

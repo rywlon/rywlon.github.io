@@ -3,19 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>02 · Creator OPS 海外红人运营工作台 · 龙致君</title>
-  <meta name="description" content="Creator OPS 是从一线海外红人营销实战中长出来的运营工作台：12 份结构化 Markdown 知识库、Chrome DOM 浏览器自动化，以及以 9 步状态机为核心的 KOL Workspace。">
+  <title>02 · Creator OPS 海外博主合作工作台 · 龙致君</title>
+  <meta name="description" content="在墨尔本帮门店找海外博主探店时，每天被刷私信和三方传话耗尽精力。于是把合作规矩写成文档、让浏览器自动盯私信，并做成跟踪合作进度的工作台。">
   <link rel="icon" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500&display=swap"></noscript>
+  <link rel="preload" as="image" href="assets/opt/creator-home.webp?v=20261128-2" imagesrcset="assets/opt/sm/creator-home.webp?v=20261128-2 760w, assets/opt/creator-home.webp?v=20261128-2 1400w" imagesizes="(max-width: 960px) calc(100vw - 64px), 55vw" fetchpriority="high">
   <link rel="stylesheet" href="style.css?v=restore-63bb363-20261123">
-  <link rel="stylesheet" href="editorial.css?v=refactor-20261124-3">
-  <script src="site.js?v=refactor-20261124-2" defer></script>
-  <script src="motion.js?v=klein-ascii-1" defer></script>
+  <link rel="stylesheet" href="editorial.css?v=20261128-3">
+  <script src="site.js?v=20261128-2" defer></script>
   <link rel="stylesheet" href="typography.css?v=refactor-20261124-2">
 </head>
-<body class="theme-creator">
+<body class="theme-creator case-one-screen">
   <a class="skip" href="#main">跳到正文</a>
 
   <header class="site-head">
@@ -23,8 +24,8 @@
       <span>龙致君<small>LONG ZHIJUN</small></span>
     </a>
     <nav aria-label="主导航">
-      <a href="index.html#work">精选项目</a>
-      <a href="index.html#about">一线经历</a>
+      <a href="index.html#work">做的项目</a>
+      <a href="index.html#about">关于我</a>
       <!-- TODO: 放入简历 PDF 至 assets/resume.pdf 或更新此处路径 -->
       <a href="assets/resume.pdf" data-resume-link>简历 PDF</a>
       <a class="nav-contact" href="https://github.com/rywlon" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a>
@@ -32,210 +33,175 @@
   </header>
 
   <main id="main" class="wrap">
-    <a class="case-back" href="index.html#project-creator">← 返回精选项目</a>
-
-    <header class="case-hero">
-      <p class="eyebrow">02 · 红人运营工作台 / KOL WORKSPACE</p>
-      <h1>Creator OPS</h1>
-      <p class="lede">从 10 步红人一线交付里长出来的<br>规则知识库、浏览器自动化与状态机工作台。</p>
-      <div class="case-intro">
-        <span>项目概览</span>
-        <p>在一线负责海外红人营销全流程时，每天大量精力被困在手动刷 Instagram 私信、在红人 / 客服 / 门店之间传话、以及靠人脑死记硬背合作政策上。我把全部业务规则写成 12 份结构化 Markdown 知识库，绕开 Meta API 限制用 Chrome DOM 自动化跑通私信收发，最终把工具从「自动回复机器人」做成以 9 步合作状态机为核心的红人运营工作台。</p>
+    <header class="case-topbar">
+      <div class="case-topbar-left">
+        <a class="case-back" href="index.html#project-creator">← 返回项目列表</a>
+        <h1>Creator OPS</h1>
       </div>
-      <dl class="case-meta">
-        <div>
-          <dt>业务背景</dt>
-          <dd>海外红人 10 步全流程 · 月目标约 20 位 KOL / 周产 3 条品牌 Reels</dd>
-        </div>
-        <div>
-          <dt>核心技术</dt>
-          <dd>12 份 Markdown 知识库 · AppleScript → Chrome JS → DOM · AI Agent</dd>
-        </div>
-        <div>
-          <dt>架构原则</dt>
-          <dd>确定性程序管执行，AI 管理解与草拟，高风险项人工拍板</dd>
-        </div>
-      </dl>
+      <div class="case-topbar-meta">
+        <span>02 · 独立设计与开发</span>
+        <span>帮门店对接海外博主，把刷私信和传话做成工作台</span>
+      </div>
     </header>
 
-    <figure class="case-cover creator-cover">
-      <a href="assets/creator-desk.png" aria-label="打开完整界面原图">
-        <img src="assets/creator-desk.png" alt="Creator OPS 红人运营工作台总览界面" width="1920" height="1230">
-      </a>
-      <figcaption>Creator OPS 工作台：把待办队列、合作阶段、KOL CRM、规则知识库和 Agent 运行记录收进同一界面</figcaption>
-    </figure>
+    <section class="live-switcher" data-case-switcher aria-label="Creator OPS 详情目录">
+      <div class="live-dir-head">
+        <span class="live-dir-num">2.</span>
+        <p class="live-dir-lead">为什么会做这个工作台</p>
+      </div>
 
-    <div class="case-layout">
-      <nav class="case-index" aria-label="案例目录">
-        <span>目录</span>
-        <a href="#context">一线瓶颈</a>
-        <a href="#kb">12 份知识库</a>
-        <a href="#automation">浏览器自动化</a>
-        <a href="#pivot">9 步状态机</a>
-        <a href="#progress">进展与边界</a>
-        <a href="#screens">界面原图</a>
-      </nav>
+      <div class="live-dir-list" role="tablist" aria-label="切换项目章节">
+        <button type="button" class="live-tab" role="tab" id="co-tab-1" aria-selected="true" aria-controls="co-panel-1">一线发生了什么</button>
+        <button type="button" class="live-tab" role="tab" id="co-tab-2" aria-selected="false" aria-controls="co-panel-2">先把规则写进剧本</button>
+        <button type="button" class="live-tab" role="tab" id="co-tab-3" aria-selected="false" aria-controls="co-panel-3">定好说话风格与节奏</button>
+        <button type="button" class="live-tab" role="tab" id="co-tab-4" aria-selected="false" aria-controls="co-panel-4">让值班长自己盯私信</button>
+        <button type="button" class="live-tab is-last-row" role="tab" id="co-tab-5" aria-selected="false" aria-controls="co-panel-5">常用任务做成模板</button>
+        <button type="button" class="live-tab is-last-row" role="tab" id="co-tab-6" aria-selected="false" aria-controls="co-panel-6">什么事留给人拍板</button>
+      </div>
 
-      <div class="case-body">
-        <section class="case-section" id="context">
-          <p class="eyebrow">01 · 一线瓶颈</p>
-          <h2>不是消息太多，是人天天在当传话筒。</h2>
-          <p>在 Yuki House 负责海外红人合作期间，我亲手跑通从头到尾的 10 个环节：筛选、邀约、沟通、预约协调、确认预约、到店履约、内容交付、素材回收、二次剪辑、运营管理，背着每月约 20 位 KOL 发布内容、每周用回收素材产 3 条品牌 Reels 的硬指标。</p>
-          <p>真正拖垮节奏的并不是创意，而是高频率的低价值信息中转：每天要反复手动刷新 Instagram 查新消息；红人提个时间，我得转去问客服和门店，门店确认完再翻成英文回给红人；聊天记录散在私信、客服群和表格里，已经确认好的预约还经常被门店临时改期。更麻烦的是，各种门店限制、项目菜单和押金条款全靠人脑硬记，一忙就容易漏。</p>
-        </section>
-
-        <section class="case-section" id="kb">
-          <p class="eyebrow">02 · 业务知识库</p>
-          <h2>先把人脑硬记的规矩，拆成 12 份结构化 Markdown。</h2>
-          <p>要让程序和 AI 帮上忙，第一步不是写提示词，而是把模糊的口头约定变成可检索、可维护的规则文件。我将实际合作里的全部细则整理为 <strong>12 份结构化 Markdown 知识库文件</strong>，让 AI 草拟每一条英文回复都有明确依据：</p>
-          <ul class="kb-list">
-            <li>
-              <strong>门店与时段约束</strong>
-              <span>仅限 Box Hill 门店，仅开放工作日预约，最晚预约时间为 17:00。</span>
-            </li>
-            <li>
-              <strong>合作与项目范围</strong>
-              <span>单次合作遵循「一次一人一项目」，对应完整的门店护理项目菜单与适用说明。</span>
-            </li>
-            <li>
-              <strong>押金与取消改期</strong>
-              <span>预约需支付 40 澳元可退押金；明确临时取消、迟到和改期的处理条件。</span>
-            </li>
-            <li>
-              <strong>内容交付标准</strong>
-              <span>清晰写明 Reel 与 Tagged Post 的发布要求、标注规范与原片回收约定。</span>
-            </li>
-            <li>
-              <strong>回复风格与转交红线</strong>
-              <span>统一的英文沟通语气规范，以及必须触发人工介入的边界条件（退款、档期冲突、身份或合作资格存疑）。</span>
-            </li>
-          </ul>
-        </section>
-
-        <section class="case-section" id="automation">
-          <p class="eyebrow">03 · 工程方案与架构原则</p>
-          <h2>API 走不通，就走桌面浏览器 DOM 路线。</h2>
-          <p>受限于 Meta 官方接口权限，常规 API 路线无法直接收发所需的商业账号私信。我改走务实的桌面浏览器自动化路线：通过 <code>AppleScript → Chrome JavaScript → DOM</code> 直接操作 Meta Business Suite 页面，跑通了定时轮询新消息、解析网页 DOM 提取会话内容、识别合作需求以及自动填入并发送回复。</p>
-          <p>在工程拆分上，我坚持一条核心原则——<strong>绝不让大模型去做该由代码保证稳定性的事</strong>：</p>
-          <div class="arch-split">
-            <div class="arch-col">
-              <h3>确定性程序负责执行</h3>
-              <p>定时轮询新私信、消息去重、Chrome DOM 读写、私信发送动作、发送后状态校验与记录归档。</p>
-              <p>所有可复现的步骤全部写成确定性脚本，可追踪、可重试、不靠模型碰运气。</p>
-            </div>
-            <div class="arch-col">
-              <h3>AI Agent 负责理解与判断</h3>
-              <p>阅读非结构化英文私信、提取红人意向（想做的项目、可用时间、粉丝情况）、检索 12 份知识库草拟得体回复、识别异常诉求。</p>
-              <p>遇到退款、改期或超纲问题，自动整理上下文转交真人处理。</p>
-            </div>
+      <div class="live-stage">
+        <article class="live-panel" role="tabpanel" id="co-panel-1" aria-labelledby="co-tab-1">
+          <div class="stage-copy">
+            <p class="stage-kicker">01 / 06 · 一线发生了什么</p>
+            <h2>谈合作不累，天天当传话筒才累。</h2>
+            <p>在墨尔本 Yuki House 帮门店找海外博主探店时，从挑人、发邀约、定时间、催到店到最后收素材剪短视频，整套活都是我一个人跑。每个月要发 20 条左右博主内容，每周还得剪 3 条品牌视频。</p>
+            <p>真正把人耗空的，是每天反复刷 Instagram 私信——一遍遍回答同样的预约规则，再把博主的话转给客服、把客服的排期转回给博主。聊天散在私信、群聊和表格里，人快变成复读机了。</p>
           </div>
-        </section>
-
-        <section class="case-section" id="pivot">
-          <p class="eyebrow">04 · 关键产品转折</p>
-          <h2>自动回私信只是起点，核心是管住业务状态。</h2>
-          <p>私信自动收发跑通之后，我很快发现一个更现实的问题：如果只做一个自动回复 Chatbot，聊完十轮还是得人工去翻记录「这位红人交押金了吗？到店了吗？发 Reel 了吗？原片收齐了吗？」。</p>
-          <p>于是我把整个产品转向<strong>以业务状态为中心的红人运营工作台（KOL Workspace）</strong>——把散乱的非结构化私信抽成一条清晰的 9 步状态机，并将待办队列、阶段看板、KOL CRM、知识库和 Agent 执行收进同一个界面：</p>
-          <div class="state-pipeline" aria-label="红人合作 9 步状态机">
-            <div class="state-step">
-              <span class="step-index">01</span>
-              <strong>表达意向</strong>
-              <p>抓取新私信并识别合作意愿</p>
-            </div>
-            <div class="state-step">
-              <span class="step-index">02</span>
-              <strong>选项目</strong>
-              <p>按菜单确认单次体验项目</p>
-            </div>
-            <div class="state-step">
-              <span class="step-index">03</span>
-              <strong>提供时间</strong>
-              <p>校验工作日与 17:00 前档期</p>
-            </div>
-            <div class="state-step">
-              <span class="step-index">04</span>
-              <strong>客服排期</strong>
-              <p>同步门店与客服锁定位置</p>
-            </div>
-            <div class="state-step">
-              <span class="step-index">05</span>
-              <strong>押金</strong>
-              <p>核对 40 澳元可退押金状态</p>
-            </div>
-            <div class="state-step">
-              <span class="step-index">06</span>
-              <strong>预约成功</strong>
-              <p>发出到店指引与注意事项</p>
-            </div>
-            <div class="state-step">
-              <span class="step-index">07</span>
-              <strong>到店履约</strong>
-              <p>追踪实际到店与体验完成</p>
-            </div>
-            <div class="state-step">
-              <span class="step-index">08</span>
-              <strong>发布检查</strong>
-              <p>核对 Reel 与 Tagged Post</p>
-            </div>
-            <div class="state-step">
-              <span class="step-index">09</span>
-              <strong>素材归档</strong>
-              <p>回收原片并转入周更剪辑库</p>
-            </div>
-          </div>
-          <div class="decision">
-            <p>好用的工作台不是把所有私信堆给你看，而是告诉你：当前卡在哪一步、哪些 AI 已经按规矩办妥了、哪几笔改期和退款需要你现在拍板。</p>
-          </div>
-        </section>
-
-        <section class="case-section" id="progress">
-          <p class="eyebrow">05 · 进展与边界</p>
-          <h2>什么已经跑通，什么留给人拍板。</h2>
-          <div class="status-box">
-            <h3>已跑通的能力</h3>
-            <p>12 份结构化 Markdown 知识库、Meta Business Suite 定时轮询、Chrome DOM 私信读取、合作需求提取、规则驱动的英文回复生成以及浏览器端自动发送均已跑通；工作台已将待办队列、9 步阶段管理、KOL CRM、知识库与运行记录整合在同一界面。</p>
-            <h3>持续完善与人为保留的边界</h3>
-            <p>客服与 KOL 之间的全自动双向协调及自动改期流程仍在持续完善。涉及押金退款、门店临时改期以及合作资格例外等高风险变更，刻意保持默认转人工拍板，不交给模型擅自决定。</p>
-          </div>
-        </section>
-
-        <section class="case-section" id="screens">
-          <p class="eyebrow">SCREENSHOTS</p>
-          <h2>工作台界面截图</h2>
-          <p>切换查看工作台核心模块，点击图片可打开完整尺寸。</p>
-          <figure class="gallery" data-gallery="creator">
-            <div class="gallery-tabs" role="group" aria-label="切换项目截图">
-              <button type="button" aria-pressed="true" data-slide="0" aria-controls="creator-still">运营总览</button>
-              <button type="button" aria-pressed="false" data-slide="1" aria-controls="creator-still">高风险待办</button>
-              <button type="button" aria-pressed="false" data-slide="2" aria-controls="creator-still">12 份知识库</button>
-              <button type="button" aria-pressed="false" data-slide="3" aria-controls="creator-still">转交规则</button>
-              <button type="button" aria-pressed="false" data-slide="4" aria-controls="creator-still">状态记录</button>
-              <button type="button" aria-pressed="false" data-slide="5" aria-controls="creator-still">KOL CRM</button>
-            </div>
-            <div id="creator-still">
-              <a class="gallery-full" href="assets/creator-desk.png">
-                <img src="assets/creator-desk.png" alt="Creator OPS 工作台总览，展示状态统计、运行记录与人工待办队列" loading="lazy" width="1920" height="1230">
-              </a>
-            </div>
-            <figcaption aria-live="polite">把私信动态、合作阶段进度与需要人工拍板的改期/退款集中到同一屏处理。</figcaption>
+          <figure class="stage-visual">
+            <button type="button" class="stage-plate" data-zoom-src="assets/opt/full/creator-home.webp?v=20261128-2" data-zoom-alt="Creator OPS 工作台首页" data-zoom-caption="Creator OPS 工作台首页：直接下达运营任务、接入 43 份知识库与实时浏览器，需要你处理的事项一眼看到。">
+              <img src="assets/opt/creator-home.webp?v=20261128-2" srcset="assets/opt/sm/creator-home.webp?v=20261128-2 760w, assets/opt/creator-home.webp?v=20261128-2 1400w" sizes="(max-width: 960px) calc(100vw - 64px), 55vw" alt="Creator OPS 工作台首页" width="1400" height="732" decoding="async" fetchpriority="high">
+            </button>
+            <figcaption>
+              <span>工作台首页：任务入口、知识库状态与待你处理的事项都在同一屏</span>
+              <span class="stage-zoom-hint">点击放大 ↗</span>
+            </figcaption>
           </figure>
-        </section>
+        </article>
 
-        <div class="case-next">
-          <div>
-            <p>NEXT PROJECT · 03</p>
-            <a href="talkwtf.html">TalkWTF · macOS 开源 Voice to Agent 工具 ↗</a>
+        <article class="live-panel" role="tabpanel" id="co-panel-2" aria-labelledby="co-tab-2" hidden>
+          <div class="stage-copy">
+            <p class="stage-kicker">02 / 06 · 先把规则写进剧本</p>
+            <h2>规矩只记在脑子里，谁也没法帮你干活。</h2>
+            <p>动手做自动值班之前，我先把平时靠脑子硬记的合作规矩拆成了一份份结构化 Markdown 剧本——共用规则、意图路由、预约时段、交付要求、项目菜单、改期和退款怎么处理，全部写成了大白话文件，并随业务一路扩充到了 43 份知识库文档。</p>
+            <p>像「能约哪家店」「什么时候收押金」「要发什么内容」这些硬规矩白纸黑字放好之后，改完立刻生效，下一条私信就会照着新规矩来。</p>
           </div>
-          <span aria-hidden="true">→</span>
+          <figure class="stage-visual">
+            <button type="button" class="stage-plate" data-zoom-src="assets/opt/full/creator-scenarios.webp?v=20261128-2" data-zoom-alt="Creator OPS 场景剧本列表" data-zoom-caption="场景剧本：按共用规则、意图路由、预约、交付、菜单和改期退款拆成独立 Markdown 文件，改完马上生效。">
+              <img src="assets/opt/creator-scenarios.webp?v=20261128-2" srcset="assets/opt/sm/creator-scenarios.webp?v=20261128-2 760w, assets/opt/creator-scenarios.webp?v=20261128-2 1400w" sizes="(max-width: 960px) calc(100vw - 64px), 55vw" alt="Creator OPS 场景剧本列表" width="1400" height="732" decoding="async" loading="lazy">
+            </button>
+            <figcaption>
+              <span>场景剧本：每个高频对话场景单独一份 Markdown 规则，随时可改</span>
+              <span class="stage-zoom-hint">点击放大 ↗</span>
+            </figcaption>
+          </figure>
+        </article>
+
+        <article class="live-panel" role="tabpanel" id="co-panel-3" aria-labelledby="co-tab-3" hidden>
+          <div class="stage-copy">
+            <p class="stage-kicker">03 / 06 · 定好说话风格与节奏</p>
+            <h2>回私信最怕一股机器人味，得像靠谱的熟人在聊。</h2>
+            <p>很多自动回复一眼就被博主看穿，要么太长像发公告，要么答非所问。我在工作台里专门做了「说话风格」配置页：左边点选身份、称呼、语言、语气和每条最多几句，右边实时生成助手每次发消息前必须对照的规则清单。</p>
+            <p>比如先接住对方刚说的话再往下推进、宁短勿长、信息多时拆成两三条短消息、对方不开心时绝不乱发表情，把平时自己回私信的经验直接变成硬约束。</p>
+          </div>
+          <figure class="stage-visual">
+            <button type="button" class="stage-plate" data-zoom-src="assets/opt/full/creator-tone.webp?v=20261128-2" data-zoom-alt="Creator OPS 说话风格与图灵测试规则" data-zoom-caption="说话风格设置：左侧点选称呼、语气与句子长度，右侧自动生成可核对的回复规范。">
+              <img src="assets/opt/creator-tone.webp?v=20261128-2" srcset="assets/opt/sm/creator-tone.webp?v=20261128-2 760w, assets/opt/creator-tone.webp?v=20261128-2 1400w" sizes="(max-width: 960px) calc(100vw - 64px), 55vw" alt="Creator OPS 说话风格与图灵测试规则" width="1400" height="732" decoding="async" loading="lazy">
+            </button>
+            <figcaption>
+              <span>说话风格：左侧点选偏好，右侧实时生成发消息前的核对清单</span>
+              <span class="stage-zoom-hint">点击放大 ↗</span>
+            </figcaption>
+          </figure>
+        </article>
+
+        <article class="live-panel" role="tabpanel" id="co-panel-4" aria-labelledby="co-tab-4" hidden>
+          <div class="stage-copy">
+            <p class="stage-kicker">04 / 06 · 让值班长自己盯私信</p>
+            <h2>拿不到官方接口，就让电脑自己盯着浏览器值班。</h2>
+            <p>Instagram 官方私信接口权限卡得很严，常规路子走不通。我干脆直接在本地连上自己的 Chrome 浏览器，做了一个带多个工位的「值班长」面板：定时巡检收件箱、读取最新聊天记录、按剧本草拟英文回复并留痕。</p>
+            <p>定时巡检、并发调度、防重复和网页读写交给程序稳稳跑；只有读懂博主发来的大段英文、按文档写回复、判断对方有没有提特殊要求，才交给 AI 处理。</p>
+          </div>
+          <figure class="stage-visual">
+            <button type="button" class="stage-plate" data-zoom-src="assets/opt/full/creator-duty.webp?v=20261128-2" data-zoom-alt="Creator OPS 私信值班长与并发工位界面" data-zoom-caption="私信值班台：值班长带着 4 个工位自动盯收件箱，右侧实时列出最近回复与转交人工的明细。">
+              <img src="assets/opt/creator-duty.webp?v=20261128-2" srcset="assets/opt/sm/creator-duty.webp?v=20261128-2 760w, assets/opt/creator-duty.webp?v=20261128-2 1400w" sizes="(max-width: 960px) calc(100vw - 64px), 55vw" alt="Creator OPS 私信值班长与并发工位界面" width="1400" height="874" decoding="async" loading="lazy">
+            </button>
+            <figcaption>
+              <span>私信值班台：4 个工位并发巡检，每条回复和转交都留有记录</span>
+              <span class="stage-zoom-hint">点击放大 ↗</span>
+            </figcaption>
+          </figure>
+        </article>
+
+        <article class="live-panel" role="tabpanel" id="co-panel-5" aria-labelledby="co-tab-5" hidden>
+          <div class="stage-copy">
+            <p class="stage-kicker">05 / 06 · 常用任务做成模板</p>
+            <h2>不只回私信，把反复要干的运营活都收成起点。</h2>
+            <p>私信值班跑顺之后，我顺手把平时每天都要重复做的运营动作也收成了 11 个现成的任务模板：按城市和领域发现创作者、评估合作匹配度、起草邀约私信、整理未回复跟进名单、核对合作规则、回顾今日运营。</p>
+            <p>每次开工不用从零敲一遍长长的要求，点开对应模板就能直接交给助手跑起来。</p>
+          </div>
+          <figure class="stage-visual">
+            <button type="button" class="stage-plate" data-zoom-src="assets/opt/full/creator-templates.webp?v=20261128-2" data-zoom-alt="Creator OPS 11 个日常运营任务模板" data-zoom-caption="任务模板库：把找博主、评估匹配度、写邀约、跟进和每日复盘拆成 11 个一键启动的任务卡片。">
+              <img src="assets/opt/creator-templates.webp?v=20261128-2" srcset="assets/opt/sm/creator-templates.webp?v=20261128-2 760w, assets/opt/creator-templates.webp?v=20261128-2 1400w" sizes="(max-width: 960px) calc(100vw - 64px), 55vw" alt="Creator OPS 11 个日常运营任务模板" width="1400" height="732" decoding="async" loading="lazy">
+            </button>
+            <figcaption>
+              <span>11 个运营任务模板：覆盖找人、邀约、跟进、知识核对与复盘</span>
+              <span class="stage-zoom-hint">点击放大 ↗</span>
+            </figcaption>
+          </figure>
+        </article>
+
+        <article class="live-panel" role="tabpanel" id="co-panel-6" aria-labelledby="co-tab-6" hidden>
+          <div class="stage-copy">
+            <p class="stage-kicker">06 / 06 · 什么事留给人拍板</p>
+            <h2>常规问题让工具顶上，超出权限的坚决留给人定。</h2>
+            <p>我从一开始就定死了边界：只要遇到网页安全验证、对方只发了无文字的帖子不好乱猜、或者牵扯到退押金、临时改期与特殊条件，助手一律不自作主张乱回。</p>
+            <p>系统会把原因和前序对话整理成一条「需要你处理」的待办挂起来，我只要点进去看一眼就能做决定，不用再逐条翻几十个聊天窗口。</p>
+          </div>
+          <figure class="stage-visual">
+            <button type="button" class="stage-plate" data-zoom-src="assets/opt/full/creator-handoff.webp?v=20261128-2" data-zoom-alt="Creator OPS 待办与进展及人工拍板队列" data-zoom-caption="待办与进展：只把超出权限的事项单独列出来等你决定，不乱猜、不擅自答应。">
+              <img src="assets/opt/creator-handoff.webp?v=20261128-2" srcset="assets/opt/sm/creator-handoff.webp?v=20261128-2 760w, assets/opt/creator-handoff.webp?v=20261128-2 1400w" sizes="(max-width: 960px) calc(100vw - 64px), 55vw" alt="Creator OPS 待办与进展及人工拍板队列" width="1400" height="820" decoding="async" loading="lazy">
+            </button>
+            <figcaption>
+              <span>待办与进展：超出权限的事项集中挂起，带上原因等你直接决定</span>
+              <span class="stage-zoom-hint">点击放大 ↗</span>
+            </figcaption>
+          </figure>
+        </article>
+
+        <div class="stage-nav">
+          <button type="button" class="stage-step-btn" data-step-prev>← 上一节</button>
+          <span class="stage-counter" data-step-counter>01 / 06</span>
+          <button type="button" class="stage-step-btn" data-step-next>下一节 →</button>
         </div>
       </div>
+    </section>
+
+    <div class="case-next">
+      <div>
+        <p>NEXT PROJECT · 03</p>
+        <a href="talkwtf.html">TalkWTF · Mac 开源语音转文字工具 ↗</a>
+      </div>
+      <span aria-hidden="true">→</span>
     </div>
   </main>
 
   <footer class="wrap footer">
     <span>© 2026 龙致君 · Long Zhijun</span>
-    <span>业务现场 × 工程落地</span>
+    <span>懂业务，也自己动手做</span>
     <a href="#main">回到顶部 ↑</a>
   </footer>
+
+  <div class="img-lightbox" id="img-lightbox" role="dialog" aria-modal="true" aria-label="放大查看项目截图" hidden>
+    <div class="img-lightbox-backdrop" data-close-lightbox></div>
+    <div class="img-lightbox-panel">
+      <div class="img-lightbox-head">
+        <p class="img-lightbox-caption" data-lightbox-caption></p>
+        <button type="button" class="img-lightbox-close" data-close-lightbox>关闭 ×</button>
+      </div>
+      <div class="img-lightbox-body">
+        <img src="" alt="" data-lightbox-img>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

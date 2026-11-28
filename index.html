@@ -3,16 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>龙致君 Long Zhijun — AI 应用落地 · 业务系统实施 · FDE</title>
-  <meta name="description" content="龙致君的个人作品集。拥有跨境电商与海外红人一线运营背景，同时直接动手写内部系统、浏览器自动化与桌面端 AI 工具。涵盖多仓库存查询系统、Creator OPS 红人运营工作台与开源语音转文字 / Voice to Agent 工具 TalkWTF。">
-  <meta property="og:title" content="龙致君 Long Zhijun — AI 应用落地 · 业务系统实施 · FDE">
-  <meta property="og:description" content="既能理清业务规则，也能亲手把内部系统、浏览器自动化和桌面端 AI 工具写出来跑通。">
+  <title>龙致君 Long Zhijun — 懂业务的动手派 · AI 工具与内部系统</title>
+  <meta name="description" content="龙致君的个人作品集。从澳洲家具电商与线下门店一线运营出发，把工作中烦人的卡顿和重复活，查清原因后亲手做成好用的内部系统和 AI 工具。">
+  <meta property="og:title" content="龙致君 Long Zhijun — 懂业务的动手派 · AI 工具与内部系统">
+  <meta property="og:description" content="在真实业务里遇到难用的流程，查清问题出在哪，再亲手做成能直接用的工具。">
   <link rel="icon" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500&display=swap">
-  <link rel="stylesheet" href="home.css?v=refactor-20261124-4">
-  <script src="site.js?v=refactor-20261124-3" defer></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500&display=swap"></noscript>
+  <link rel="preload" as="image" href="assets/opt/inv-aging.webp?v=20261128-2" imagesrcset="assets/opt/sm/inv-aging.webp?v=20261128-2 760w, assets/opt/inv-aging.webp?v=20261128-2 1400w" imagesizes="(max-width: 960px) calc(100vw - 68px), 54vw" fetchpriority="high">
+  <link rel="stylesheet" href="home.css?v=20261128-3">
+  <script src="site.js?v=20261128-2" defer></script>
   <script src="motion-cache.js?v=worker-ascii-1" defer></script>
   <script src="ascii-controller.js?v=cover-woff-1" defer></script>
   <script src="motion.js?v=worker-ascii-1" defer></script>
@@ -21,7 +23,7 @@
   <script src="assets/vendor/lenis-1.3.27.min.js" defer></script>
   <script src="chapters.js?v=refactor-20261124-2" defer></script>
   <link rel="stylesheet" href="typography.css?v=refactor-20261124-2">
-  <link rel="stylesheet" href="cover.css?v=refactor-20261124-4">
+  <link rel="stylesheet" href="cover.css?v=refactor-20261127-3">
 </head>
 <body class="editorial-home">
   <a class="skip" href="#main">跳到正文</a>
@@ -40,7 +42,7 @@
         </h1>
 
         <div class="hero-panel">
-          <p class="hero-statement">做过跨境电商与海外红人一线运营，也自己动手写内部系统、浏览器自动化和桌面端 AI 工具。</p>
+          <p class="hero-statement">在真实业务里遇到难用的流程，查清问题出在哪，再亲手做成能直接用的工具。</p>
 
           <ol class="hero-index" aria-label="精选项目快速索引">
             <li>
@@ -48,7 +50,7 @@
                 <span class="idx-num">01</span>
                 <span class="idx-body">
                   <strong>多仓库存查询系统</strong>
-                  <span class="idx-desc">线上商城与库存后台口径对齐</span>
+                  <span class="idx-desc">网店显示有货却发不出来，查清后做成的内部查库工具</span>
                 </span>
                 <span class="idx-arrow" aria-hidden="true">↘</span>
               </a>
@@ -58,7 +60,7 @@
                 <span class="idx-num">02</span>
                 <span class="idx-body">
                   <strong>Creator OPS</strong>
-                  <span class="idx-desc">海外红人运营工作台 · 知识库与浏览器自动化</span>
+                  <span class="idx-desc">帮门店找海外博主合作，把反复刷私信和传话做成工作台</span>
                 </span>
                 <span class="idx-arrow" aria-hidden="true">↘</span>
               </a>
@@ -68,7 +70,7 @@
                 <span class="idx-num">03</span>
                 <span class="idx-body">
                   <strong>TalkWTF</strong>
-                  <span class="idx-desc">macOS 开源语音转文字工具，也是 Voice to Agent 入口</span>
+                  <span class="idx-desc">自己写的 Mac 开源语音转文字工具，也能开口直接派活给 AI</span>
                 </span>
                 <span class="idx-arrow" aria-hidden="true">↘</span>
               </a>
@@ -78,8 +80,8 @@
       </div>
 
       <nav class="cover-nav" aria-label="主导航">
-        <a href="#work">精选项目</a>
-        <a href="#about">一线经历</a>
+        <a href="#work">做的项目</a>
+        <a href="#about">关于我</a>
         <!-- TODO: 简历 PDF 占位路径，放入 assets/resume.pdf 后自动生效 -->
         <a href="assets/resume.pdf" data-resume-link>简历 PDF</a>
         <a lang="en" href="https://github.com/rywlon" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -89,11 +91,11 @@
 
     <section class="reading-intro wrap">
       <div class="hero-copy">
-        <h2>既能理清业务规则，<br>也能亲手把工具做出来。</h2>
-        <p class="hero-intro">我不只停在提需求或画原型。面对复杂的真实业务，我习惯先把人脑里零散的规则和跨系统边界拆清楚——确定性的步骤交给程序稳定执行，需要理解语义的地方交给 AI，真正需要担责的判断留给人。</p>
+        <h2>遇到卡住人的流程，<br>不如自己把工具做出来。</h2>
+        <p class="hero-intro">我是龙致君。过去在澳洲的家具电商和线下门店做一线运营，天天跟库存、订单、博主私信打交道。很多事让人累，并不是大家不努力，而是手里的软件和流程太别扭。碰到这种地方，我习惯把来龙去脉查清楚，再直接动手做成同事和自己每天都能用上的工具。</p>
       </div>
       <div class="hero-bottom">
-        <span>AI 应用落地 · 业务系统实施 · FDE（Forward Deployed Engineer）</span>
+        <span>下面是三个从真实工作和日常里做出来的项目</span>
         <span>01 — 03</span>
       </div>
     </section>
@@ -102,95 +104,76 @@
       <div class="section-heading">
         <div>
           <p class="eyebrow">SELECTED WORK · 01 — 03</p>
-          <h2 class="english-title">Selected work<span>三个从真实业务里长出来的项目。</span></h2>
+          <h2 class="english-title">Selected work<span>从查库、盯私信到语音打字，都是自己遇到麻烦后做的。</span></h2>
         </div>
       </div>
 
-      <!-- 01 · 多仓库存查询系统（团队协作交付） -->
-      <article class="project project-inventory" id="project-inventory">
-        <a class="project-visual inventory-visual" data-project-ascii="converge" href="inventory.html" aria-label="阅读 01 多仓库存查询系统详情">
-          <div class="visual-top">
-            <span>01 · 电商内部 WEB 系统</span>
-            <span>团队协作交付</span>
+      <!-- 01 · 多仓库存查询系统 -->
+      <article class="project project-inventory work-item" id="project-inventory" data-prefetch-lead="assets/opt/inv-search.webp?v=20261128-2">
+        <a class="project-visual inventory-visual work-visual" href="inventory.html" aria-label="阅读 01 多仓库存查询系统详情">
+          <div class="work-frame">
+            <img src="assets/opt/inv-aging.webp?v=20261128-2" srcset="assets/opt/sm/inv-aging.webp?v=20261128-2 760w, assets/opt/inv-aging.webp?v=20261128-2 1400w" sizes="(max-width: 960px) calc(100vw - 68px), 54vw" alt="多仓库存查询系统界面：按仓库与货架查看库存与库龄报告" width="1400" height="836" decoding="async" fetchpriority="high">
           </div>
-          <div class="stock-diagram">
-            <div>
-              <small>线上商城展示</small>
-              <b>全仓汇总</b>
-              <span>All Branches</span>
-            </div>
-            <strong>≠</strong>
-            <div>
-              <small>后台履约扣减</small>
-              <b>所属分支仓</b>
-              <span>Order Branch</span>
-            </div>
-          </div>
-          <img src="assets/details/inventory-scope.webp" alt="多仓库存查询系统实站脱敏截图：跨仓合计库存筛查" loading="lazy" width="1090" height="151">
-          <span class="visual-arrow" aria-hidden="true">↗</span>
         </a>
-        <div class="project-info">
-          <p class="project-category">01 · 电商内部系统 / 团队交付</p>
+        <div class="project-info work-info">
+          <p class="project-category"><span class="work-num">01</span> · 电商内部网页工具 · 和团队一起完成</p>
           <h3><a href="inventory.html">多仓库存查询系统</a></h3>
-          <p class="project-summary">线上商城反复出现「前台显示有货、下单后后台发不出」的异常。核对线上商城与库存后台的订单流和接口字段后，定位出核心冲突：前台读的是全仓汇总库存，后台履约却只扣所属分支仓。随后与团队共同交付了内部多仓库存查询 Web 系统，统一各分仓真实库存口径，替代人工跨后台核对。</p>
-          <div class="inline-meta">
-            <span>跨系统排障 · 业务口径梳理 · 推动团队交付</span>
-            <a class="case-link case-link-huiwen" href="inventory.html">阅读详情 <span aria-hidden="true">↗</span></a>
+          <p class="work-subtitle">把网店和仓库对不上的库存，收进一个能直接查的网页</p>
+          <p class="project-summary"><strong>网店算的是几个仓库加起来的总数，发货却只能从单个仓库扣。</strong>以前在家具电商上班，经常碰到顾客下了单、仓库却发不出货，同事们每天只能反复切后台对账。我顺着订单把原因查清楚，和团队一起做了这套内部网页工具，把查库存、看库龄、算分箱尺寸和定价都收进了同一个页面。</p>
+          <div class="work-foot">
+            <div class="work-role">
+              <span>我做了什么</span>
+              <p>查清问题 · 梳理规则 · 推动团队落地</p>
+            </div>
+            <div class="work-actions">
+              <a class="case-link case-link-huiwen" href="inventory.html">阅读详情 <span aria-hidden="true">↗</span></a>
+            </div>
           </div>
         </div>
       </article>
 
-      <!-- 02 · Creator OPS（红人运营工作台 / KOL Workspace） -->
-      <article class="project featured project-creator" id="project-creator" data-project-ascii="triage">
-        <a class="project-visual creator-visual" href="creator-ops.html" aria-label="阅读 02 Creator OPS 详情">
-          <div class="visual-top">
-            <span>02 · CREATOR OPS</span>
-            <span>红人运营工作台 · KOL WORKSPACE</span>
+      <!-- 02 · Creator OPS -->
+      <article class="project project-creator work-item" id="project-creator" data-prefetch-lead="assets/opt/creator-home.webp?v=20261128-2">
+        <a class="project-visual creator-visual work-visual" href="creator-ops.html" aria-label="阅读 02 Creator OPS 详情">
+          <div class="work-frame">
+            <img src="assets/opt/creator-duty.webp?v=20261128-2" srcset="assets/opt/sm/creator-duty.webp?v=20261128-2 760w, assets/opt/creator-duty.webp?v=20261128-2 1400w" sizes="(max-width: 960px) calc(100vw - 68px), 54vw" alt="Creator OPS 私信自动值班界面：值班长与多个工位盯住收件箱，把需要人工拍板的事项单独列出来" width="1400" height="874" loading="lazy" decoding="async">
           </div>
-          <div class="creator-window">
-            <img src="assets/creator-desk.png" alt="Creator OPS 红人运营工作台界面，展示状态统计与人工待办队列" loading="lazy" width="1920" height="1230">
-          </div>
-          <div class="visual-caption">12 份结构化规则知识库 · Chrome DOM 浏览器自动化 · 9 步合作状态机</div>
-          <span class="visual-arrow" aria-hidden="true">↗</span>
         </a>
-        <div class="project-info">
-          <div>
-            <p class="project-category">02 · 红人运营工作台 / 独立设计与工程实现</p>
-            <h3><a href="creator-ops.html">Creator OPS<br>海外红人运营工作台</a></h3>
-            <p class="project-summary">做海外红人一线运营时，大量时间被耗在手动刷私信、在 KOL / 客服 / 门店三方之间当传话筒和靠人脑硬记规则上。我把合作规则拆成 12 份结构化 Markdown 知识库，用桌面浏览器自动化跑通私信轮询、读取与发送，并做成以 9 步状态机为核心的工作台——确定性程序负责执行，AI Agent 负责理解与草拟，退款和改期默认转人工拍板。</p>
-          </div>
-          <div class="project-meta">
-            <span>构建内容</span>
-            <p>规则知识库 · 浏览器自动化 · 9 步状态机工作台</p>
-            <a class="case-link case-link-huiwen" href="creator-ops.html">阅读详情 <span aria-hidden="true">↗</span></a>
+        <div class="project-info work-info">
+          <p class="project-category"><span class="work-num">02</span> · 博主合作工作台 · 独立设计与开发</p>
+          <h3><a href="creator-ops.html">Creator OPS</a></h3>
+          <p class="work-subtitle">海外博主合作工作台</p>
+          <p class="project-summary"><strong>真正耗人的不是谈合作，而是天天盯私信、反复答同样的规则。</strong>后来在墨尔本帮门店找海外博主探店，每个月要对接几十位博主，还要在博主、客服和门店之间来回传话。我先把合作规矩和回复剧本写成结构化文档，再做成自动盯私信、按风格草拟回复的工作台。常规问题让工具先顶上，退押金或改时间留给本人拍板。</p>
+          <div class="work-foot">
+            <div class="work-role">
+              <span>我做了什么</span>
+              <p>整理规则文档 · 自动收发私信 · 合作进度工作台</p>
+            </div>
+            <div class="work-actions">
+              <a class="case-link case-link-huiwen" href="creator-ops.html">阅读详情 <span aria-hidden="true">↗</span></a>
+            </div>
           </div>
         </div>
       </article>
 
-      <!-- 03 · TalkWTF（macOS 开源语音转文字 & Voice to Agent 工具） -->
-      <article class="project project-talk" id="project-talkwtf">
-        <a class="project-visual talk-visual" data-project-ascii="sync" href="talkwtf.html" aria-label="阅读 03 TalkWTF 详情">
-          <div class="visual-top">
-            <span>03 · TALKWTF</span>
-            <span>macOS · 开源语音转文字 / VOICE TO AGENT</span>
+      <!-- 03 · TalkWTF -->
+      <article class="project project-talk work-item" id="project-talkwtf" data-prefetch-lead="assets/opt/talk-overview.webp?v=20261128-2">
+        <a class="project-visual talk-visual work-visual" href="talkwtf.html" aria-label="阅读 03 TalkWTF 详情">
+          <div class="work-frame">
+            <img src="assets/opt/talk-overview.webp?v=20261128-2" srcset="assets/opt/sm/talk-overview.webp?v=20261128-2 760w, assets/opt/talk-overview.webp?v=20261128-2 1400w" sizes="(max-width: 960px) calc(100vw - 68px), 54vw" alt="TalkWTF Mac 桌面概览界面：从想法到行动，支持本地语音听写、AI 润色与智能路由到本地 Agent" width="1400" height="624" loading="lazy" decoding="async">
           </div>
-          <div class="talk-route" aria-label="双模式：日常随时语音转文字，也可直接触发 Voice to Agent 派活">
-            <span>日常语音转文字</span><i>·</i><span>按下「交给 Agent」</span><i>→</i><span>自动分发本地 Agent</span>
-          </div>
-          <div class="talk-promise">
-            <span class="voice-icon" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
-            <strong>日常能当输入法，<br>也能直接派活给 Agent。</strong>
-          </div>
-          <img src="assets/details/talk-session.webp" alt="TalkWTF 桌面界面：日常语音转文字与 Voice to Agent 入口" loading="lazy" width="1560" height="760">
-          <span class="visual-arrow" aria-hidden="true">↗</span>
         </a>
-        <div class="project-info">
-          <p class="project-category">03 · 桌面端 AI 工具 / 开源项目</p>
-          <h3><a href="talkwtf.html">TalkWTF<br>macOS 开源语音转文字 · Voice to Agent</a></h3>
-          <p class="project-summary">最初因为用不惯 Typeless，自己动手写了一个开源的 macOS 语音转文字工具，日常写字、聊天、记想法都能顺手替代打字。用着发现语音还可以更深地融入工作流，于是加入了 Voice to Agent——按下「交给 Agent」热键说出需求，由 TalkWTF 自己判断并分发给对应的本地 Agent 执行。</p>
-          <div class="inline-meta">
-            <span>产品定义 · 桌面端开发 · 开源维护</span>
-            <div class="inline-actions">
+        <div class="project-info work-info">
+          <p class="project-category"><span class="work-num">03</span> · Mac 开源语音工具 · 个人项目</p>
+          <h3><a href="talkwtf.html">TalkWTF</a></h3>
+          <p class="work-subtitle">Mac 开源语音转文字与派活工具</p>
+          <p class="project-summary"><strong>平时按住说话就能直接打字，换个快捷键也能开口派活给本地 AI。</strong>前两个项目是为上班做的，这个是做给我自己用的。写东西、聊天、记想法时说话比敲键盘快得多，但市面上的工具总不合手，干脆自己写了一个开源的 Mac 语音转文字工具，顺带接上了 Codex、Claude Code 和 Cursor。</p>
+          <div class="work-foot">
+            <div class="work-role">
+              <span>我做了什么</span>
+              <p>自己定义 · 自己开发 · GitHub 开源</p>
+            </div>
+            <div class="work-actions">
               <a class="case-link-muted" href="https://github.com/rywlon/TalkWTF" target="_blank" rel="noopener noreferrer">GitHub 源码 <span aria-hidden="true">↗</span></a>
               <a class="case-link case-link-huiwen" href="talkwtf.html">阅读详情 <span aria-hidden="true">↗</span></a>
             </div>
@@ -201,31 +184,31 @@
 
     <section class="about-section wrap" id="about">
       <div class="about-title">
-        <p class="eyebrow">BACKGROUND &amp; EXPERIENCE</p>
+        <p class="eyebrow">ABOUT ME / 关于我</p>
         <h2>龙致君<span>Long Zhijun</span></h2>
-        <p class="about-focus">求职方向：AI 应用落地 · 业务系统实施 · FDE（Forward Deployed Engineer）</p>
+        <p class="about-focus">目前在找：能贴近真实业务、亲手把 AI 和软件落到日常工作里的岗位（AI 应用落地 · 业务系统实施 · FDE）。</p>
       </div>
 
       <div class="about-content">
-        <p class="about-lead" id="approach">一线运营出身，<br>自己把工具写出来。</p>
-        <p>我从跨境电商运营和海外红人一线交付入行。长期蹲在真实业务里，让我判断一个工具好不好用的标准很直接：能不能把天天重复的手工活、和跨系统对不上的账真正解决掉。</p>
-        <p>遇到卡住的环节，我习惯先查接口、拆单据、把靠人脑记的规则写成结构化文档；确定性的动作交给程序和浏览器自动化稳稳跑，需要理解语义的地方交给 AI Agent，高风险决策留给人拍板。</p>
+        <p class="about-lead" id="approach">在一线干过活，<br>所以知道工具差在哪。</p>
+        <p>我不是一上来就坐在办公室里画大饼的，而是从澳洲的家具电商和线下门店运营做起来的。因为自己天天被难用的表格、对不上的库存和刷不完的私信折磨过，所以我判断一个工具好不好用很简单：它能不能真帮人省下每天重复的麻烦。</p>
+        <p>遇到卡住的地方，我习惯先动手查到底。能靠规则和代码稳稳跑完的步骤，就写成自动化；需要读懂人话的地方，才让 AI 帮忙；牵扯到钱和客诉的决定，还是留给人自己来做。</p>
 
         <div class="experience" id="experience">
           <article>
             <!-- TODO: 补充 OZS / OAK 任职年份，例如 2024 – 2025 -->
             <span>OZS / OAK</span>
             <div>
-              <h3>内容运营 &amp; Agent 落地</h3>
-              <p>拆解从评价采集、去重、选品到发布前检查的人工流程，定清筛选规则，把重复环节改成 Agent 自动执行，负责定规则和把控最终发布结果。</p>
+              <h3>内容运营与 AI 流程落地</h3>
+              <p>过去每天都要人工整理商品评价、去重、筛品和做发布前检查。我把这套流程拆清楚、定好筛选标准，把重复整理的部分改成自动跑的流程，自己把控规则和最终发布结果。</p>
             </div>
           </article>
           <article>
             <!-- TODO: 补充 Yuki House 任职年份，例如 2025 – 2026 -->
             <span>Yuki House</span>
             <div>
-              <h3>海外红人合作与交付</h3>
-              <p>一线负责海外红人 10 步全流程交付（筛选、邀约、沟通、预约、到店履约到内容发布与素材回收，月目标约 20 位 KOL 发布、周产 3 条品牌 Reels）。Creator OPS 正是从这段实战里长出来的。</p>
+              <h3>海外博主合作与内容交付</h3>
+              <p>从找人、私信邀约、协调预约到到店拍摄、催发帖和回收素材，整条活都是自己一线跑下来的（每个月目标发 20 条左右博主内容、每周剪 3 条品牌短视频）。Creator OPS 就是为了解决这段工作里的麻烦写出来的。</p>
             </div>
           </article>
         </div>
@@ -238,8 +221,8 @@
       <section class="contact wrap" id="contact" aria-label="联系方式">
         <div class="contact-lead">
           <p class="eyebrow">CONTACT / 联系我</p>
-          <h2>有合适的机会，<br>或者想聊具体业务问题？</h2>
-          <p>目前在看 AI 应用落地、业务系统实施与 FDE 相关岗位。欢迎直接发邮件，或扫右侧微信找我聊。</p>
+          <h2>想聊聊合作，<br>或者正好有合适的位置？</h2>
+          <p>如果你正好在找一个既懂一线业务、又能亲手把工具和系统做出来的人，欢迎直接发邮件，或者加微信聊。</p>
         </div>
 
         <div class="contact-channels">
@@ -257,7 +240,7 @@
             <span class="channel-label">WECHAT</span>
             <div>
               <button type="button" class="contact-qr-trigger" data-open-qr aria-haspopup="dialog" aria-controls="wechat-modal">查看微信二维码 <span aria-hidden="true">↗</span></button>
-              <p class="wechat-note">点击弹出二维码扫码添加，备注来意即可。</p>
+              <p class="wechat-note">点开扫码添加，备注来意就行。</p>
             </div>
           </div>
         </div>
@@ -266,11 +249,11 @@
       <footer class="site-footer" aria-label="页脚导航与站点信息">
         <div class="footer-grid">
           <div class="footer-col">
-            <h3>CASE STUDIES</h3>
+            <h3>PROJECTS</h3>
             <ul class="footer-links">
               <li><a href="inventory.html"><span class="f-num">01</span> 多仓库存查询系统 <span class="f-arrow" aria-hidden="true">↗</span></a></li>
-              <li><a href="creator-ops.html"><span class="f-num">02</span> Creator OPS 红人工作台 <span class="f-arrow" aria-hidden="true">↗</span></a></li>
-              <li><a href="talkwtf.html"><span class="f-num">03</span> TalkWTF 语音转文字 / Voice to Agent <span class="f-arrow" aria-hidden="true">↗</span></a></li>
+              <li><a href="creator-ops.html"><span class="f-num">02</span> Creator OPS 博主工作台 <span class="f-arrow" aria-hidden="true">↗</span></a></li>
+              <li><a href="talkwtf.html"><span class="f-num">03</span> TalkWTF 开源语音工具 <span class="f-arrow" aria-hidden="true">↗</span></a></li>
             </ul>
           </div>
 
@@ -286,7 +269,7 @@
           <div class="footer-col">
             <h3>FOCUS</h3>
             <p class="footer-meta-text">AI 应用落地 · 业务系统实施 · FDE</p>
-            <p class="footer-meta-text">从跨境电商与海外红人一线出发，把散乱规则写进系统与工具里。</p>
+            <p class="footer-meta-text">把一线工作里烦人的重复活，做成顺手好用的小系统和工具。</p>
           </div>
         </div>
 
@@ -297,7 +280,7 @@
 
         <div class="footer-colophon">
           <span>© 2026 龙致君 · Long Zhijun</span>
-          <span>业务现场 × 工程落地</span>
+          <span>懂业务，也自己动手做</span>
           <a href="#main">回到顶部 <span aria-hidden="true">↑</span></a>
         </div>
       </footer>
@@ -312,9 +295,24 @@
         <button type="button" class="qr-modal-close" data-close-qr aria-label="关闭微信二维码弹窗">关闭 ×</button>
       </div>
       <div class="qr-modal-image">
-        <img src="assets/wechat-qr.jpg" alt="龙致君的微信好友二维码" width="228" height="338" loading="lazy">
+        <picture>
+          <source srcset="assets/opt/wechat-qr.webp?v=20261128-2" type="image/webp">
+          <img src="assets/wechat-qr.jpg" alt="龙致君的微信好友二维码" width="228" height="338" loading="lazy" decoding="async">
+        </picture>
       </div>
-      <p class="qr-modal-caption">打开微信扫一扫或长按识别，备注来意即可。</p>
+      <p class="qr-modal-caption">打开微信扫一扫或长按识别，备注来意就行。</p>
+    </div>
+  </div>
+  <div class="img-lightbox" id="img-lightbox" role="dialog" aria-modal="true" aria-label="放大查看项目截图" hidden>
+    <div class="img-lightbox-backdrop" data-close-lightbox></div>
+    <div class="img-lightbox-panel">
+      <div class="img-lightbox-head">
+        <p class="img-lightbox-caption" data-lightbox-caption></p>
+        <button type="button" class="img-lightbox-close" data-close-lightbox>关闭 ×</button>
+      </div>
+      <div class="img-lightbox-body">
+        <img src="" alt="" data-lightbox-img>
+      </div>
     </div>
   </div>
 </body>

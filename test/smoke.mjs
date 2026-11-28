@@ -59,7 +59,7 @@ for (const forbidden of ['Cin7', 'Shopify', '赋能', '闭环', '抓手', '链�
 
 // Homepage includes Resume PDF placeholder & TalkWTF GitHub repo link
 assert.ok(home.includes('assets/resume.pdf'), 'Missing Resume PDF entry on homepage');
-assert.ok(home.includes('https://github.com/rywlon/TalkWTF'), 'Missing TalkWTF GitHub link on homepage');
+assert.ok(home.includes('https://github.com/lonzhijun/TalkWTF'), 'Missing TalkWTF GitHub link on homepage');
 
 // Case study checks: Ableton Live-style GenRyu Moon switcher + in-page lightbox
 const expectedTabs = { 'inventory': 6, 'creator-ops': 6, 'talkwtf': 4 };
@@ -147,7 +147,7 @@ for (const match of allPages.matchAll(/data-zoom-src="([^"?]+)/g)) {
 }
 
 assert.ok(talkHtml.includes('语音转文字'));
-assert.ok(talkHtml.includes('https://github.com/rywlon/TalkWTF'));
+assert.ok(talkHtml.includes('https://github.com/lonzhijun/TalkWTF'));
 assert.ok(creatorHtml.includes('43 份知识库'));
 assert.ok(invHtml.includes('团队协作交付'));
 assert.ok(existsSync('.nojekyll'));
